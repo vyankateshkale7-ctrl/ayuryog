@@ -127,6 +127,17 @@ textarea.field{min-height:120px}
 .cform{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:var(--cream)}
 .cform input{flex:1;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font:inherit;background:#fff;min-width:0}
 .cform button{border:0;background:var(--maroon);color:#fff;border-radius:999px;padding:0 16px;font-weight:700}
+.emerg{background:#a3242f;color:#fff;border-radius:14px;padding:10px 14px;font-weight:700;margin-bottom:14px}
+.pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px}
+.pstat{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:10px 12px}
+.pstat b{font-family:Fraunces,serif;font-size:24px;display:block;color:var(--maroon)}
+.pstat span{font-size:13px;color:var(--muted)}
+.rank{font-family:Fraunces,serif;font-size:28px;color:var(--gold);line-height:1}
+.deaths{font-weight:700;color:var(--maroon)}
+.k-ncd{background:#efe3c4;color:#6b5320}.k-comm{background:#e1ecf2;color:#2c4f63}
+.blk.signs{background:#fff1ef;border-color:#e0a5a5}.blk.signs h4{color:var(--red)}
+.qchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.qchips .lk{font-size:13px;padding:3px 9px}
 .empty{color:var(--muted);padding:12px 0}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 </style>
@@ -140,7 +151,7 @@ textarea.field{min-height:120px}
       <div class="lang" id="lang"><button data-l="en">EN</button><button data-l="hi">हिंदी</button><button data-l="mr">मराठी</button></div>
     </div>
     <nav>
-      <a href="#conditions" data-t="navCond"></a><a href="#library" data-t="navLib"></a><a href="#herbs" data-t="navHerb"></a><a href="#yoga" data-t="navYoga"></a><a href="#therapies" data-t="navTher"></a><a href="#journal" data-t="navJournal"></a><a href="#safety" data-t="navSafety"></a>
+      <a href="#conditions" data-t="navCond"></a><a href="#prevention" data-t="navPrev"></a><a href="#library" data-t="navLib"></a><a href="#herbs" data-t="navHerb"></a><a href="#yoga" data-t="navYoga"></a><a href="#therapies" data-t="navTher"></a><a href="#journal" data-t="navJournal"></a><a href="#safety" data-t="navSafety"></a>
     </nav>
   </div>
 </header>
@@ -171,6 +182,19 @@ textarea.field{min-height:120px}
       <div class="chips" id="cats"></div>
     </div>
     <div class="grid three" id="condGrid"></div>
+  </section>
+
+  <section id="prevention">
+    <div class="sh"><div class="eyebrow">WHO · Prevention</div><h2 data-t="prevTitle"></h2><p data-t="prevSub"></p></div>
+    <div class="emerg" data-t="emergencyL"></div>
+    <div class="pstats" id="pstats"></div>
+    <div class="group" data-t="habitsL"></div>
+    <div class="grid three" id="habitGrid"></div>
+    <div class="group">Top 10 · WHO 2023</div>
+    <div class="grid three" id="disGrid"></div>
+    <div class="group" data-t="alsoL"></div>
+    <div class="grid three" id="extraGrid"></div>
+    <div class="blk" style="margin-top:18px"><h4 data-t="factsL"></h4><ul id="factList"></ul><p class="note" id="prevSrc"></p></div>
   </section>
 
   <section id="library">
@@ -688,6 +712,244 @@ const COND = {
     diet:"Less fried, very sour and salty food; avoid incompatible combinations like fish with milk (viruddha ahara)."}
 };
 
+// Prevention section. Figures: WHO Global Health Estimates 2023, "Top 10 causes of death" fact sheet (2 Oct 2026),
+// as reported by Health Policy Watch, Nairametrics and Dhaka Tribune. Extras cite their own WHO/IARC sources.
+const PREV_META = {
+  total:"61 million", top10:"33 million (54%)", ncd:"74%", year:"2023",
+  source:"WHO Global Health Estimates 2023 — Top 10 causes of death fact sheet (October 2026)",
+  facts:[
+    "8 of the top 10 killers are noncommunicable (chronic) diseases. All NCDs together caused 74% of deaths in 2023, up from 58% in 2000.",
+    "Cancers are counted organ by organ in the WHO list. All cancers together cause close to 10 million deaths a year (IARC, 2022).",
+    "COVID-19 fell from about 9.4 million direct deaths in 2021 (the top cause that year) to about 0.9 million in 2023, ranking 14th.",
+    "Tuberculosis (about 1.25 million deaths in 2023, WHO Global TB Report) and malaria remain in the top 10 in low-income countries. India has the world's largest number of TB cases."
+  ]
+};
+
+// Habits that lower the risk of most diseases on this list (WHO recommendations).
+const HABITS = {
+  en:[
+    ["No tobacco in any form","Cigarettes, bidi, gutkha, khaini and second-hand smoke drive heart disease, stroke, COPD and many cancers."],
+    ["Move every day","WHO: 150–300 minutes of moderate activity a week (brisk walking counts), or 75–150 minutes of vigorous activity."],
+    ["Less salt, sugar and fried food","WHO: under 5 g salt a day (about one teaspoon). Fewer sugary drinks, more vegetables, fruit, pulses and whole grains."],
+    ["Keep a healthy waist","For Indians, risk rises above about 90 cm waist for men and 80 cm for women."],
+    ["Avoid alcohol","WHO says no level of alcohol is safe for health."],
+    ["Check BP, sugar and cholesterol","At least once a year as an adult. From age 30, India's free NCD screening checks BP, diabetes and common cancers."],
+    ["Clean air and clean water","Use LPG or electric cooking instead of a smoky chulha. Boil or filter drinking water. Wash hands with soap."],
+    ["Vaccines","Childhood vaccines, flu and pneumococcal vaccines for older adults, hepatitis B and HPV vaccines prevent infections and some cancers."],
+    ["Sleep and calm","7–9 hours of sleep and stress care support BP, sugar and heart health — the dinacharya ideas in this guide fit here."]
+  ],
+  hi:[
+    ["किसी भी रूप में तंबाकू नहीं","सिगरेट, बीड़ी, गुटखा, खैनी और दूसरों का धुआँ हृदय रोग, स्ट्रोक, सीओपीडी और कई कैंसर का कारण बनते हैं।"],
+    ["रोज़ चलें-फिरें","WHO: हफ्ते में 150–300 मिनट मध्यम गतिविधि (तेज़ चलना भी), या 75–150 मिनट तीव्र गतिविधि।"],
+    ["कम नमक, चीनी और तला भोजन","WHO: दिन में 5 ग्राम से कम नमक (लगभग एक चम्मच)। मीठे पेय कम, सब्ज़ियाँ, फल, दालें और साबुत अनाज ज़्यादा।"],
+    ["कमर का घेरा स्वस्थ रखें","भारतीयों में पुरुषों के लिए लगभग 90 सेमी और महिलाओं के लिए 80 सेमी से अधिक पर जोखिम बढ़ता है।"],
+    ["शराब से बचें","WHO के अनुसार शराब की कोई मात्रा स्वास्थ्य के लिए सुरक्षित नहीं।"],
+    ["बीपी, शुगर और कोलेस्ट्रॉल जाँचें","वयस्क होने पर साल में कम से कम एक बार। 30 वर्ष से भारत की मुफ्त NCD जाँच बीपी, मधुमेह और सामान्य कैंसर देखती है।"],
+    ["साफ़ हवा और साफ़ पानी","धुएँ वाले चूल्हे की जगह LPG या बिजली से खाना बनाएँ। पानी उबालें या छानें। साबुन से हाथ धोएँ।"],
+    ["टीके","बचपन के टीके, बुज़ुर्गों के लिए फ्लू व न्यूमोकोकल टीके, हेपेटाइटिस-बी और HPV टीके संक्रमण व कुछ कैंसर रोकते हैं।"],
+    ["नींद और शांति","7–9 घंटे नींद और तनाव की देखभाल बीपी, शुगर और हृदय के लिए सहायक है।"]
+  ],
+  mr:[
+    ["कोणत्याही स्वरूपात तंबाखू नको","सिगारेट, बिडी, गुटखा, खैनी आणि इतरांचा धूर हृदयविकार, पक्षाघात, सीओपीडी आणि अनेक कर्करोगांचे कारण आहेत."],
+    ["रोज हालचाल करा","WHO: आठवड्याला 150–300 मिनिटे मध्यम व्यायाम (वेगाने चालणेही), किंवा 75–150 मिनिटे जोरदार व्यायाम."],
+    ["कमी मीठ, साखर आणि तळलेले","WHO: दिवसाला 5 ग्रॅमपेक्षा कमी मीठ (सुमारे एक चमचा). गोड पेये कमी; भाज्या, फळे, डाळी, अख्खी धान्ये जास्त."],
+    ["कंबरेचा घेर निरोगी ठेवा","भारतीयांमध्ये पुरुषांसाठी सुमारे 90 सेमी व स्त्रियांसाठी 80 सेमीपेक्षा जास्त घेर असल्यास धोका वाढतो."],
+    ["मद्य टाळा","WHO नुसार मद्याचे कोणतेही प्रमाण आरोग्यासाठी सुरक्षित नाही."],
+    ["बीपी, साखर आणि कोलेस्टेरॉल तपासा","प्रौढपणी वर्षातून किमान एकदा. 30 वर्षांपासून भारताची मोफत NCD तपासणी बीपी, मधुमेह आणि सामान्य कर्करोग पाहते."],
+    ["स्वच्छ हवा आणि पाणी","धुराच्या चुलीऐवजी LPG किंवा विजेवर स्वयंपाक करा. पाणी उकळा किंवा गाळा. साबणाने हात धुवा."],
+    ["लसी","बालपणीच्या लसी, वृद्धांसाठी फ्लू व न्यूमोकोकल लस, हिपॅटायटिस-बी आणि HPV लस संसर्ग व काही कर्करोग टाळतात."],
+    ["झोप आणि शांतता","7–9 तास झोप आणि तणावाची काळजी बीपी, साखर आणि हृदयासाठी उपयुक्त."]
+  ]
+};
+
+const DISEASES = [
+  {id:"ihd", rank:1, deaths:"9.5 million", share:"16%", cat:"ncd",
+   name:{en:"Ischaemic Heart Disease (Coronary Artery Disease)",hi:"हृदय रोग (कोरोनरी धमनी रोग)",mr:"हृदयविकार (कोरोनरी धमनी विकार)"},
+   overview:"Narrowed heart arteries reduce blood and oxygen to the heart muscle, causing angina and heart attacks. It is the world's top killer; deaths have risen by about 3 million since 2000 — the largest rise of any cause.",
+   risks:["Smoking and tobacco","High blood pressure","Diabetes","High LDL cholesterol","Belly fat and inactivity","Family history of early heart disease","Air pollution, stress, poor sleep"],
+   prevent:["No tobacco; avoid second-hand smoke","Walk briskly 30 minutes, 5 days a week","Keep BP, sugar and cholesterol in range — take prescribed medicines regularly","Less salt, fried and packaged food; more vegetables, fruit, pulses, nuts","Keep waist in a healthy range","Manage stress and sleep 7–9 hours"],
+   signs:"Chest pain, pressure or tightness that may spread to the arm, jaw, neck or back; sweating, breathlessness, nausea or sudden weakness. Women and people with diabetes may have milder or unusual symptoms. Call 108 or 112 at once — do not wait or drive yourself.",
+   screen:"BP every year; fasting sugar and lipid profile as your doctor advises (from age 30, or earlier with a family history).",
+   ayur:"Ayurveda describes Hridroga (heart disease). Arjuna bark is traditionally used for the heart — but only alongside, never instead of, cardiology care. Gentle walking, Shavasana, Nadi Shodhana and Bhramari suit most people; after a heart attack, follow a cardiac rehab plan.",
+   classical:{term:"Hridroga", refs:[{b:"charaka",w:"Chikitsa 26 — Hridroga"},{b:"charaka",w:"Sutrasthana 30 — the heart"}]},
+   links:["bp","stress"], herbs:["arjuna"],
+   kw:["heart disease","heart problem","heart health","weak heart","heart attack","cardiac","angina","coronary","artery","arteries","cholesterol","हृदय","दिल","हार्ट","हृदयविकार","हृदयरोग","कोलेस्ट्रॉल"]},
+  {id:"stroke", rank:2, deaths:"6.8 million", share:"11%", cat:"ncd",
+   name:{en:"Stroke",hi:"स्ट्रोक (लकवा)",mr:"पक्षाघात (स्ट्रोक)"},
+   overview:"A blocked or burst blood vessel cuts off blood to part of the brain. Brain cells start dying within minutes. Stroke is a leading cause of long-term disability worldwide.",
+   risks:["High blood pressure — the biggest one","Smoking","Diabetes","Irregular heartbeat (atrial fibrillation)","High cholesterol","Obesity and inactivity","Heavy drinking"],
+   prevent:["Control BP — check it regularly and take medicines as prescribed","Stop tobacco","Control sugar and cholesterol","Less salt; daily activity","Get an irregular pulse checked by a doctor"],
+   signs:"Use BE FAST: Balance loss, Eyes (sudden vision loss), Face drooping, Arm or leg weakness, Speech slurred — Time to call 108/112. Some treatments work only in the first few hours, so every minute counts.",
+   screen:"BP every year; pulse check for irregular rhythm, especially after 60.",
+   ayur:"Classical texts describe Pakshaghata (paralysis of one side) under Vata disorders. After hospital treatment, supervised Abhyanga and physiotherapy-style movement are used in rehabilitation — never as first aid.",
+   classical:{term:"Pakshaghata / Pakshavadha", refs:[{b:"charaka",w:"Chikitsa 28 — Vatavyadhi"},{b:"madhava",w:"Vatavyadhi Nidana"}]},
+   links:["bp"], herbs:[],
+   kw:["stroke","paralysis","brain attack","face drooping","slurred speech","लकवा","स्ट्रोक","पक्षाघात","अर्धांगवायू","लकवे"]},
+  {id:"copd", rank:3, deaths:"3.6 million", share:"6%", cat:"ncd",
+   name:{en:"Chronic Obstructive Pulmonary Disease (COPD)",hi:"सीओपीडी (फेफड़ों की पुरानी बीमारी)",mr:"सीओपीडी (फुफ्फुसाचा जुनाट आजार)"},
+   overview:"Long-term lung damage (emphysema and chronic bronchitis) that narrows airways and makes breathing hard. In India, smoke from cooking fires is a major cause, along with tobacco and air pollution.",
+   risks:["Smoking and bidi","Smoke from wood, dung or coal cooking fires","Outdoor air pollution","Dust and fumes at work","Childhood lung infections"],
+   prevent:["Stop smoking — the single most important step","Cook with LPG or electricity; ventilate the kitchen","Wear a proper mask in dusty work","Flu and pneumococcal vaccines","Stay active to keep lungs and muscles strong"],
+   signs:"Breathlessness at rest, blue lips, confusion or chest pain need emergency care (108/112). A cough with phlegm most days, or breathlessness on stairs, needs a doctor and a spirometry test.",
+   screen:"Spirometry (lung function test) if you smoke or have long-term cough or breathlessness.",
+   ayur:"Ayurveda discusses Shvasa (breathlessness) and Kasa (cough). Gentle Nadi Shodhana and slow belly breathing can help comfort. Avoid forceful Kapalabhati or Bhastrika with lung or heart disease. Never stop inhalers for herbs.",
+   classical:{term:"Shvasa / Kasa", refs:[{b:"charaka",w:"Chikitsa 17 — Hikka-Shvasa"},{b:"charaka",w:"Chikitsa 18 — Kasa"}]},
+   links:["cold"], herbs:["vasa","pippali"],
+   kw:["copd","lung disease","emphysema","bronchitis","breathing problem","asthma","lungs","smoker's cough","फेफड़े","सीओपीडी","दमा","फुफ्फुस","श्वास","सांस की बीमारी"]},
+  {id:"lri", rank:4, deaths:"2.7 million", share:"4.4%", cat:"comm",
+   name:{en:"Lower Respiratory Infections (Pneumonia & Bronchitis)",hi:"निमोनिया और श्वसन संक्रमण",mr:"न्यूमोनिया आणि श्वसन संसर्ग"},
+   overview:"Infections of the lungs and airways caused by bacteria and viruses. The world's deadliest communicable disease, hitting young children and older adults hardest. Deaths are back to their 2019 level.",
+   risks:["Age under 5 or over 65","Malnutrition, no breastfeeding","Indoor smoke and smoking","Diabetes, COPD, heart disease","Weak immunity"],
+   prevent:["Childhood vaccines (pneumococcal, Hib, measles) on schedule","Flu and pneumococcal vaccines for older adults","Exclusive breastfeeding for the first 6 months","Clean cooking fuel and no smoking at home","Handwashing; cover coughs"],
+   signs:"Fast or difficult breathing, chest pulling in (in children), bluish lips, high fever, confusion in older people, or inability to drink — go to a doctor or hospital the same day.",
+   screen:"No routine screening — prevention is vaccines and clean air.",
+   ayur:"Tulsi, ginger and warm fluids are traditional comforts for a mild cold, but pneumonia needs medical treatment, often antibiotics. Do not delay care for herbs, especially in children and older adults.",
+   classical:{term:"Kasa, Shvasa, Jvara", refs:[{b:"charaka",w:"Chikitsa 18 — Kasa"},{b:"charaka",w:"Chikitsa 3 — Jvara"}]},
+   links:["cold","immunity"], herbs:["tulasi","shunthi"],
+   kw:["pneumonia","chest infection","lung infection","respiratory infection","bronchitis","निमोनिया","न्यूमोनिया","छाती में संक्रमण","छातीत संसर्ग"]},
+  {id:"dementia", rank:5, deaths:"2.1 million", share:"3.4%", cat:"ncd",
+   name:{en:"Alzheimer's Disease and Other Dementias",hi:"अल्ज़ाइमर और डिमेंशिया",mr:"अल्झायमर आणि स्मृतिभ्रंश"},
+   overview:"Progressive loss of memory, thinking and daily abilities. It rose from 19th place in 2000 to 5th, with deaths tripling as people live longer. Women are about two-thirds of dementia deaths.",
+   risks:["Ageing","High BP, diabetes, high LDL cholesterol in mid-life","Hearing loss and untreated vision loss","Smoking, alcohol, inactivity, obesity","Depression and social isolation","Head injury and air pollution","Less education"],
+   prevent:["Control BP, sugar and cholesterol from mid-life","Treat hearing loss (hearing aids) and vision problems","Stay physically active","Keep learning, stay socially connected","Avoid smoking and alcohol; wear a helmet","Research (Lancet Commission, 2024) suggests nearly half of dementia cases may be linked to such changeable risk factors"],
+   signs:"Memory loss that disrupts daily life, getting lost in familiar places, trouble with money or speech, or personality change — see a doctor (neurologist or psychiatrist) for assessment. Sudden confusion is an emergency.",
+   screen:"A memory check with your doctor if you or family notice changes.",
+   ayur:"Charaka describes Medhya Rasayana herbs (Mandukaparni, Yashtimadhu, Guduchi, Shankhapushpi) for the mind; Brahmi is also traditional. They are not proven to prevent or treat dementia. Meditation, pranayama and an active routine support brain health.",
+   classical:{term:"Smriti-nasha (loss of memory) — Medhya Rasayana", refs:[{b:"charaka",w:"Chikitsa 1 — Medhya Rasayana"}]},
+   links:["stress","sleep"], herbs:["brahmi","mandukaparni","shankhapushpi"],
+   kw:["alzheimer","alzheimers","dementia","memory loss","forgetful","forgetting","memory","याददाश्त","भूलना","डिमेंशिया","अल्ज़ाइमर","स्मृतिभ्रंश","विसरणे","स्मरणशक्ती"]},
+  {id:"diabetes2", rank:6, deaths:"2.0 million", share:"3.3%", cat:"ncd",
+   name:{en:"Diabetes Mellitus",hi:"मधुमेह (डायबिटीज़)",mr:"मधुमेह (डायबिटीस)"},
+   overview:"High blood sugar that damages vessels, nerves, eyes, kidneys and the heart. Diabetes deaths have more than doubled since 2000, with the sharpest rise in South-East Asia. Indians often develop it younger and at lower body weight.",
+   risks:["Belly fat, even at normal weight","Inactivity","Sugary drinks, refined flour, large portions","Family history","Prediabetes","Diabetes in pregnancy (gestational)"],
+   prevent:["Walk 30 minutes a day; break long sitting","Cut sugary drinks and sweets; choose millets, whole grains, pulses, vegetables","Lose 5–7% of weight if overweight — in a large US trial (DPP) this cut new diabetes by 58% in people with prediabetes","Sleep well; manage stress","Test sugar regularly from age 30, earlier with risk factors"],
+   signs:"Very high sugar (extreme thirst, vomiting, drowsiness) or very low sugar (shaking, sweating, confusion, fainting) is an emergency. Thirst, frequent urination, weight loss, slow-healing wounds or blurred vision need a test.",
+   screen:"Fasting sugar or HbA1c from age 30 (free under India's NCD programme); people with diabetes also need yearly eye, foot and kidney checks.",
+   ayur:"Classical Prameha. Gudmar, fenugreek, turmeric with amla and bitter vegetables are traditional — they can lower sugar further with medicines, so tell your doctor. Never stop insulin or tablets for herbs.",
+   classical:{term:"Prameha / Madhumeha", refs:[{b:"charaka",w:"Nidana 4 & Chikitsa 6 — Prameha"}]},
+   links:["diabetes","weightgain"], herbs:["meshashringi","methika","haridra","amalaki"],
+   kw:["diabetes","diabetic","blood sugar","sugar","prediabetes","insulin","hba1c","मधुमेह","शुगर","डायबिटीज","डायबिटीस","साखर","इंसुलिन"]},
+  {id:"lungca", rank:7, deaths:"1.8 million", share:"3%", cat:"ncd",
+   name:{en:"Trachea, Bronchus and Lung Cancers",hi:"फेफड़ों का कैंसर",mr:"फुफ्फुसाचा कर्करोग"},
+   overview:"The deadliest single cancer worldwide. Deaths rose from 1.1 million in 2000 to 1.8 million. Most cases are linked to tobacco; air pollution and workplace exposures add risk.",
+   risks:["Smoking and bidi — by far the biggest","Second-hand smoke","Air pollution and indoor smoke","Asbestos and other workplace exposures","Family history"],
+   prevent:["Never start tobacco — or quit now; risk falls year by year after quitting","Smoke-free home and car","Clean cooking fuel","Workplace protection from dust and chemicals"],
+   signs:"Cough lasting more than 3 weeks, coughing blood, chest pain, hoarse voice, breathlessness or unexplained weight loss — see a doctor. In India, a cough over 2 weeks also needs a TB test.",
+   screen:"Long-term heavy smokers (roughly 50 and above) can ask a doctor about low-dose CT screening.",
+   ayur:"Ayurveda describes Arbuda (tumours). No herb prevents or treats lung cancer. Quitting tobacco is the prevention. During cancer care, use any herb only with your oncologist's approval — some interfere with chemotherapy.",
+   classical:{term:"Arbuda", refs:[{b:"sushruta",w:"Nidana 11 — Granthi, Arbuda"}]},
+   links:[], herbs:[],
+   kw:["lung cancer","lung tumour","lung tumor","फेफड़ों का कैंसर","फुफ्फुसाचा कर्करोग","फेफड़े का कैंसर"]},
+  {id:"hhd", rank:8, deaths:"1.7 million", share:"2.8%", cat:"ncd",
+   name:{en:"Hypertensive Heart Disease",hi:"उच्च रक्तचाप से हृदय रोग",mr:"उच्च रक्तदाबामुळे हृदयविकार"},
+   overview:"Years of uncontrolled high blood pressure thicken and weaken the heart muscle, leading to heart failure. Deaths more than doubled since 2000, rising from 15th to 8th.",
+   risks:["Uncontrolled high BP","High salt","Obesity","Alcohol","Kidney disease","Not taking BP medicines regularly"],
+   prevent:["Know your BP — check it at least once a year","If you have high BP, take medicines every day, even when you feel fine","Under 5 g salt a day; avoid pickles, papad and packaged snacks in excess","Daily activity and healthy weight","Limit alcohol; stop smoking"],
+   signs:"Breathlessness lying flat, swelling of feet, sudden weight gain, or chest pain — see a doctor. BP above 180/120 with headache, chest pain or confusion is an emergency.",
+   screen:"BP every year; heart tests (ECG, echo) if your doctor advises.",
+   ayur:"No classical disease matches hypertension exactly. Calming practices — Shavasana, Nadi Shodhana, Bhramari, Yoga Nidra — and a low-salt sattvic diet support BP care. Avoid Kapalabhati, Bhastrika, breath-holding and inversions.",
+   classical:{term:"Hridroga (modern correlation debated)", refs:[{b:"charaka",w:"Chikitsa 26 — Hridroga"}]},
+   links:["bp"], herbs:["arjuna"],
+   kw:["heart failure","hypertensive heart","enlarged heart","हार्ट फेल","हृदय निकामी"]},
+  {id:"kidney", rank:9, deaths:"1.6 million", share:"2.6%", cat:"ncd",
+   name:{en:"Kidney Diseases",hi:"गुर्दे (किडनी) के रोग",mr:"मूत्रपिंड (किडनी) विकार"},
+   overview:"Chronic kidney disease slowly reduces the kidneys' ability to filter blood. It rose from 17th place in 2000 to 9th, with deaths up 86%, driven mainly by diabetes and high blood pressure. Early stages often have no symptoms.",
+   risks:["Diabetes","High blood pressure","Overuse of painkillers (NSAIDs)","Repeated dehydration or heat stress","Kidney stones and infections","Unregulated herbal or metal-based products","Family history"],
+   prevent:["Control sugar and BP — the two biggest causes","Avoid regular painkiller use without a doctor","Drink enough water, especially in heat","Use only licensed medicines; avoid products of unknown content","Test kidneys yearly if you have diabetes or high BP"],
+   signs:"Very little urine, severe swelling, breathlessness or confusion — emergency. Swollen feet, foamy urine, tiredness or itching need a doctor.",
+   screen:"Urine albumin (ACR) and blood creatinine/eGFR every year if you have diabetes or high BP.",
+   ayur:"Classical texts describe urinary disorders (Mutrakricchra, Mutraghata); CKD has no exact classical equivalent. Punarnava is traditional for swelling, but swelling needs a doctor first. Some poorly made herbal products contain heavy metals that damage kidneys — buy only licensed (AYUSH/GMP) products.",
+   classical:{term:"Mutrakricchra / Mutraghata (CKD: no exact equivalent)", refs:[{b:"charaka",w:"Chikitsa 26 — urinary disorders"},{b:"sushruta",w:"Uttara Tantra — Mutraghata"}]},
+   links:["diabetes","bp"], herbs:["punarnava"],
+   kw:["kidney","kidneys","renal","ckd","creatinine","dialysis","किडनी","गुर्दा","गुर्दे","मूत्रपिंड","डायलिसिस"]},
+  {id:"diarrhoea", rank:10, deaths:"1.5 million", share:"2.5%", cat:"comm",
+   name:{en:"Diarrhoeal Diseases",hi:"दस्त रोग (डायरिया)",mr:"जुलाब / अतिसार (डायरिया)"},
+   overview:"Infections spread through contaminated water, food and hands. Dehydration is what kills, especially young children. Deaths have roughly halved since 2000, but it remains a major killer in poorer areas.",
+   risks:["Unsafe drinking water","Poor sanitation and open defecation","No handwashing with soap","Malnutrition","No breastfeeding","Not vaccinated against rotavirus"],
+   prevent:["Boil, filter or treat drinking water","Wash hands with soap after the toilet and before food","Use toilets","Exclusive breastfeeding for 6 months","Rotavirus vaccine (in India's free immunisation programme)","Eat freshly cooked food"],
+   signs:"Blood in stool, signs of dehydration (very little urine, sunken eyes, dry mouth, extreme thirst), repeated vomiting, or a drowsy child — get care the same day. Start ORS at once; children also need zinc for 10–14 days as advised by health workers.",
+   screen:"No screening — prevention is water, sanitation and hygiene.",
+   ayur:"Classical Atisara. Traditional supportive foods include rice water, buttermilk and unripe bael, but ORS is the life-saver. Never give strong purgatives or unverified remedies to a child with diarrhoea.",
+   classical:{term:"Atisara", refs:[{b:"charaka",w:"Chikitsa 19 — Atisara"}]},
+   links:["bloating"], herbs:["bilva","musta"],
+   kw:["diarrhoea","diarrhea","loose motion","loose motions","loose stool","dysentery","cholera","ors","दस्त","डायरिया","जुलाब","अतिसार","पतले दस्त","हगवण"]}
+];
+
+const EXTRAS = [
+  {id:"cancer", deaths:"~9.7 million (all cancers, IARC 2022)", cat:"ncd",
+   name:{en:"All Cancers",hi:"कैंसर (सभी प्रकार)",mr:"कर्करोग (सर्व प्रकार)"},
+   overview:"Grouped together, cancers cause close to 10 million deaths a year — second only to cardiovascular disease. WHO estimates 30–50% of cancers could be prevented. In India, mouth cancer from tobacco, breast cancer and cervical cancer are especially common.",
+   risks:["Tobacco — smoked and chewed (gutkha, khaini, paan with tobacco)","Alcohol","Obesity, inactivity, diet low in fibre","HPV and hepatitis B/C infections","Air pollution and workplace carcinogens","Sun exposure (skin cancer)"],
+   prevent:["No tobacco in any form","Avoid alcohol","HPV vaccine for girls (recommended at 9–14 years) prevents most cervical cancer","Hepatitis B vaccine prevents a major cause of liver cancer","Healthy weight, daily activity, more fibre, less processed meat","Get screened — early cancers are far more curable"],
+   signs:"A lump, a mouth ulcer or white/red patch that does not heal in 2 weeks, unusual bleeding, a change in bowel habits, a persistent cough or hoarse voice, difficulty swallowing, or unexplained weight loss — see a doctor promptly.",
+   screen:"From age 30 India's NCD programme offers free oral, breast and cervical cancer screening. Ask your doctor about colon cancer screening after 45–50.",
+   ayur:"Sushruta describes Arbuda (tumours). No herb, diet or Ayurvedic product cures cancer, and delay can cost a life. Yoga, pranayama and good food can support wellbeing during treatment — always with your oncologist's agreement.",
+   classical:{term:"Arbuda", refs:[{b:"sushruta",w:"Nidana 11 — Granthi, Arbuda"}]},
+   links:[], herbs:[],
+   kw:["cancer","cancers","tumour","tumor","oncology","mouth cancer","breast cancer","cervical cancer","कैंसर","कर्करोग","ट्यूमर","गांठ","गाठ"]},
+  {id:"obesity", deaths:"Major risk factor (over 1 billion people live with obesity — WHO/NCD-RisC, 2022 data)", cat:"ncd",
+   name:{en:"Obesity",hi:"मोटापा",mr:"लठ्ठपणा"},
+   overview:"Excess body fat raises the risk of diabetes, heart disease, stroke, high BP, kidney disease, some cancers and joint problems. For Indians, risk starts at lower weights: BMI 23 and above is overweight, 25 and above is obese (Indian guidelines).",
+   risks:["Sugary drinks, sweets, fried and packaged food","Large portions and late meals","Sitting most of the day","Short sleep and stress","Some medicines and hormone conditions"],
+   prevent:["Replace sugary drinks with water or buttermilk","Fill half the plate with vegetables; add pulses and protein","Walk after meals; aim for WHO activity levels","Sleep 7–9 hours; reduce screen time","Lose weight gradually — 0.5 to 1 kg a week is safe"],
+   signs:"Not an emergency itself, but snoring with breathing pauses, chest pain or breathlessness need a doctor.",
+   screen:"Check weight, BMI and waist yearly, plus BP and sugar.",
+   ayur:"Charaka lists Sthaulya (obesity) among the eight undesirable body types (Sutrasthana 21) and advises light food, exercise and less day-sleep. See the Weight Gain card for herbs and yoga. Avoid 'fat-burner' products of unknown content.",
+   classical:{term:"Sthaulya / Medoroga", refs:[{b:"charaka",w:"Sutrasthana 21 — Sthaulya"}]},
+   links:["weightgain"], herbs:["haritaki","guggulu"],
+   kw:["obesity","obese","overweight","fat","belly fat","bmi","weight loss diet","मोटापा","मोटा","लठ्ठपणा","चरबी","वजन"]},
+  {id:"hypertension", deaths:"Risk factor behind heart disease, stroke and kidney disease (about 1.3 billion adults 30–79 have hypertension — WHO 2023)", cat:"ncd",
+   name:{en:"High Blood Pressure (Hypertension)",hi:"उच्च रक्तचाप (हाई बीपी)",mr:"उच्च रक्तदाब (हाय बीपी)"},
+   overview:"Called the silent killer because it rarely causes symptoms. WHO estimates about 4 in 5 people with hypertension are not adequately treated. Controlling it prevents strokes, heart attacks, heart failure and kidney damage.",
+   risks:["High salt","Obesity and inactivity","Alcohol and tobacco","Stress and poor sleep","Diabetes and kidney disease","Family history and age"],
+   prevent:["Check BP at least once a year (pharmacy, PHC or home monitor)","Under 5 g salt a day","Daily activity; healthy weight","Limit alcohol; no tobacco","If prescribed medicine, take it daily — high BP usually needs lifelong care"],
+   signs:"BP above 180/120 with headache, chest pain, breathlessness, weakness or confusion — emergency (108/112).",
+   screen:"Every adult yearly; free at government NCD screening from age 30.",
+   ayur:"See the BP card. Calming pranayama, Yoga Nidra, low-salt sattvic food and regular sleep support BP care. Never stop BP medicine for herbs.",
+   classical:{term:"No exact classical equivalent", refs:[{b:"charaka",w:"Sutrasthana 30 — the heart"}]},
+   links:["bp"], herbs:["arjuna","brahmi"],
+   kw:["hypertension","high bp","high blood pressure","blood pressure","bp","हाई बीपी","रक्तचाप","रक्तदाब","बीपी","ब्लड प्रेशर"]},
+  {id:"tb", deaths:"~1.25 million (2023, WHO Global TB Report)", cat:"comm",
+   name:{en:"Tuberculosis (TB)",hi:"टीबी (क्षय रोग)",mr:"क्षयरोग (टीबी)"},
+   overview:"A bacterial infection spread through the air, mostly affecting the lungs. India has the world's largest number of TB cases. TB is curable — diagnosis and treatment are free in India under the National TB Elimination Programme.",
+   risks:["Close contact with a person with TB","Undernutrition","Diabetes","Smoking and alcohol","HIV and other weak immunity","Crowded, poorly ventilated homes"],
+   prevent:["BCG vaccine for babies","Ventilation and sunlight at home","Good nutrition","Control diabetes; stop smoking","Family contacts of a TB patient should be checked and may get preventive treatment","Complete the full TB course — stopping early breeds drug-resistant TB"],
+   signs:"Cough for more than 2 weeks, fever, night sweats, weight loss, or coughing blood — get a free TB test at a government health centre. Coughing large amounts of blood is an emergency.",
+   screen:"Test anyone with a cough over 2 weeks, and household contacts of TB patients.",
+   ayur:"Charaka describes Rajayakshma (wasting disease) in Chikitsa 8. Nourishing food supports recovery, but TB needs the full medical course. Never replace TB medicines with herbs.",
+   classical:{term:"Rajayakshma / Kshaya", refs:[{b:"charaka",w:"Chikitsa 8 — Rajayakshma"}]},
+   links:["immunity"], herbs:[],
+   kw:["tb","tuberculosis","tuberculous","koch","टीबी","क्षय","क्षयरोग","तपेदिक"]}
+];
+
+const PREV_UI = {
+  en:{navPrev:"Prevention", prevTitle:"Prevent the World's Deadliest Diseases", prevSub:"The top 10 causes of death worldwide, plus cancer, obesity, high BP and TB — with prevention, warning signs and how Ayurveda and yoga can support (not replace) medical care.",
+    deathsL:"Deaths per year", shareL:"Share of all deaths", ncdL:"Noncommunicable", commL:"Communicable (infectious)", risksL:"Main risk factors", preventL:"How to prevent it", signsL:"Warning signs — act now", screenL:"Check-ups", ayurL:"Ayurveda & yoga support", classicalL:"Classical lens", seeAlso:"See also", rankL:"Rank", alsoL:"Also important", habitsL:"Habits that protect against most of these", factsL:"Key facts", emergencyL:"Emergency in India: call 112 or 108 (ambulance).", srcL:"Source", totalL:"Global deaths", top10L:"Top 10 share", ncdShareL:"NCD share of deaths"},
+  hi:{navPrev:"रोकथाम", prevTitle:"दुनिया की सबसे घातक बीमारियों से बचाव", prevSub:"दुनिया में मृत्यु के 10 प्रमुख कारण, साथ में कैंसर, मोटापा, हाई बीपी और टीबी — रोकथाम, चेतावनी संकेत, और आयुर्वेद व योग कैसे सहायता (विकल्प नहीं) कर सकते हैं।",
+    deathsL:"प्रति वर्ष मृत्यु", shareL:"कुल मृत्यु में हिस्सा", ncdL:"गैर-संचारी", commL:"संचारी (संक्रामक)", risksL:"मुख्य जोखिम कारक", preventL:"कैसे बचें", signsL:"चेतावनी संकेत — तुरंत कदम उठाएँ", screenL:"जाँच", ayurL:"आयुर्वेद और योग सहायता", classicalL:"शास्त्रीय दृष्टि", seeAlso:"यह भी देखें", rankL:"क्रम", alsoL:"यह भी महत्वपूर्ण", habitsL:"इनमें से अधिकतर से बचाने वाली आदतें", factsL:"मुख्य तथ्य", emergencyL:"भारत में आपात स्थिति: 112 या 108 (एम्बुलेंस) पर कॉल करें।", srcL:"स्रोत", totalL:"वैश्विक मृत्यु", top10L:"शीर्ष 10 का हिस्सा", ncdShareL:"NCD का हिस्सा"},
+  mr:{navPrev:"प्रतिबंध", prevTitle:"जगातील सर्वात घातक आजारांपासून बचाव", prevSub:"जगातील मृत्यूची 10 प्रमुख कारणे, तसेच कर्करोग, लठ्ठपणा, उच्च रक्तदाब आणि क्षयरोग — प्रतिबंध, धोक्याची लक्षणे, आणि आयुर्वेद व योग कशी साथ (पर्याय नाही) देऊ शकतात.",
+    deathsL:"दरवर्षी मृत्यू", shareL:"एकूण मृत्यूंतील वाटा", ncdL:"असंसर्गजन्य", commL:"संसर्गजन्य", risksL:"मुख्य धोके", preventL:"कसा टाळावा", signsL:"धोक्याची लक्षणे — लगेच कृती करा", screenL:"तपासण्या", ayurL:"आयुर्वेद आणि योग साथ", classicalL:"शास्त्रीय दृष्टी", seeAlso:"हेही पहा", rankL:"क्रमांक", alsoL:"हेही महत्त्वाचे", habitsL:"यांपैकी बहुतेकांपासून वाचवणाऱ्या सवयी", factsL:"मुख्य तथ्ये", emergencyL:"भारतात आपत्कालीन: 112 किंवा 108 (रुग्णवाहिका) वर कॉल करा.", srcL:"स्रोत", totalL:"जागतिक मृत्यू", top10L:"पहिल्या 10 चा वाटा", ncdShareL:"NCD चा वाटा"}
+};
+
+// Health FAQ for the chatbot — short, accurate answers. Matched by keywords.
+const FAQ = [
+  {k:["how much salt","salt per day","salt limit","नमक कितना","मीठ किती"], a:"WHO advises under 5 g of salt a day — about one level teaspoon, including salt already in food like pickles, papad, namkeen and packaged snacks."},
+  {k:["how much exercise","how much walking","how many steps","exercise per week","कितना व्यायाम","किती व्यायाम","कितना चलना","किती चालावे"], a:"WHO recommends 150–300 minutes of moderate activity a week (for example 30–45 minutes of brisk walking on most days), or 75–150 minutes of vigorous activity, plus muscle-strengthening 2 days a week."},
+  {k:["is ghee good","is ghee bad","ghee heart","ghee cholesterol","घी अच्छा","तूप चांगले"], a:"Ghee is nourishing in Ayurveda and fine in small amounts for most people. It is a saturated fat, so with high cholesterol, heart disease or obesity keep it to a little and favour oils like mustard or groundnut in moderation."},
+  {k:["can ayurveda cure cancer","ayurveda cancer","herbs cure cancer","cancer cure","कैंसर का इलाज","कर्करोग उपचार"], a:"No. No herb or Ayurvedic product is proven to cure cancer, and delaying treatment can cost a life. Ayurveda, yoga and good food can support comfort during treatment — only with your oncologist's agreement."},
+  {k:["can i stop medicine","stop my medicine","stop tablets","stop insulin","replace medicine","दवा बंद","औषध बंद"], a:"Please do not stop or change prescribed medicine on your own — for BP, sugar, heart, thyroid, TB or anything else. Herbs can be discussed with your doctor as support, not a replacement."},
+  {k:["normal bp","normal blood pressure","bp range","नॉर्मल बीपी","सामान्य रक्तदाब"], a:"Around 120/80 is ideal. 140/90 or above on repeated checks usually means high blood pressure — see a doctor. Above 180/120 with symptoms is an emergency."},
+  {k:["normal sugar","sugar level","fasting sugar","normal blood sugar","शुगर लेवल","साखर किती"], a:"Fasting blood sugar under 100 mg/dL is normal; 100–125 suggests prediabetes; 126 or above on two tests suggests diabetes. HbA1c under 5.7% is normal, 5.7–6.4% prediabetes, 6.5% or above diabetes. Confirm with a doctor."},
+  {k:["bmi","ideal weight","normal weight","आदर्श वजन"], a:"BMI = weight (kg) ÷ height (m)². For Indians: 18.5–22.9 is healthy, 23–24.9 overweight, 25 and above obese. Waist size matters too: aim under about 90 cm for men and 80 cm for women."},
+  {k:["heart attack symptoms","signs of heart attack","heart attack sign","हार्ट अटैक के लक्षण","हृदयविकाराचा झटका"], a:"Chest pain, pressure or tightness that may spread to the arm, jaw or back, with sweating, breathlessness or nausea. Call 108 or 112 immediately."},
+  {k:["stroke symptoms","signs of stroke","be fast","fast test","लकवे के लक्षण","पक्षाघाताची लक्षणे"], a:"BE FAST: Balance loss, Eyes (sudden vision loss), Face drooping, Arm weakness, Speech slurred — Time to call 108/112. Treatment works best in the first few hours."},
+  {k:["ors","how to make ors","oral rehydration","ओआरएस"], a:"Use a WHO-ORS packet mixed exactly as written (usually in 1 litre of clean water). If no packet: 6 level teaspoons sugar + half a level teaspoon salt in 1 litre of clean boiled-and-cooled water. Children also need zinc as advised by a health worker. Seek care for blood in stool or signs of dehydration."},
+  {k:["vaccine","vaccines","vaccination","टीका","टीके","लस"], a:"Follow India's free childhood immunisation schedule. Adults: flu vaccine yearly and pneumococcal vaccine are advised for older people and those with chronic disease; hepatitis B for those not vaccinated; HPV for girls (recommended at 9–14). Ask your doctor what fits you."},
+  {k:["what is dosha","dosha","vata pitta kapha","दोष क्या","दोष काय"], a:"Vata, Pitta and Kapha are the three doshas — patterns of movement, heat/transformation and stability (Ashtanga Hridayam, Sutrasthana 1). Most people are a mix. This guide uses dosha as a learning lens, not a diagnosis."},
+  {k:["quit smoking","stop smoking","quit tobacco","leave gutkha","सिगरेट छोड़","तंबाकू छोड़","धूम्रपान सोड"], a:"Quitting at any age helps — heart risk starts falling within a year. Set a quit date, remove tobacco from home, tell family, and use support: India's National Tobacco Quitline is 1800-112-356 (free). Nicotine replacement from a doctor can help. Pranayama and walking can ease cravings."},
+  {k:["who are you","what can you do","help","आप कौन","तुम्ही कोण"], a:"I'm AyurYog Mitra. Ask me about a health concern (like sleep, acidity or BP), a disease (heart disease, diabetes, cancer, TB), a herb (amla, ashwagandha), prevention, warning signs or yoga. I give education, never a diagnosis or a dose."}
+];
+
 // New UI strings (merged over the original trilingual strings).
 const UI_NEW = {
   en:{ all:"All", navCond:"Conditions", navLib:"Granthas", navHerb:"Herbs", navYoga:"Yoga", navTher:"Therapies", navJournal:"Journal", navSafety:"Safety",
@@ -701,7 +963,7 @@ const UI_NEW = {
     yogaLib:"Yoga Library", yogaLibSub:"Each practice shows where it is actually described. 'Modern' means 20th-century practice, not found in the classical texts.", fClassical:"Classical asana", fBreath:"Pranayama & kriya", fModern:"Modern", fMudra:"Mudra",
     benefit:"Benefit", contra:"Avoid if", therSub:"Classical procedures. Most need a trained practitioner.",
     journalLocal:"Your posts are saved in this browser only.", title_:"Title", excerpt_:"Short summary", body_:"Text", cat_:"Category", read_:"Minutes to read", confirmDel:"Tap again to delete", newPost:"New post", editPost:"Edit post", resetPosts:"Restore starter posts",
-    chatOpen:"Ask AyurYog Mitra", helpline:"In India you can call Tele-MANAS on 14416 — free, 24×7, in many languages. You are not alone.", send:"Send", herbCard:"Herb", englishNote:"Detailed classical notes are in English.", noResults:"Nothing matches your search.",
+    chatOpen:"Ask AyurYog Mitra", chatHint:"Ask about a concern, a disease (heart, diabetes, cancer, TB…), prevention, warning signs, a herb or yoga.", helpline:"In India you can call Tele-MANAS on 14416 — free, 24×7, in many languages. You are not alone.", send:"Send", herbCard:"Herb", englishNote:"Detailed classical notes are in English.", noResults:"Nothing matches your search.",
     safetyItems:["Chest pain, breathlessness, fainting, high fever, bleeding, sudden weakness or thoughts of self-harm need emergency care — not herbs or yoga.","Never stop or change prescribed medicine on your own.","Pregnancy, breastfeeding, children and older adults: ask a vaidya or doctor before any herb.","Herbs can interact with medicines for blood sugar, blood pressure, thyroid and blood thinning.","Buy only from licensed (AYUSH / GMP) pharmacies — some products have been found with heavy metals.","Practise breathing gently. The Hatha Yoga Pradipika itself warns that wrong practice causes disease."],
     footerText:"This guide draws on the classical texts listed in the Grantha Library. References are chapter-level pointers — the same verse can have different numbers in different editions, so check a standard edition such as Chaukhamba. Herb properties follow the nighantu tradition; texts sometimes disagree. Modern books are cited, never reproduced. No doses. No cure claims.",
     fixes:"What changed in this version", fixList:["Fixed: Ashtanga Hridayam is part of the Brihat Trayi (not Laghu Trayi).","Fixed: ghee increases Kapha; Brahmi is cooling and does not raise Pitta.","Fixed: yoga sources — Shavasana and Viparita Karani are in the Hatha Yoga Pradipika, not the Yoga Sutras.","Replaced made-up 'Sanskrit' quotes with real verses, each with its source.","Chat now understands Hindi and Marathi typed in Devanagari, and checks for emergencies in all three languages."]},
@@ -716,7 +978,7 @@ const UI_NEW = {
     yogaLib:"योग पुस्तकालय", yogaLibSub:"हर अभ्यास के साथ उसका वास्तविक स्रोत। 'आधुनिक' यानी 20वीं सदी का अभ्यास, शास्त्रीय ग्रंथों में नहीं।", fClassical:"शास्त्रीय आसन", fBreath:"प्राणायाम और क्रिया", fModern:"आधुनिक", fMudra:"मुद्रा",
     benefit:"लाभ", contra:"इनमें न करें", therSub:"शास्त्रीय प्रक्रियाएँ। अधिकांश के लिए प्रशिक्षित वैद्य आवश्यक।",
     journalLocal:"आपकी पोस्ट केवल इसी ब्राउज़र में सहेजी जाती हैं।", title_:"शीर्षक", excerpt_:"संक्षेप", body_:"पाठ", cat_:"वर्ग", read_:"पढ़ने के मिनट", confirmDel:"हटाने के लिए फिर दबाएँ", newPost:"नई पोस्ट", editPost:"पोस्ट संपादित करें", resetPosts:"प्रारंभिक पोस्ट वापस लाएँ",
-    chatOpen:"आयुर्योग मित्र से पूछें", helpline:"भारत में आप टेली-मानस 14416 पर कॉल कर सकते हैं — निःशुल्क, 24×7, कई भाषाओं में। आप अकेले नहीं हैं।", send:"भेजें", herbCard:"जड़ी-बूटी", englishNote:"विस्तृत शास्त्रीय टिप्पणियाँ अंग्रेज़ी में हैं।", noResults:"खोज से कुछ नहीं मिला।",
+    chatOpen:"आयुर्योग मित्र से पूछें", chatHint:"कोई समस्या, बीमारी (हृदय, मधुमेह, कैंसर, टीबी…), बचाव, चेतावनी संकेत, जड़ी-बूटी या योग के बारे में पूछें।", helpline:"भारत में आप टेली-मानस 14416 पर कॉल कर सकते हैं — निःशुल्क, 24×7, कई भाषाओं में। आप अकेले नहीं हैं।", send:"भेजें", herbCard:"जड़ी-बूटी", englishNote:"विस्तृत शास्त्रीय टिप्पणियाँ अंग्रेज़ी में हैं।", noResults:"खोज से कुछ नहीं मिला।",
     safetyItems:["सीने में दर्द, साँस फूलना, बेहोशी, तेज़ बुखार, रक्तस्राव, अचानक कमजोरी या खुद को नुकसान के विचार — तुरंत आपात चिकित्सा लें, जड़ी-बूटी या योग नहीं।","डॉक्टर की दी दवा अपने आप बंद या न बदलें।","गर्भावस्था, स्तनपान, बच्चे और बुज़ुर्ग: कोई भी जड़ी-बूटी लेने से पहले वैद्य/डॉक्टर से पूछें।","जड़ी-बूटियाँ शुगर, बीपी, थायरॉइड और खून पतला करने की दवाओं से प्रतिक्रिया कर सकती हैं।","केवल लाइसेंस प्राप्त (आयुष / GMP) फ़ार्मेसी से खरीदें — कुछ उत्पादों में भारी धातुएँ पाई गई हैं।","श्वास अभ्यास सौम्यता से करें। हठयोग प्रदीपिका स्वयं कहती है कि गलत अभ्यास रोग पैदा करता है।"],
     footerText:"यह मार्गदर्शिका ग्रंथ पुस्तकालय में दिए शास्त्रीय ग्रंथों पर आधारित है। संदर्भ अध्याय स्तर के हैं — अलग संस्करणों में श्लोक संख्या बदल सकती है, इसलिए चौखम्बा जैसे मानक संस्करण में जाँचें। आधुनिक पुस्तकों का केवल उल्लेख है, पुनरुत्पादन नहीं। कोई मात्रा नहीं। कोई इलाज का दावा नहीं।",
     fixes:"इस संस्करण में क्या बदला", fixList:["सुधार: अष्टांग हृदयम् बृहत्त्रयी का भाग है (लघुत्रयी नहीं)।","सुधार: घी कफ बढ़ाता है; ब्राह्मी शीतल है और पित्त नहीं बढ़ाती।","सुधार: शवासन और विपरीत करणी हठयोग प्रदीपिका में हैं, योगसूत्र में नहीं।","बनावटी 'संस्कृत' उद्धरणों की जगह स्रोत सहित वास्तविक श्लोक।","चैट अब देवनागरी में हिंदी और मराठी समझता है और तीनों भाषाओं में आपात स्थिति जाँचता है।"]},
@@ -731,7 +993,7 @@ const UI_NEW = {
     yogaLib:"योग ग्रंथालय", yogaLibSub:"प्रत्येक सरावासोबत त्याचा खरा स्रोत. 'आधुनिक' म्हणजे 20व्या शतकातील सराव, शास्त्रीय ग्रंथांत नाही.", fClassical:"शास्त्रीय आसन", fBreath:"प्राणायाम आणि क्रिया", fModern:"आधुनिक", fMudra:"मुद्रा",
     benefit:"फायदा", contra:"यात करू नका", therSub:"शास्त्रीय प्रक्रिया. बहुतेकांसाठी प्रशिक्षित वैद्य आवश्यक.",
     journalLocal:"तुमच्या पोस्ट फक्त या ब्राउझरमध्ये जतन होतात.", title_:"शीर्षक", excerpt_:"सारांश", body_:"मजकूर", cat_:"वर्ग", read_:"वाचण्याची मिनिटे", confirmDel:"हटवण्यासाठी पुन्हा दाबा", newPost:"नवीन पोस्ट", editPost:"पोस्ट संपादित करा", resetPosts:"सुरुवातीच्या पोस्ट परत आणा",
-    chatOpen:"आयुर्योग मित्राला विचारा", helpline:"भारतात तुम्ही टेली-मानस 14416 वर कॉल करू शकता — मोफत, 24×7, अनेक भाषांत. तुम्ही एकटे नाही.", send:"पाठवा", herbCard:"वनस्पती", englishNote:"सविस्तर शास्त्रीय टिपा इंग्रजीत आहेत.", noResults:"शोधाशी काहीही जुळले नाही.",
+    chatOpen:"आयुर्योग मित्राला विचारा", chatHint:"तक्रार, आजार (हृदय, मधुमेह, कर्करोग, क्षयरोग…), प्रतिबंध, धोक्याची लक्षणे, वनस्पती किंवा योग याबद्दल विचारा.", helpline:"भारतात तुम्ही टेली-मानस 14416 वर कॉल करू शकता — मोफत, 24×7, अनेक भाषांत. तुम्ही एकटे नाही.", send:"पाठवा", herbCard:"वनस्पती", englishNote:"सविस्तर शास्त्रीय टिपा इंग्रजीत आहेत.", noResults:"शोधाशी काहीही जुळले नाही.",
     safetyItems:["छातीत दुखणे, दम लागणे, बेशुद्ध होणे, खूप ताप, रक्तस्राव, अचानक अशक्तपणा किंवा स्वतःला इजा करण्याचे विचार — लगेच आपत्कालीन उपचार घ्या, वनस्पती किंवा योग नव्हे.","डॉक्टरांनी दिलेले औषध स्वतःहून बंद किंवा बदलू नका.","गर्भारपण, स्तनपान, मुले आणि वृद्ध: कोणतीही वनस्पती घेण्यापूर्वी वैद्य/डॉक्टरांना विचारा.","वनस्पती साखर, रक्तदाब, थायरॉईड आणि रक्त पातळ करणाऱ्या औषधांशी प्रतिक्रिया करू शकतात.","फक्त परवानाधारक (आयुष / GMP) फार्मसीतून खरेदी करा — काही उत्पादनांत जड धातू आढळले आहेत.","श्वसन सराव सौम्यपणे करा. हठयोग प्रदीपिका स्वतः सांगते की चुकीचा सराव रोग निर्माण करतो."],
     footerText:"हा मार्गदर्शक ग्रंथालयातील शास्त्रीय ग्रंथांवर आधारित आहे. संदर्भ अध्याय पातळीवरील आहेत — वेगवेगळ्या आवृत्त्यांत श्लोक क्रमांक बदलू शकतात, म्हणून चौखंबासारख्या प्रमाणित आवृत्तीत तपासा. आधुनिक पुस्तकांचा फक्त उल्लेख आहे, पुनरुत्पादन नाही. मात्रा नाही. उपचाराचा दावा नाही.",
     fixes:"या आवृत्तीत काय बदलले", fixList:["दुरुस्ती: अष्टांग हृदयम् बृहत्त्रयीचा भाग आहे (लघुत्रयी नाही).","दुरुस्ती: तूप कफ वाढवते; ब्राह्मी शीत आहे आणि पित्त वाढवत नाही.","दुरुस्ती: शवासन आणि विपरीत करणी हठयोग प्रदीपिकेत आहेत, योगसूत्रांत नाहीत.","बनावट 'संस्कृत' उद्धरणांऐवजी स्रोतासह खरे श्लोक.","चॅट आता देवनागरीतील हिंदी आणि मराठी समजते आणि तिन्ही भाषांत आपत्कालीन स्थिती तपासते."]}
@@ -764,10 +1026,10 @@ const KW = {
 };
 
 const SELFHARM=["suicid","kill myself","harm myself","self harm","self-harm","end my life","want to die","आत्महत्या","मरना चाहत","जीना नहीं","मरायचं","मरायचे","जीव द्याय"];
-const EMERGENCY = ["chest pain","chest tightness","chest pressure","breathless","breathlessness","difficulty breathing","can't breathe","cant breathe","cannot breathe","shortness of breath","high fever","severe pain","bleeding","blood in","coughing blood","vomiting blood","black stool","faint","fainted","fainting","unconscious","seizure","stroke","slurred","face drooping","numb","numbness","paralysis","vision loss","overdose","poison","suicidal","suicide","kill myself","harm myself","self harm","self-harm","end my life","want to die","emergency",
-  "सीने में दर्द","छाती में दर्द","छातीत दुख","छातीत वेदना","सांस नहीं","साँस नहीं","सांस फूल","साँस फूल","श्वास घेता येत नाही","दम लागत","बेहोश","बेशुद्ध","खून की उल्टी","रक्ताची उलटी","खून आ","रक्तस्राव","आत्महत्या","मरना चाहत","जीना नहीं","मरायचं","मरायचे","जीव द्याय","लकवा","अर्धांगवायू","दौरा","झटके","फिट येत","तेज बुखार","खूप ताप","सुन्न"];
+const EMERGENCY = ["chest pain","chest tightness","chest pressure","breathless","breathlessness","difficulty breathing","can't breathe","cant breathe","cannot breathe","shortness of breath","high fever","severe pain","bleeding","blood in","coughing blood","vomiting blood","black stool","faint","fainted","fainting","unconscious","seizure","having a stroke","stroke now","slurred","face drooping","face is drooping","arm is weak","numb","numbness","paralysis","vision loss","overdose","poison","suicidal","suicide","kill myself","harm myself","self harm","self-harm","end my life","want to die","emergency",
+  "सीने में दर्द","छाती में दर्द","छातीत दुख","छातीत वेदना","सांस नहीं","साँस नहीं","सांस फूल","साँस फूल","श्वास घेता येत नाही","दम लागत","बेहोश","बेशुद्ध","खून की उल्टी","रक्ताची उलटी","खून आ","रक्तस्राव","आत्महत्या","मरना चाहत","जीना नहीं","मरायचं","मरायचे","जीव द्याय","लकवा मार","लकवा आ","चेहरा टेढ़ा","अर्धांगवायूचा झटका","दौरा","झटके","फिट येत","तेज बुखार","खूप ताप","सुन्न"];
 
-const UI={};for(const l of ['en','hi','mr']){UI[l]=Object.assign({},UI_BASE[l],UI_NEW[l]);}
+const UI={};for(const l of ['en','hi','mr']){UI[l]=Object.assign({},UI_BASE[l],UI_NEW[l],PREV_UI[l]);}
 const CONDS_BASE=[{"id": "stress", "dosha": "Vata ↑ · Pitta ↑", "tag": "Mind", "en": {"name": "Stress & Anxiety", "short": "Restless mind, tight breath, difficulty settling.", "view": "Aggravated Vata disturbs manas; warmth, routine and slow breath are traditionally calming.", "tip": "Keep regular sleep and meal times. End the day with a warm drink, dim light and quiet."}, "hi": {"name": "तनाव और चिंता", "short": "बेचैन मन, उथली साँस, शांत न हो पाना।", "view": "बढ़ा वात मन को विचलित करता है; ऊष्मा, दिनचर्या और धीमी साँस पारंपरिक रूप से शांत करती हैं।", "tip": "सोने और खाने का समय नियमित रखें। दिन की समाप्ति हल्के प्रकाश और शांति से करें।"}, "mr": {"name": "ताण आणि चिंता", "short": "अस्वस्थ मन, उथळ श्वास, शांत न होता येणे.", "view": "वाढलेला वात मनाला विचलित करतो; उष्णता, दिनचर्या आणि मंद श्वास पारंपरिकपणे शांत करतात.", "tip": "झोप आणि जेवणाची वेळ नियमित ठेवा. दिवस शांत प्रकाशात संपवा."}, "care": "Panic, persistent low mood, thoughts of harm, or symptoms lasting more than two weeks."}, {"id": "sleep", "dosha": "Vata ↑", "tag": "Mind", "en": {"name": "Poor Sleep", "short": "Late sleep, broken sleep, waking unrefreshed.", "view": "Vata lightness and excess stimulation are traditionally linked with disturbed nidra.", "tip": "No bright screens for the last hour. Keep the room cool, dark and quiet."}, "hi": {"name": "नींद की कमी", "short": "देर से नींद, टूटी नींद, थककर उठना।", "view": "वात की लघुता और अत्यधिक उत्तेजना पारंपरिक रूप से बिगड़ी निद्रा से जुड़ी है।", "tip": "अंतिम घंटे में तेज स्क्रीन से बचें। कमरा ठंडा, अंधेरा और शांत रखें।"}, "mr": {"name": "झोपेची कमतरता", "short": "उशिरा झोप, तुटक झोप, थकून उठणे.", "view": "वाताची लघुता आणि अतिउत्तेजना पारंपरिकपणे बिघडलेल्या निद्रेशी जोडली आहे.", "tip": "शेवटच्या तासात तेजस्वी स्क्रीन टाळा. खोली थंड, अंधारी आणि शांत ठेवा."}, "care": "Loud snoring with pauses in breath, severe daytime sleepiness, or sleep loss affecting safety."}, {"id": "acidity", "dosha": "Pitta ↑", "tag": "Digestion", "en": {"name": "Acidity & Gas", "short": "Burning, sour belching, heaviness after meals.", "view": "Aggravated Pitta and weak agni are traditionally linked with amla-pitta and erratic digestion.", "tip": "Eat warm, simple, on time. Avoid skipping meals and very spicy, sour or late-night food."}, "hi": {"name": "अम्लता और गैस", "short": "जलन, खट्टी डकार, भोजन के बाद भारीपन।", "view": "बढ़ा पित्त और मंद अग्नि पारंपरिक रूप से अम्ल-पित्त से जुड़े हैं।", "tip": "गर्म, सरल भोजन समय पर लें। बहुत तीखा, खट्टा या देर रात का भोजन टालें।"}, "mr": {"name": "आम्लता आणि गॅस", "short": "जळजळ, आंबट ढेकर, जेवणानंतर जडपणा.", "view": "वाढलेला पित्त आणि मंद अग्नी पारंपरिकपणे आम्ल-पित्ताशी जोडले आहेत.", "tip": "गरम, साधे जेवण वेळेवर घ्या. खूप तिखट, आंबट किंवा उशिरा जेवण टाळा."}, "care": "Black stools, vomiting blood, trouble swallowing, severe chest pain, or symptoms more than 2 weeks."}, {"id": "constipation", "dosha": "Vata ↑", "tag": "Digestion", "en": {"name": "Constipation", "short": "Hard stools, straining, incomplete feeling.", "view": "Dry, aggravated Vata in the colon is traditionally linked with vibandha.", "tip": "Warm water on waking, fibre-rich meals, regular morning routine and gentle movement."}, "hi": {"name": "कब्ज", "short": "कठोर मल, ज़ोर लगना, अधूरापन लगना।", "view": "बृहदांत्र में रूखा बढ़ा वात पारंपरिक रूप से विबंध से जुड़ा है।", "tip": "सुबह गर्म पानी, रेशेदार भोजन, नियमित सुबह की दिनचर्या और हल्की गति।"}, "mr": {"name": "बद्धकोष्ठता", "short": "कठीण मल, जोर लावणे, अपूर्णतेची भावना.", "view": "आतड्यातील कोरडा वाढलेला वात पारंपरिकपणे विबंधाशी जोडला आहे.", "tip": "सकाळी कोमट पाणी, तंतुमय जेवण, नियमित सकाळची दिनचर्या आणि सौम्य हालचाल."}, "care": "Blood in stool, severe pain, sudden change lasting weeks, or unexplained weight loss."}, {"id": "bloating", "dosha": "Vata ↑ · Kapha ↑", "tag": "Digestion", "en": {"name": "Bloating", "short": "Fullness, gurgling, tight belly after eating.", "view": "Weak agni and aggravated Vata are traditionally linked with adhmana.", "tip": "Eat slowly, chew well, keep portions moderate and avoid cold drinks with meals."}, "hi": {"name": "पेट फूलना", "short": "भारीपन, गुड़गुड़ाहट, खाने के बाद पेट कसना।", "view": "मंद अग्नि और बढ़ा वात पारंपरिक रूप से आध्मान से जुड़े हैं।", "tip": "धीरे खाएँ, अच्छी तरह चबाएँ, मात्रा संतुलित रखें, भोजन के साथ ठंडे पेय से बचें।"}, "mr": {"name": "पोट फुगणे", "short": "पोट भरल्यासारखे, गुरगुर, जेवणानंतर पोट घट्ट होणे.", "view": "मंद अग्नी आणि वाढलेला वात पारंपरिकपणे आध्मानाशी जोडले आहेत.", "tip": "हळू खा, चांगले चावा, प्रमाण मध्यम ठेवा, जेवणासोबत थंड पेय टाळा."}, "care": "Severe pain, vomiting, swelling, or bloating with fever."}, {"id": "cold", "dosha": "Kapha ↑ · Vata ↑", "tag": "Immunity", "en": {"name": "Cold & Cough", "short": "Stuffy nose, sneezing, mild cough, heaviness.", "view": "Kapha accumulation with cold and damp is traditionally linked with pratishyaya.", "tip": "Warm fluids, steam with care, rest, and warm light meals."}, "hi": {"name": "सर्दी और खाँसी", "short": "नाक बंद, छींक, हल्की खाँसी, भारीपन।", "view": "शीत और नमी के साथ कफ संचय पारंपरिक रूप से प्रतिश्याय से जुड़ा है।", "tip": "गर्म तरल, सावधानी से भाप, आराम और गर्म हल्का भोजन।"}, "mr": {"name": "सर्दी आणि खोकला", "short": "नाक बंद, शिंका, हलका खोकला, जडपणा.", "view": "थंडी आणि ओलसरपणासोबत कफसंचय पारंपरिकपणे प्रतिश्यायाशी जोडला आहे.", "tip": "गरम द्रव, काळजीपूर्वक वाफ, विश्रांती आणि गरम हलके जेवण."}, "care": "Breathlessness, high fever, chest pain, cough with blood, or symptoms beyond 10 days."}, {"id": "sinus", "dosha": "Kapha ↑", "tag": "Immunity", "en": {"name": "Sinus", "short": "Pressure around nose and forehead, congestion.", "view": "Kapha stagnation in the head is traditionally linked with sinus heaviness.", "tip": "Warm steam with care, warm water, and avoid cold damp air and heavy dairy when congested."}, "hi": {"name": "साइनस", "short": "नाक और माथे के आसपास दबाव, जकड़न।", "view": "सिर में कफ का ठहराव पारंपरिक रूप से साइनस भारीपन से जुड़ा है।", "tip": "सावधानी से गर्म भाप, गर्म पानी, ठंडी नम हवा और भारी डेयरी से बचें।"}, "mr": {"name": "सायनस", "short": "नाक आणि कपाळाभोवती दाब, कोंडी.", "view": "डोक्यात कफ साठणे पारंपरिकपणे सायनस जडपणाशी जोडले आहे.", "tip": "काळजीपूर्वक गरम वाफ, कोमट पाणी, थंड ओलसर हवा आणि जड दुग्धजन्य पदार्थ टाळा."}, "care": "Vision changes, severe headache, high fever, or facial swelling."}, {"id": "headache", "dosha": "Vata ↑ · Pitta ↑", "tag": "Mind", "en": {"name": "Headache", "short": "Tight, throbbing or dull head pain.", "view": "Vata, Pitta or Kapha may be involved; routine, light and hydration are traditionally emphasised.", "tip": "Rest in a dark quiet room, sip warm water, avoid skipping meals and bright screens."}, "hi": {"name": "सिरदर्द", "short": "कसाव, धड़कन या मंद सिर दर्द।", "view": "वात, पित्त या कफ शामिल हो सकते हैं; दिनचर्या, प्रकाश और जल पारंपरिक रूप से महत्वपूर्ण हैं।", "tip": "अंधेरे शांत कमरे में आराम करें, गर्म पानी पिएँ, भोजन न छोड़ें, तेज स्क्रीन से बचें।"}, "mr": {"name": "डोकेदुखी", "short": "घट्टपणा, ठणक किंवा मंद डोकेदुखी.", "view": "वात, पित्त किंवा कफ यात असू शकतात; दिनचर्या, प्रकाश आणि पाणी पारंपरिकपणे महत्त्वाचे आहेत.", "tip": "अंधाऱ्या शांत खोलीत विश्रांती घ्या, कोमट पाणी प्या, जेवण चुकवू नका, तेजस्वी स्क्रीन टाळा."}, "care": "Sudden worst-ever headache, weakness, slurred speech, fever with stiff neck, or after injury."}, {"id": "back", "dosha": "Vata ↑", "tag": "Body", "en": {"name": "Back Pain", "short": "Stiffness, ache, tight lower back.", "view": "Aggravated Vata in asthi and majja is traditionally linked with kati shool.", "tip": "Move gently every hour, support the lower back, keep warm and avoid sudden lifting."}, "hi": {"name": "कमर दर्द", "short": "जकड़न, दर्द, निचली कमर में कसाव।", "view": "अस्थि और मज्जा में बढ़ा वात पारंपरिक रूप से कटि शूल से जुड़ा है।", "tip": "हर घंटे हल्की गति करें, निचली कमर को सहारा दें, गर्म रखें, अचानक भार न उठाएँ।"}, "mr": {"name": "पाठदुखी", "short": "ताठरपणा, वेदना, खालच्या पाठीत घट्टपणा.", "view": "अस्थी आणि मज्जेमधील वाढलेला वात पारंपरिकपणे कटी शूलाशी जोडला आहे.", "tip": "दर तासाला सौम्य हालचाल करा, खालच्या पाठीला आधार द्या, उबदार ठेवा, अचानक वजन उचलू नका."}, "care": "Numbness, bladder/bowel changes, fever, trauma, or pain after a fall."}, {"id": "joint", "dosha": "Vata ↑ · Kapha ↑", "tag": "Body", "en": {"name": "Joint Pain", "short": "Stiff, achy joints, worse in cold or damp.", "view": "Vata dryness and ama are traditionally linked with sandhigata discomfort.", "tip": "Keep joints warm, move gently daily, and favour warm cooked food."}, "hi": {"name": "जोड़ों का दर्द", "short": "जकड़े, दर्द भरे जोड़, ठंड या नमी में बढ़ना।", "view": "वात की रूक्षता और आम पारंपरिक रूप से संधिगत असुविधा से जुड़े हैं।", "tip": "जोड़ गर्म रखें, रोज हल्की गति करें, गर्म पका भोजन लें।"}, "mr": {"name": "सांधेदुखी", "short": "ताठर, दुखणारे सांधे, थंडी किंवा ओलसरपणात वाढ.", "view": "वाताची कोरडेपणा आणि आम पारंपरिकपणे संधिगत अस्वस्थतेशी जोडले आहेत.", "tip": "सांधे उबदार ठेवा, रोज सौम्य हालचाल करा, गरम शिजवलेले जेवण घ्या."}, "care": "Hot swollen joint, fever, sudden inability to move a joint, or injury."}, {"id": "energy", "dosha": "Kapha ↑ · Vata ↑", "tag": "Energy", "en": {"name": "Low Energy", "short": "Heavy mornings, low motivation, afternoon dip.", "view": "Kapha heaviness and weak agni are traditionally linked with low ojas and vitality.", "tip": "Wake before sunrise if possible, sunlight, warm water, light breakfast and brisk walking."}, "hi": {"name": "कम ऊर्जा", "short": "भारी सुबह, कम प्रेरणा, दोपहर में थकान।", "view": "कफ की गुरुता और मंद अग्नि पारंपरिक रूप से कम ओजस से जुड़ी है।", "tip": "यदि संभव हो सूर्योदय से पहले उठें, धूप, गर्म पानी, हल्का नाश्ता और तेज चाल।"}, "mr": {"name": "कमी ऊर्जा", "short": "जड सकाळ, कमी प्रेरणा, दुपारी थकवा.", "view": "कफाची गुरुता आणि मंद अग्नी पारंपरिकपणे कमी ओजसशी जोडली आहेत.", "tip": "शक्य असल्यास सूर्योदयापूर्वी उठा, सूर्यप्रकाश, कोमट पाणी, हलका नाश्ता आणि जलद चालणे."}, "care": "Fainting, chest pain, breathlessness, or fatigue lasting weeks."}, {"id": "weightgain", "dosha": "Kapha ↑", "tag": "Metabolism", "en": {"name": "Weight Gain", "short": "Heaviness, slow digestion, craving for heavy food.", "view": "Kapha excess and slow agni are traditionally linked with meda increase.", "tip": "Largest meal at midday, lighter dinner, daily walking and warm water."}, "hi": {"name": "वजन बढ़ना", "short": "भारीपन, धीमा पाचन, भारी भोजन की इच्छा।", "view": "कफ अधिकता और मंद अग्नि पारंपरिक रूप से मेद वृद्धि से जुड़ी है।", "tip": "सबसे बड़ा भोजन दोपहर में, हल्का रात का भोजन, रोज टहलना और गर्म पानी।"}, "mr": {"name": "वजन वाढणे", "short": "जडपणा, मंद पचन, जड अन्नाची इच्छा.", "view": "कफ अधिकता आणि मंद अग्नी पारंपरिकपणे मेदवृद्धीशी जोडले आहेत.", "tip": "सर्वात मोठे जेवण दुपारी, हलके रात्रीचे जेवण, रोज चालणे आणि कोमट पाणी."}, "care": "Rapid unexplained gain, swelling, breathlessness, or thyroid symptoms — seek medical review."}, {"id": "weightloss", "dosha": "Vata ↑", "tag": "Metabolism", "en": {"name": "Weight Loss", "short": "Difficulty gaining, dryness, low appetite.", "view": "Aggravated Vata and variable agni are traditionally linked with under-nourishment.", "tip": "Warm, nourishing, regular meals; rest after eating; avoid skipping meals."}, "hi": {"name": "वजन घटना", "short": "वजन बढ़ने में कठिनाई, रूक्षता, कम भूख।", "view": "बढ़ा वात और अस्थिर अग्नि पारंपरिक रूप से अल्प पोषण से जुड़े हैं।", "tip": "गर्म, पौष्टिक, नियमित भोजन; भोजन के बाद आराम; भोजन न छोड़ें।"}, "mr": {"name": "वजन कमी होणे", "short": "वजन वाढण्यात अडचण, कोरडेपणा, कमी भूक.", "view": "वाढलेला वात आणि अस्थिर अग्नी पारंपरिकपणे अल्पपोषणाशी जोडले आहेत.", "tip": "गरम, पौष्टिक, नियमित जेवण; जेवणानंतर विश्रांती; जेवण चुकवू नका."}, "care": "Rapid unexplained loss, fever, persistent diarrhoea, or loss of appetite for weeks."}, {"id": "acne", "dosha": "Pitta ↑ · Kapha ↑", "tag": "Skin", "en": {"name": "Acne", "short": "Red bumps, oily skin, heat-related breakouts.", "view": "Aggravated Pitta and Kapha are traditionally linked with mukhadushika.", "tip": "Cool, simple food, gentle cleansing, avoid picking and heavy oily cosmetics."}, "hi": {"name": "मुँहासे", "short": "लाल दाने, तैलीय त्वचा, गर्मी से फोड़े।", "view": "बढ़ा पित्त और कफ पारंपरिक रूप से मुखदूषिका से जुड़े हैं।", "tip": "ठंडा सरल भोजन, सौम्य सफाई, दाने न दबाएँ, भारी तैलीय प्रसाधन से बचें।"}, "mr": {"name": "पुरळ", "short": "लाल पुरळ, तेलकट त्वचा, उष्णतेमुळे फोड.", "view": "वाढलेला पित्त आणि कफ पारंपरिकपणे मुखदूषिकेशी जोडले आहेत.", "tip": "थंड साधे जेवण, सौम्य स्वच्छता, पुरळ दाबू नका, जड तेलकट सौंदर्यप्रसाधने टाळा."}, "care": "Severe painful cysts, scarring, or acne with fever."}, {"id": "hairfall", "dosha": "Pitta ↑ · Vata ↑", "tag": "Skin", "en": {"name": "Hair Fall", "short": "Excess shedding, dry scalp, weak roots.", "view": "Aggravated Pitta heat and Vata dryness are traditionally linked with khalitya.", "tip": "Gentle scalp oil massage, mild cleansing, adequate sleep and iron-rich food."}, "hi": {"name": "बाल झड़ना", "short": "अधिक झड़ना, रूखी खोपड़ी, कमज़ोर जड़ें।", "view": "बढ़ा पित्त ताप और वात रूक्षता पारंपरिक रूप से खालित्य से जुड़ी है।", "tip": "सौम्य खोपड़ी मालिश, मृदु सफाई, पर्याप्त नींद और लौह-युक्त भोजन।"}, "mr": {"name": "केस गळणे", "short": "जास्त गळणे, कोरडी टाळू, कमकुवत मुळे.", "view": "वाढलेला पित्त उष्णता आणि वात कोरडेपणा पारंपरिकपणे खालित्याशी जोडले आहेत.", "tip": "सौम्य टाळू मसाज, सौम्य स्वच्छता, पुरेशी झोप आणि लोहयुक्त जेवण."}, "care": "Patchy loss, scalp infection, or sudden heavy shedding."}, {"id": "immunity", "dosha": "Ojas ↓", "tag": "Immunity", "en": {"name": "Low Immunity", "short": "Frequent colds, slow recovery, low resilience.", "view": "Low ojas and weak agni are traditionally linked with frequent illness.", "tip": "Regular sleep, warm cooked food, sunlight, gentle movement and rest."}, "hi": {"name": "कम प्रतिरक्षा", "short": "बार-बार सर्दी, धीमी रिकवरी, कम सहनशक्ति।", "view": "कम ओजस और मंद अग्नि पारंपरिक रूप से बार-बार बीमारी से जुड़े हैं।", "tip": "नियमित नींद, गर्म पका भोजन, धूप, हल्की गति और आराम।"}, "mr": {"name": "कमी प्रतिकारशक्ती", "short": "वारंवार सर्दी, मंद बरे होणे, कमी सहनशक्ती.", "view": "कमी ओजस आणि मंद अग्नी पारंपरिकपणे वारंवार आजाराशी जोडले आहेत.", "tip": "नियमित झोप, गरम शिजवलेले जेवण, सूर्यप्रकाश, सौम्य हालचाल आणि विश्रांती."}, "care": "Recurrent high fever, unexplained weight loss, or frequent infections."}, {"id": "diabetes", "dosha": "Kapha ↑ · Vata ↑", "tag": "Metabolism", "en": {"name": "Diabetes lifestyle support", "short": "Supportive daily rhythm alongside medical care.", "view": "Madhumeha is a classical condition; lifestyle, food rhythm and movement are traditional supports — never a replacement for care.", "tip": "Regular meals, walking after meals, consistent sleep and medical follow-up."}, "hi": {"name": "मधुमेह जीवनशैली सहायता", "short": "चिकित्सा देखभाल के साथ सहायक दैनिक लय।", "view": "मधुमेह एक शास्त्रीय स्थिति है; जीवनशैली, भोजन लय और गति पारंपरिक सहायक हैं — देखभाल का विकल्प नहीं।", "tip": "नियमित भोजन, भोजन के बाद टहलना, नियमित नींद और चिकित्सा अनुवर्तन।"}, "mr": {"name": "मधुमेह जीवनशैली सहाय्य", "short": "वैद्यकीय काळजीसोबत सहाय्यक दैनंदिन लय.", "view": "मधुमेह ही शास्त्रीय स्थिती आहे; जीवनशैली, जेवणाची लय आणि हालचाल पारंपरिक सहाय्य आहेत — काळजीचा पर्याय नाही.", "tip": "नियमित जेवण, जेवणानंतर चालणे, नियमित झोप आणि वैद्यकीय पाठपुरावा."}, "care": "High/low sugar symptoms, wounds not healing, vision change, or numbness — seek urgent care."}, {"id": "bp", "dosha": "Vata ↑ · Pitta ↑", "tag": "Metabolism", "en": {"name": "BP lifestyle support", "short": "Calm rhythm alongside medical care.", "view": "Rakta pressure is a modern measure; classical care emphasises calm, salt awareness, sleep and routine.", "tip": "Low salt, regular sleep, slow breathing, gentle walking and medical follow-up."}, "hi": {"name": "बीपी जीवनशैली सहायता", "short": "चिकित्सा देखभाल के साथ शांत लय।", "view": "रक्तचाप एक आधुनिक माप है; शास्त्रीय देखभाल शांति, नमक जागरूकता, नींद और दिनचर्या पर बल देती है।", "tip": "कम नमक, नियमित नींद, धीमी साँस, हल्की सैर और चिकित्सा अनुवर्तन।"}, "mr": {"name": "बीपी जीवनशैली सहाय्य", "short": "वैद्यकीय काळजीसोबत शांत लय.", "view": "रक्तदाब हे आधुनिक माप आहे; शास्त्रीय काळजी शांतता, मीठ जागरूकता, झोप आणि दिनचर्येवर भर देते.", "tip": "कमी मीठ, नियमित झोप, मंद श्वास, सौम्य चालणे आणि वैद्यकीय पाठपुरावा."}, "care": "Chest pain, severe headache, breathlessness, or BP readings in emergency range."}, {"id": "pcos", "dosha": "Kapha ↑ · Vata ↑", "tag": "Metabolism", "en": {"name": "PCOS lifestyle support", "short": "Rhythm, movement and food timing alongside care.", "view": "Classical view links Kapha, ama and cycle irregularity; lifestyle is a traditional support alongside medical care.", "tip": "Regular meals, daily movement, stress care, consistent sleep and medical follow-up."}, "hi": {"name": "पीसीओएस जीवनशैली सहायता", "short": "देखभाल के साथ लय, गति और भोजन समय।", "view": "शास्त्रीय दृष्टि कफ, आम और चक्र अनियमितता को जोड़ती है; जीवनशैली चिकित्सा के साथ पारंपरिक सहायक है।", "tip": "नियमित भोजन, रोज गति, तनाव देखभाल, नियमित नींद और चिकित्सा अनुवर्तन।"}, "mr": {"name": "पीसीओएस जीवनशैली सहाय्य", "short": "काळजीसोबत लय, हालचाल आणि जेवणाची वेळ.", "view": "शास्त्रीय दृष्टी कफ, आम आणि चक्र अनियमिततेशी जोडते; जीवनशैली वैद्यकीय काळजीसोबत पारंपरिक सहाय्य आहे.", "tip": "नियमित जेवण, रोज हालचाल, ताण काळजी, नियमित झोप आणि वैद्यकीय पाठपुरावा."}, "care": "Severe pelvic pain, heavy bleeding, fainting, or fertility concerns — seek medical review."}, {"id": "eye", "dosha": "Pitta ↑", "tag": "Senses", "en": {"name": "Eye Strain", "short": "Tired, dry, burning eyes after screens.", "view": "Aggravated Pitta and overuse are traditionally linked with eye fatigue.", "tip": "20-20-20 rest, blink often, cool water splash, dim screens at night."}, "hi": {"name": "आँखों की थकान", "short": "स्क्रीन के बाद थकी, रूखी, जलती आँखें।", "view": "बढ़ा पित्त और अत्यधिक उपयोग पारंपरिक रूप से आँखों की थकान से जुड़े हैं।", "tip": "20-20-20 विश्राम, बार-बार पलकें झपकाएँ, ठंडे पानी के छींटे, रात में स्क्रीन मंद करें।"}, "mr": {"name": "डोळ्यांचा थकवा", "short": "स्क्रीननंतर थकलेले, कोरडे, जळजळणारे डोळे.", "view": "वाढलेला पित्त आणि अतिवापर पारंपरिकपणे डोळ्यांच्या थकव्याशी जोडले आहेत.", "tip": "20-20-20 विश्रांती, वारंवार पापण्या मिटा, थंड पाण्याचा शिडकावा, रात्री स्क्रीन मंद करा."}, "care": "Vision loss, flashes, severe eye pain, or injury."}, {"id": "ear", "dosha": "Vata ↑", "tag": "Senses", "en": {"name": "Ear Care", "short": "Dryness, mild ringing, sensitivity to cold wind.", "view": "Vata in the ear is traditionally linked with dryness and sensitivity.", "tip": "Keep ears warm in wind, avoid loud sound, gentle warm oil around — not inside — only if comfortable."}, "hi": {"name": "कान की देखभाल", "short": "रूक्षता, हल्की झनझनाहट, ठंडी हवा से संवेदनशीलता।", "view": "कान में वात पारंपरिक रूप से रूक्षता और संवेदनशीलता से जुड़ा है।", "tip": "हवा में कान गर्म रखें, तेज आवाज़ से बचें, केवल आरामदायक हो तो आसपास सौम्य गर्म तेल।"}, "mr": {"name": "कानांची काळजी", "short": "कोरडेपणा, सौम्य गुणगुण, थंड वाऱ्याची संवेदनशीलता.", "view": "कानातील वात पारंपरिकपणे कोरडेपणा आणि संवेदनशीलतेशी जोडला आहे.", "tip": "वाऱ्यात कान उबदार ठेवा, मोठा आवाज टाळा, आरामदायक असेल तरच आसपास सौम्य गरम तेल."}, "care": "Hearing loss, severe pain, discharge, dizziness, or after injury."}, {"id": "skin", "dosha": "Pitta ↑ · Vata ↑", "tag": "Skin", "en": {"name": "Skin Care", "short": "Dry, dull, sensitive or easily irritated skin.", "view": "Pitta heat and Vata dryness are traditionally linked with skin imbalance.", "tip": "Gentle cleansing, warm oil massage, hydration, sleep and sun protection."}, "hi": {"name": "त्वचा देखभाल", "short": "रूखी, फीकी, संवेदनशील या आसानी से चिढ़ने वाली त्वचा।", "view": "पित्त ताप और वात रूक्षता पारंपरिक रूप से त्वचा असंतुलन से जुड़ी है।", "tip": "सौम्य सफाई, गर्म तेल मालिश, जलयोजन, नींद और धूप से सुरक्षा।"}, "mr": {"name": "त्वचा काळजी", "short": "कोरडी, निस्तेज, संवेदनशील किंवा सहज चिडणारी त्वचा.", "view": "पित्त उष्णता आणि वात कोरडेपणा पारंपरिकपणे त्वचा असंतुलनाशी जोडले आहेत.", "tip": "सौम्य स्वच्छता, गरम तेल मसाज, हायड्रेशन, झोप आणि उन्हापासून संरक्षण."}, "care": "Spreading rash, blisters, infection, or severe itching."}];
 const CONDS=CONDS_BASE.map(c=>Object.assign({},c,COND[c.id]));
 
@@ -908,6 +1170,35 @@ function openYoga(id){
 }
 function renderTher(){ $("#therGrid").innerHTML=THERAPIES.map(x=>`<div class="card"><h3>${esc(x.name)}</h3><span class="dev" style="color:var(--maroon)">${esc(x.dev)}</span><p>${esc(x.what)}</p><p class="sub"><b>⚠</b> ${esc(x.safety)}</p></div>`).join(""); }
 
+
+/* ---------- prevention ---------- */
+const disById=Object.fromEntries(DISEASES.concat(EXTRAS).map(d=>[d.id,d]));
+const dname=d=>d.name[lang]||d.name.en;
+function renderPrev(){
+  $("#pstats").innerHTML=`<div class="pstat"><b>61M</b><span>${esc(t("totalL"))} · ${PREV_META.year}</span></div><div class="pstat"><b>54%</b><span>${esc(t("top10L"))} (${esc(PREV_META.top10.split(" (")[0])})</span></div><div class="pstat"><b>${esc(PREV_META.ncd)}</b><span>${esc(t("ncdShareL"))}</span></div>`;
+  $("#habitGrid").innerHTML=(HABITS[lang]||HABITS.en).map((h,i)=>`<div class="card"><span class="rank">${i+1}</span><h3 style="font-size:19px">${esc(h[0])}</h3><p>${esc(h[1])}</p></div>`).join("");
+  $("#disGrid").innerHTML=DISEASES.map(d=>`<button class="card" data-dis="${d.id}"><div class="ctop"><span class="rank">#${d.rank}</span><span class="kind k-${d.cat}">${esc(d.cat==="ncd"?t("ncdL"):t("commL"))}</span></div><h3>${esc(dname(d))}</h3><span class="deaths">${esc(d.deaths)} · ${esc(d.share)}</span><p>${esc(d.overview.split(". ")[0])}.</p><span class="more">${esc(t("readMore"))} →</span></button>`).join("");
+  $("#extraGrid").innerHTML=EXTRAS.map(d=>`<button class="card" data-dis="${d.id}"><div class="ctop"><span class="kind k-${d.cat}">${esc(d.cat==="ncd"?t("ncdL"):t("commL"))}</span></div><h3>${esc(dname(d))}</h3><span class="deaths">${esc(d.deaths)}</span><span class="more">${esc(t("readMore"))} →</span></button>`).join("");
+  $("#factList").innerHTML=PREV_META.facts.map(f=>`<li>${esc(f)}</li>`).join("");
+  $("#prevSrc").textContent=t("srcL")+": "+PREV_META.source+".";
+}
+function openDis(id){
+  const d=disById[id]; if(!d) return;
+  const conds=(d.links||[]).map(c=>condById[c]).filter(Boolean), herbs=(d.herbs||[]).map(h=>herbById[h]).filter(Boolean);
+  open(`<div class="ctop">${d.rank?`<span class="rank">#${d.rank}</span>`:""}<span class="kind k-${d.cat}">${esc(d.cat==="ncd"?t("ncdL"):t("commL"))}</span></div>
+  <h2>${esc(dname(d))}</h2>${lang!=="en"?`<p class="sub">${esc(d.name.en)}</p>`:""}
+  <dl class="props" style="margin-top:6px"><dt>${esc(t("deathsL"))}</dt><dd class="deaths">${esc(d.deaths)}</dd>${d.share?`<dt>${esc(t("shareL"))}</dt><dd>${esc(d.share)}</dd>`:""}</dl>
+  <div class="blk"><p>${esc(d.overview)}</p></div>
+  <div class="blk signs"><h4>${esc(t("signsL"))}</h4><p>${esc(d.signs)}</p><p class="note"><b>${esc(t("emergencyL"))}</b></p></div>
+  <div class="blk"><h4>${esc(t("preventL"))}</h4><ul>${d.prevent.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+  <div class="blk"><h4>${esc(t("risksL"))}</h4><ul>${d.risks.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+  <div class="blk"><h4>${esc(t("screenL"))}</h4><p>${esc(d.screen)}</p></div>
+  <div class="blk"><h4>${esc(t("ayurL"))}</h4><p>${esc(d.ayur)}</p>${herbs.length?`<div class="links" style="margin-top:8px">${herbs.map(h=>`<button class="lk" data-herb="${h.id}">${esc(h.name)}</button>`).join("")}</div>`:""}</div>
+  <div class="blk"><h4>${esc(t("classicalL"))}</h4><p><b>${esc(d.classical.term)}</b></p><ul>${d.classical.refs.map(r=>`<li><button class="lk" data-book="${r.b}" style="margin:2px 0">${esc(bookLabel(r.b))}</button> <span class="sub">${esc(r.w)}</span></li>`).join("")}</ul></div>
+  ${conds.length?`<div class="blk"><h4>${esc(t("seeAlso"))}</h4><div class="links">${conds.map(c=>`<button class="lk" data-cond="${c.id}">${esc(cn(c).name)}</button>`).join("")}</div></div>`:""}
+  <p class="note">${esc(t("srcL"))}: ${esc(d.rank?PREV_META.source:"see figure above")}. ${lang!=="en"?esc(t("englishNote")):""}</p>`);
+}
+
 /* ---------- journal (this browser only) ---------- */
 const PKEY="ayuryog_posts_v2";
 let posts=null, pendingDel=null;
@@ -936,43 +1227,76 @@ function open(html){ $("#sheet").innerHTML=`<button class="x" data-close aria-la
 function close(){ $("#ov").classList.remove("show"); document.body.style.overflow=""; }
 
 /* ---------- chat ---------- */
-const isDev=s=>/[ऀ-ॿ]/.test(s);
+const isDev=s=>/[\u0900-\u097F]/.test(s);
 const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 function hit(text,kw){ kw=kw.toLowerCase(); if(isDev(kw)) return text.includes(kw); return new RegExp("(^|[^a-z])"+reEsc(kw)+"(s|es)?(?![a-z])","i").test(text); }
+const score=(text,list)=>(list||[]).reduce((a,k)=>a+(hit(text,k)?(k.length>4?2:1):0),0);
 const HERB_KEYS=HERBS.map(h=>({id:h.id,keys:[h.name,h.name.split(" (")[0],h.san,h.hi,h.dev].concat(h.hi.split(/\s*\/\s*/)).filter(k=>k&&k.length>2&&k!=="—")}));
+const INTENTS={
+  prevent:["prevent","prevention","preventing","avoid","reduce risk","lower risk","protect","stop getting","बचाव","रोकथाम","बचें","बचना","रोकें","टाळ","प्रतिबंध","बचाव कसा"],
+  signs:["symptom","symptoms","sign","signs","warning","how do i know","लक्षण","संकेत","चिन्ह"],
+  risks:["cause","causes","risk","risks","why","reason","कारण","जोखिम","धोका","क्यों","का होतो"],
+  ayur:["ayurveda","ayurvedic","herb","herbs","yoga","natural","home remedy","remedies","pranayama","आयुर्वेद","योग","जड़ी","घरेलू","उपाय","वनस्पती","घरगुती"],
+  screen:["test","tests","check","checkup","check-up","screening","diagnose","जाँच","जांच","टेस्ट","तपासणी","चाचणी"]
+};
+let lastDis=null;
 function analyse(msg){
   const text=msg.toLowerCase();
-  if(EMERGENCY.some(k=>isDev(k)?text.includes(k):text.includes(k.toLowerCase()))) return {kind:"urgent"};
-  const scores=CONDS.map(c=>({id:c.id,s:(KW[c.id]||[]).reduce((a,k)=>a+(hit(text,k)?(k.length>4?2:1):0),0)})).sort((a,b)=>b.s-a.s);
+  if(EMERGENCY.some(k=>isDev(k)?text.includes(k):text.includes(k.toLowerCase()))) return {kind:"urgent",selfharm:SELFHARM.some(k=>text.includes(k))};
+  const intent=Object.keys(INTENTS).find(i=>INTENTS[i].some(k=>hit(text,k)))||null;
+  const faq=FAQ.map(f=>({f,s:score(text,f.k)})).sort((a,b)=>b.s-a.s)[0];
+  if(faq&&faq.s>=2) return {kind:"faq",a:faq.f.a};
+  const dis=DISEASES.concat(EXTRAS).map(d=>({id:d.id,s:score(text,d.kw)})).sort((a,b)=>b.s-a.s)[0];
+  const cond=CONDS.map(c=>({id:c.id,s:score(text,KW[c.id])})).sort((a,b)=>b.s-a.s);
   const herbs=HERB_KEYS.filter(h=>h.keys.some(k=>hit(text,k))).map(h=>h.id);
-  if(scores[0].s>0) return {kind:"cond",id:scores[0].id,also:scores.filter(x=>x.s>0).slice(1,3).map(x=>x.id),herbs};
+  if(dis.s>0&&(intent||dis.s>=cond[0].s)) return {kind:"dis",id:dis.id,intent};
+  if(cond[0].s>0) return {kind:"cond",id:cond[0].id,also:cond.filter(x=>x.s>0).slice(1,3).map(x=>x.id),herbs,dis:dis.s>0?dis.id:null};
   if(herbs.length) return {kind:"herb",herbs};
+  if(dis.s>0) return {kind:"dis",id:dis.id,intent};
+  if(intent&&lastDis) return {kind:"dis",id:lastDis,intent};
+  if(faq&&faq.s>0) return {kind:"faq",a:faq.f.a};
   return {kind:"none"};
 }
 let chatLog=[];
 function bot(html,cls){ chatLog.push(`<div class="msg bot${cls?" "+cls:""}">${html}</div>`); }
 function chips(ids){ return `<div class="links">${ids.map(id=>`<button class="lk" data-chat="${id}">${esc(cn(condById[id]).name)}</button>`).join("")}</div>`; }
+const QL={prevent:"preventL",signs:"signsL",risks:"risksL",ayur:"ayurL",screen:"screenL"};
+function disReply(id,intent){
+  const d=disById[id]; lastDis=id;
+  const list=a=>"<ul style='margin:6px 0 0;padding-left:18px'>"+a.map(x=>`<li>${esc(x)}</li>`).join("")+"</ul>";
+  let body;
+  if(intent==="prevent") body=`<b>${esc(t("preventL"))}</b>`+list(d.prevent);
+  else if(intent==="signs") body=`<b>${esc(t("signsL"))}</b><br>${esc(d.signs)}`;
+  else if(intent==="risks") body=`<b>${esc(t("risksL"))}</b>`+list(d.risks);
+  else if(intent==="ayur") body=`<b>${esc(t("ayurL"))}</b><br>${esc(d.ayur)}`;
+  else if(intent==="screen") body=`<b>${esc(t("screenL"))}</b><br>${esc(d.screen)}`;
+  else body=`${esc(d.overview)}<br><br><b>${esc(t("preventL"))}</b>`+list(d.prevent.slice(0,3));
+  const others=Object.keys(QL).filter(q=>q!==intent);
+  bot(`<b>${esc(dname(d))}</b>${d.rank?` · <span class="sub">#${d.rank} · ${esc(d.deaths)}</span>`:""}<br>${body}
+   ${intent!=="signs"?`<p class="note" style="margin:8px 0 0">⚠ ${esc(d.signs.split(". ").slice(0,2).join(". "))}.</p>`:""}
+   <div class="qchips">${others.map(q=>`<button class="lk" data-dq="${id}|${q}">${esc(t(QL[q]))}</button>`).join("")}<button class="lk" data-dis="${id}">${esc(t("readMore"))}</button>${(d.links||[]).map(c=>`<button class="lk" data-cond="${c}">${esc(cn(condById[c]).name)}</button>`).join("")}</div>`);
+}
 function condReply(id,also){
   const c=condById[id], L=cn(c);
   const herbs=(c.herbs||[]).slice(0,3).map(h=>herbById[h].name).join(", ");
   const yoga=(c.yoga||[]).slice(0,2).concat((c.breath||[]).slice(0,1)).map(y=>yogaById[y].name).join(", ");
-  bot(`<b>${esc(L.name)}</b> · <span class="sub">${esc(c.term)}</span><br>${esc(L.view)}<br><br>🌿 ${esc(herbs)}<br>🧘 ${esc(yoga)}<br><span class="note">${esc(CHAT[lang].precaution)}</span><br><span class="note">⚠ ${esc(c.care)}</span><div class="links"><button class="lk" data-cond="${id}">${esc(CHAT[lang].viewGuide)}</button></div>${also&&also.length?chips(also):""}`);
+  bot(`<b>${esc(L.name)}</b> · <span class="sub">${esc(c.term)}</span><br>${esc(L.view)}<br><br>🌿 ${esc(herbs)}<br>🧘 ${esc(yoga)}<br>🍲 ${esc(c.diet)}<br><span class="note">${esc(CHAT[lang].precaution)}</span><br><span class="note">⚠ ${esc(c.care)}</span><div class="links"><button class="lk" data-cond="${id}">${esc(CHAT[lang].viewGuide)}</button></div>${also&&also.length?chips(also):""}`);
 }
 function herbReply(ids){ ids.slice(0,2).forEach(id=>{const h=herbById[id]; bot(`<b>${esc(h.name)}</b> · <span class="dev">${esc(h.dev)}</span> <span class="code">${esc(h.code)}</span><br>${esc(h.dosha)}. ${esc(h.uses)}.<br><span class="note">⚠ ${esc(h.safety)}</span><div class="links"><button class="lk" data-herb="${id}">${esc(t("readMore"))}</button></div>`);}); }
-function renderChat(){ if(!chatLog.length){ bot(esc(CHAT[lang].greeting)+chips(CHAT.en.chips.map(c=>c.id))); } $("#cbody").innerHTML=chatLog.join(""); $("#cbody").scrollTop=1e6; }
-function userSays(text){
-  chatLog.push(`<div class="msg user">${esc(text)}</div>`);
-  const r=analyse(text);
-  if(r.kind==="urgent"){ bot(esc(CHAT[lang].urgent)+(SELFHARM.some(k=>text.toLowerCase().includes(k))?`<div class="helpline">${esc(t("helpline"))}</div>`:""),"urgent"); }
+function renderChat(){ if(!chatLog.length){ bot(esc(CHAT[lang].greeting)+`<p class="note" style="margin:6px 0 0">${esc(t("chatHint"))}</p>`+chips(CHAT.en.chips.map(c=>c.id))+`<div class="qchips">${["ihd","diabetes2","cancer","stroke"].map(id=>`<button class="lk" data-dq="${id}|prevent">${esc(dname(disById[id]))}</button>`).join("")}</div>`); } $("#cbody").innerHTML=chatLog.join(""); $("#cbody").scrollTop=1e6; }
+function respond(r,text){
+  if(r.kind==="urgent"){ bot(esc(CHAT[lang].urgent)+`<div class="helpline">${esc(t("emergencyL"))}</div>`+(r.selfharm?`<div class="helpline">${esc(t("helpline"))}</div>`:""),"urgent"); }
+  else if(r.kind==="faq") bot(esc(r.a)+`<p class="note" style="margin:6px 0 0">${esc(t("disclaimer"))}</p>`);
+  else if(r.kind==="dis") disReply(r.id,r.intent);
   else if(r.kind==="cond"){ condReply(r.id,r.also); if(r.herbs.length) herbReply(r.herbs.filter(h=>!(condById[r.id].herbs||[]).includes(h))); }
   else if(r.kind==="herb") herbReply(r.herbs);
-  else bot(esc(CHAT[lang].noMatch+" "+CHAT[lang].clarify)+chips(["stress","sleep","acidity","joint"]));
-  renderChat();
+  else bot(esc(CHAT[lang].noMatch)+" "+esc(t("chatHint"))+chips(["stress","sleep","acidity","joint"]));
 }
+function userSays(text){ chatLog.push(`<div class="msg user">${esc(text)}</div>`); respond(analyse(text),text); renderChat(); }
 
 /* ---------- events ---------- */
 document.addEventListener("click",e=>{
-  const el=e.target.closest("[data-cond],[data-herb],[data-yoga],[data-book],[data-post],[data-edit],[data-del],[data-close],[data-chat],[data-c],[data-h],[data-y],[data-l]");
+  const el=e.target.closest("[data-dis],[data-dq],[data-cond],[data-herb],[data-yoga],[data-book],[data-post],[data-edit],[data-del],[data-close],[data-chat],[data-c],[data-h],[data-y],[data-l]");
   if(!el) { if(e.target.id==="ov") close(); return; }
   const d=el.dataset;
   if(d.close!==undefined) return close();
@@ -981,6 +1305,8 @@ document.addEventListener("click",e=>{
   if(d.h){ herbCat=d.h; renderHerbs(); return; }
   if(d.y){ yogaCat=d.y; renderYoga(); return; }
   if(d.chat){ userSays(cn(condById[d.chat]).name); return; }
+  if(d.dq){ const [id,q]=d.dq.split("|"); chatLog.push(`<div class="msg user">${esc(dname(disById[id]))} — ${esc(t(QL[q]))}</div>`); disReply(id,q); renderChat(); return; }
+  if(d.dis){ return openDis(d.dis); }
   if(d.cond) return openCond(d.cond);
   if(d.herb) return openHerb(d.herb);
   if(d.yoga) return openYoga(d.yoga);
@@ -998,7 +1324,7 @@ $("#fab").addEventListener("click",()=>{ $("#chat").classList.add("show"); rende
 $("#cclose").addEventListener("click",()=>$("#chat").classList.remove("show"));
 $("#cform").addEventListener("submit",e=>{ e.preventDefault(); const v=$("#cin").value.trim(); if(!v) return; $("#cin").value=""; userSays(v); });
 
-function renderAll(){ applyStatic(); renderCats(); renderConds(); renderLib(); renderHerbs(); renderYoga(); renderTher(); renderPosts(); if($("#chat").classList.contains("show")) renderChat(); }
+function renderAll(){ applyStatic(); renderCats(); renderConds(); renderPrev(); renderLib(); renderHerbs(); renderYoga(); renderTher(); renderPosts(); if($("#chat").classList.contains("show")) renderChat(); }
 posts=loadPosts();
 renderAll();
 window.__ayur={analyse};
