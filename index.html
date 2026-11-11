@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AyurYog — Shastra Based Recovery Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Mukta:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#6e1d27;--maroon2:#8a2a35;--ink:#2c2017;--muted:#6b5a48;--cream:#fffaf0;--paper:#fdf6e7;--sand:#f5e8cd;--line:#e6d3ac;--gold:#c9a14a;--green:#4c6b3c;--red:#a3242f;--shadow:0 10px 30px -18px rgba(70,40,10,.45)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;font-family:Mukta,system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f8ead0 0,#fbf3e2 380px,#f7eeda 100%);font-size:16px;line-height:1.55}
+h1,h2,h3,h4{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.15;color:var(--ink)}
+button{font-family:inherit;cursor:pointer}
+a{color:var(--maroon)}
+.dev{font-family:"Tiro Devanagari Sanskrit",Mukta,serif}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+.bar{background:var(--maroon);color:#fff6e8;text-align:center;font-size:14px;padding:8px 16px}
+header{position:sticky;top:0;z-index:40;background:rgba(251,243,226,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}.brand>div:last-child{min-width:0}
+.logo{width:42px;height:42px;border-radius:50%;background:var(--maroon);color:#fff;display:grid;place-items:center;font-size:20px;flex:none}
+.brand b{font-family:Fraunces,serif;font-size:22px;display:block;line-height:1}
+.brand small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+html[lang=hi] .brand small,html[lang=mr] .brand small,html[lang=hi] .eyebrow,html[lang=mr] .eyebrow,html[lang=hi] .tag,html[lang=mr] .tag,html[lang=hi] .blk h4,html[lang=mr] .blk h4{letter-spacing:0}
+.helpline{margin-top:8px;font-weight:700}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--cream);flex:none}
+.lang button{border:0;background:none;border-radius:999px;padding:5px 11px;font-weight:600;color:var(--ink);font-size:14px}
+.lang button.on{background:var(--maroon);color:#fff}
+nav{display:flex;gap:6px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;font-size:14px;font-weight:600;color:var(--maroon);border:1px solid var(--line);background:var(--cream);padding:4px 12px;border-radius:999px}
+section{padding:46px 0 10px}
+.eyebrow{font-size:12.5px;letter-spacing:.2em;font-weight:700;color:var(--maroon);text-transform:uppercase}
+.sh{margin-bottom:18px}
+.sh h2{font-size:clamp(26px,4vw,36px);margin:6px 0 6px}
+.sh p{margin:0;color:var(--muted);max-width:720px}
+.hero{margin-top:22px;background:var(--cream);border:1px solid var(--line);border-radius:28px;padding:28px 24px;box-shadow:var(--shadow);display:grid;gap:24px}
+@media(min-width:860px){.hero{grid-template-columns:1.1fr .9fr;padding:40px}}
+.hero h1{font-size:clamp(32px,5vw,50px);margin:12px 0}
+.hero p{color:var(--muted);font-size:18px;margin:0 0 16px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pill{border:1px solid var(--line);background:var(--sand);border-radius:999px;padding:4px 12px;font-weight:600;font-size:14px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 18px}
+.stat{border-left:3px solid var(--gold);padding:2px 10px}
+.stat b{font-family:Fraunces,serif;font-size:24px;display:block}
+.stat span{font-size:13.5px;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{border:0;background:var(--maroon);color:#fff;border-radius:999px;padding:11px 20px;font-weight:600;font-size:16px;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--maroon);border:1.5px solid var(--maroon)}
+.btn.sm{padding:7px 14px;font-size:14px}
+.heroimg{border-radius:20px;overflow:hidden;min-height:220px;background:var(--sand)}
+.heroimg img{width:100%;height:100%;object-fit:cover;display:block}
+.fixes{margin-top:16px;background:#fff6e0;border:1px dashed var(--gold);border-radius:16px;padding:12px 16px;font-size:14.5px}
+.fixes summary{font-weight:700;cursor:pointer;color:var(--maroon)}
+.fixes ul{margin:8px 0 0;padding-left:18px}
+.tools{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.search{width:100%;border:1px solid var(--line);background:var(--cream);border-radius:14px;padding:12px 14px;font:inherit;font-size:16px;color:var(--ink)}
+.search:focus,.field:focus{outline:2px solid var(--gold);outline-offset:1px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--cream);border-radius:999px;padding:5px 13px;font-size:14px;font-weight:600;color:var(--ink)}
+.chip.on{background:var(--maroon);border-color:var(--maroon);color:#fff}
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.grid.three{grid-template-columns:1fr 1fr 1fr}}
+.card{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow);text-align:left;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:6px;width:100%}
+button.card:hover{border-color:var(--gold)}
+.ctop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--maroon)}
+.dosha{font-size:13px;font-weight:600;background:var(--sand);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.card h3{font-size:21px}
+.card p{margin:0;color:var(--muted)}
+.more{color:var(--maroon);font-weight:700;font-size:15px;margin-top:4px}
+.sub{font-size:13.5px;color:var(--muted)}
+.libimg{border-radius:22px;overflow:hidden;margin-bottom:16px;max-height:260px}
+.libimg img{width:100%;display:block;object-fit:cover;max-height:260px}
+.group{margin:22px 0 10px;font-family:Fraunces,serif;font-size:20px;color:var(--maroon)}
+.code{font-size:12.5px;font-weight:700;background:#efe3c4;border-radius:8px;padding:1px 8px;white-space:nowrap}
+.kind{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.k-asana{background:#e7efdf;color:#3b5a2c}.k-pranayama,.k-kriya{background:#e1ecf2;color:#2c4f63}.k-modern{background:#f1e2e2;color:#7a2e36}.k-mudra{background:#efe7d4;color:#6b5320}
+.safety{background:#fff1ef;border:1px solid #e0a5a5;border-radius:22px;padding:18px 20px}
+.safety li{margin:6px 0}
+footer{margin-top:40px;background:var(--maroon);color:#fbeee0;padding:32px 0 110px}
+footer h3{color:#fff}
+footer p{opacity:.9;font-size:15px}
+/* modal */
+.ov{position:fixed;inset:0;background:rgba(40,20,10,.45);z-index:80;display:none;align-items:flex-end;justify-content:center}
+.ov.show{display:flex}
+@media(min-width:760px){.ov{align-items:center}}
+.sheet{background:var(--paper);width:100%;max-width:720px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:22px 20px 30px;position:relative}
+@media(min-width:760px){.sheet{border-radius:24px}}
+.x{position:sticky;top:0;float:right;border:0;background:var(--sand);width:36px;height:36px;border-radius:50%;font-size:20px;line-height:1;color:var(--ink);z-index:2}
+.sheet h2{font-size:28px;margin:4px 0 6px}
+.blk{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:12px}
+.blk h4{font-family:Mukta,sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--maroon);margin:0 0 6px}
+.blk p{margin:0}
+.blk ul{margin:0;padding-left:18px}
+.blk.care{background:#fff1ef;border-color:#e0a5a5}
+.blk.care h4{color:var(--red)}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.lk{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px;font-size:14px;font-weight:600;color:var(--maroon)}
+.verse .dev{font-size:21px;line-height:1.5;color:var(--maroon)}
+.verse i{display:block;color:var(--muted);font-size:14px;margin:4px 0}
+.props{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:15px}
+.props dt{font-weight:700;color:var(--muted)}
+.props dd{margin:0}
+.note{font-size:13px;color:var(--muted);margin-top:6px}
+.field{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font:inherit;margin:4px 0 10px}
+textarea.field{min-height:120px}
+/* chat */
+.fab{position:fixed;right:16px;bottom:16px;z-index:60;border:2px solid var(--gold);background:var(--maroon);color:#fff;border-radius:999px;padding:10px 16px 10px 12px;font-weight:700;display:flex;align-items:center;gap:8px;box-shadow:0 10px 24px -8px rgba(60,20,10,.6)}
+.fab svg{width:24px;height:24px}
+@media(max-width:600px){.fab span{display:none}.fab{padding:12px}}
+.chat{position:fixed;right:12px;bottom:12px;left:12px;z-index:70;max-width:420px;margin-left:auto;height:min(620px,80vh);background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 20px 50px -16px rgba(40,20,10,.6);display:none;flex-direction:column;overflow:hidden}
+.chat.show{display:flex}
+.chead{background:var(--maroon);color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+.chead b{font-family:Fraunces,serif;font-size:18px}
+.chead button{border:0;background:rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px}
+.cbody{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:88%;padding:9px 12px;border-radius:16px;font-size:15px}
+.msg.bot{background:var(--cream);border:1px solid var(--line);align-self:flex-start}
+.msg.user{background:var(--maroon);color:#fff;align-self:flex-end}
+.msg.urgent{background:#fff1ef;border:1.5px solid var(--red);color:#5c1016;font-weight:600}
+.msg .links{margin-top:8px}
+.cform{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:var(--cream)}
+.cform input{flex:1;border:1px solid var(--line);border-radius:999px;padding:10px 14px;font:inherit;background:#fff;min-width:0}
+.cform button{border:0;background:var(--maroon);color:#fff;border-radius:999px;padding:0 16px;font-weight:700}
+.empty{color:var(--muted);padding:12px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<div class="bar" data-t="disclaimer"></div>
+<header>
+  <div class="wrap">
+    <div class="hrow">
+      <div class="brand"><div class="logo dev">ॐ</div><div><b data-t="title"></b><small data-t="subtitle"></small></div></div>
+      <div class="lang" id="lang"><button data-l="en">EN</button><button data-l="hi">हिंदी</button><button data-l="mr">मराठी</button></div>
+    </div>
+    <nav>
+      <a href="#conditions" data-t="navCond"></a><a href="#library" data-t="navLib"></a><a href="#herbs" data-t="navHerb"></a><a href="#yoga" data-t="navYoga"></a><a href="#therapies" data-t="navTher"></a><a href="#journal" data-t="navJournal"></a><a href="#safety" data-t="navSafety"></a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <div class="eyebrow" data-t="tag"></div>
+      <h1 data-t="heroTitle"></h1>
+      <p data-t="heroText"></p>
+      <div class="pills"><span class="pill">Vata · Movement</span><span class="pill">Pitta · Heat</span><span class="pill">Kapha · Stability</span><span class="pill">Ojas · Vitality</span></div>
+      <div class="stats">
+        <div class="stat"><b id="sCond"></b><span data-t="statCond"></span></div>
+        <div class="stat"><b id="sBooks"></b><span data-t="statBooks"></span></div>
+        <div class="stat"><b id="sHerbs"></b><span data-t="statHerbs"></span></div>
+        <div class="stat"><b data-t="statDose"></b><span data-t="statDoseSub"></span></div>
+      </div>
+      <div class="btns"><a class="btn" href="#conditions" data-t="explore"></a><a class="btn ghost" href="#library" data-t="openLib"></a></div>
+      <details class="fixes"><summary data-t="fixes"></summary><ul id="fixList"></ul></details>
+    </div>
+    <div class="heroimg"><img src="images/library.webp" alt="Palm-leaf manuscripts, herbs and a brass lamp"></div>
+  </div>
+
+  <section id="conditions">
+    <div class="sh"><div class="eyebrow">Shastra · Dinacharya</div><h2 data-t="conditions"></h2><p data-t="condSub"></p></div>
+    <div class="tools">
+      <input class="search" id="q" type="search" autocomplete="off">
+      <div class="chips" id="cats"></div>
+    </div>
+    <div class="grid three" id="condGrid"></div>
+  </section>
+
+  <section id="library">
+    <div class="sh"><div class="eyebrow">Grantha</div><h2 data-t="library"></h2><p data-t="librarySub"></p></div>
+    <div id="libList"></div>
+  </section>
+
+  <section id="herbs">
+    <div class="sh"><div class="eyebrow">Dravyaguna · Nighantu</div><h2 data-t="herbLib"></h2><p data-t="herbLibSub"></p></div>
+    <div class="libimg"><img src="images/herbs.webp" alt="Bowls of turmeric, ashwagandha root, tulsi, haritaki, ginger and brahmi"></div>
+    <div class="tools"><input class="search" id="hq" type="search" autocomplete="off"><div class="chips" id="hcats"></div></div>
+    <div class="grid three" id="herbGrid"></div>
+  </section>
+
+  <section id="yoga">
+    <div class="sh"><div class="eyebrow">Hatha · Pranayama</div><h2 data-t="yogaLib"></h2><p data-t="yogaLibSub"></p></div>
+    <div class="libimg"><img src="images/yoga.webp" alt="Illustration of Tadasana, Vrikshasana, Bhujangasana and Padmasana" style="object-position:center 30%"></div>
+    <div class="tools"><div class="chips" id="ycats"></div></div>
+    <div class="grid three" id="yogaGrid"></div>
+  </section>
+
+  <section id="therapies">
+    <div class="sh"><div class="eyebrow">Chikitsa</div><h2 data-t="therapyG"></h2><p data-t="therSub"></p></div>
+    <div class="grid three" id="therGrid"></div>
+  </section>
+
+  <section id="journal">
+    <div class="sh"><div class="eyebrow">AyurYog</div><h2 data-t="journal"></h2><p data-t="journalSub"></p></div>
+    <div class="row" style="margin-bottom:14px"><button class="btn sm" id="addPost" data-t="add"></button><button class="btn sm ghost" id="resetPosts" data-t="resetPosts"></button><span class="sub" data-t="journalLocal"></span></div>
+    <div class="grid three" id="postGrid"></div>
+  </section>
+
+  <section id="safety">
+    <div class="sh"><div class="eyebrow">Suraksha</div><h2 data-t="safety"></h2><p data-t="safetySub"></p></div>
+    <div class="safety"><ul id="safeList"></ul></div>
+  </section>
+</main>
+
+<footer><div class="wrap"><h3 data-t="footerTitle"></h3><p data-t="footerText"></p><p class="sub" style="color:#f3dcc4" data-t="disclaimer"></p></div></footer>
+
+<div class="ov" id="ov"><div class="sheet" id="sheet"></div></div>
+
+<button class="fab" id="fab" aria-label="Open AyurYog Mitra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>AyurYog Mitra</span></button>
+<div class="chat" id="chat" role="dialog" aria-label="AyurYog Mitra">
+  <div class="chead"><b>AyurYog Mitra</b><button id="cclose" aria-label="Close">×</button></div>
+  <div class="cbody" id="cbody"></div>
+  <form class="cform" id="cform"><input id="cin" autocomplete="off"><button data-t="send"></button></form>
+</div>
+
+<script>
+const UI_BASE={"en": {"tag": "SHASTRA • DINACHARYA • YOGA", "title": "AyurYog", "subtitle": "Shastra Based Recovery Guide", "heroTitle": "Return to balance, one gentle daily practice at a time.", "heroText": "A classical learning companion for everyday wellbeing — dosha, herbs, yoga, daily rhythm and the words of the granthas. Educational, not a prescription.", "search": "Search a concern, herb, asana or theme…", "all": "All 22", "conditions": "Conditions & Daily Care", "condSub": "Choose a concern. Read the Ayurvedic view, traditional herbs, movement, breath and daily rhythm — then check when care is needed.", "view": "Ayurvedic view", "herbs": "Traditionally used herbs", "yoga": "Yoga + Pranayama", "daily": "Dinacharya tip", "shastra": "Shastra reference", "care": "When to seek care", "library": "Grantha Library", "librarySub": "The texts this guide learns from. Read them slowly; verify practice with a qualified vaidya.", "galleries": "Picture Galleries", "herbG": "Herb Gallery", "yogaG": "Yoga Gallery", "therapyG": "Therapy Gallery", "journal": "AyurYog Journal", "journalSub": "Short, practical reflections on classical living.", "manage": "Manage Posts", "add": "Add post", "safety": "Safety, First", "safetySub": "Ayurveda supports care — it does not replace timely medical attention.", "footerTitle": "Sources & Honesty", "close": "Close", "edit": "Edit", "del": "Delete", "save": "Save post", "cancel": "Cancel", "saved": "Saved through the journal records.", "load": "Loading journal…", "noPost": "No posts match your search.", "seedNote": "Starter posts are shown until the journal loads.", "offline": "Journal storage is unavailable right now. You can still read the starter posts.", "disclaimer": "For education only, not diagnosis. Consult a vaidya / doctor for persistent or severe symptoms.", "readMore": "Read detail", "selected": "Selected guide", "back": "All conditions", "category": "Category", "minutes": "min read"}, "hi": {"tag": "शास्त्र • दिनचर्या • योग", "title": "आयुर्योग", "subtitle": "शास्त्र आधारित पुनर्प्राप्ति मार्गदर्शिका", "heroTitle": "संतुलन की ओर लौटें — एक सौम्य दैनिक अभ्यास से।", "heroText": "दैनिक स्वास्थ्य के लिए एक शास्त्रीय शिक्षण साथी — दोष, जड़ी-बूटी, योग, दैनिक लय और ग्रंथों के वचन। यह शिक्षा है, नुस्खा नहीं।", "search": "कोई चिंता, जड़ी-बूटी, आसन या विषय खोजें…", "all": "सभी 22", "conditions": "स्थितियाँ और दैनिक देखभाल", "condSub": "कोई चिंता चुनें। आयुर्वेदिक दृष्टि, पारंपरिक जड़ी-बूटियाँ, गति, श्वास और दैनिक लय पढ़ें — फिर जानें कब देखभाल ज़रूरी है।", "view": "आयुर्वेदिक दृष्टि", "herbs": "पारंपरिक रूप से प्रयुक्त जड़ी-बूटियाँ", "yoga": "योग + प्राणायाम", "daily": "दिनचर्या सुझाव", "shastra": "शास्त्र संदर्भ", "care": "कब देखभाल लें", "library": "ग्रंथ पुस्तकालय", "librarySub": "जिन ग्रंथों से यह मार्गदर्शिका सीखती है। धीरे पढ़ें; अभ्यास किसी योग्य वैद्य से सत्यापित करें।", "galleries": "चित्र गैलरी", "herbG": "जड़ी-बूटी गैलरी", "yogaG": "योग गैलरी", "therapyG": "चिकित्सा गैलरी", "journal": "आयुर्योग जर्नल", "journalSub": "शास्त्रीय जीवन पर छोटे, व्यावहारिक विचार।", "manage": "पोस्ट प्रबंधित करें", "add": "पोस्ट जोड़ें", "safety": "पहले सुरक्षा", "safetySub": "आयुर्वेद देखभाल का साथ देता है — समय पर चिकित्सा का विकल्प नहीं।", "footerTitle": "स्रोत और ईमानदारी", "close": "बंद करें", "edit": "बदलें", "del": "हटाएँ", "save": "पोस्ट सहेजें", "cancel": "रद्द करें", "saved": "जर्नल रिकॉर्ड के माध्यम से सहेजा गया।", "load": "जर्नल लोड हो रहा है…", "noPost": "खोज से कोई पोस्ट नहीं मिली।", "seedNote": "जर्नल लोड होने तक प्रारंभिक पोस्ट दिखाई जा रही हैं।", "offline": "जर्नल भंडारण अभी उपलब्ध नहीं है। आप फिर भी प्रारंभिक पोस्ट पढ़ सकते हैं।", "disclaimer": "केवल शिक्षा के लिए, निदान नहीं। लगातार या गंभीर लक्षणों के लिए वैद्य / डॉक्टर से सलाह लें।", "readMore": "विवरण पढ़ें", "selected": "चुनी हुई मार्गदर्शिका", "back": "सभी स्थितियाँ", "category": "श्रेणी", "minutes": "मिनट पढ़ें"}, "mr": {"tag": "शास्त्र • दिनचर्या • योग", "title": "आयुर्योग", "subtitle": "शास्त्र आधारित पुनर्प्राप्ती मार्गदर्शक", "heroTitle": "संतुलनाकडे परत या — एका सौम्य दैनंदिन सरावाने.", "heroText": "दैनंदिन आरोग्यासाठी शास्त्रीय शिक्षण सोबती — दोष, औषधी वनस्पती, योग, दैनंदिन लय आणि ग्रंथांची वचने. हे शिक्षण आहे, औषधोपचार नाही.", "search": "एखादी तक्रार, वनस्पती, आसन किंवा विषय शोधा…", "all": "सर्व 22", "conditions": "स्थिती आणि दैनंदिन काळजी", "condSub": "एखादी तक्रार निवडा. आयुर्वेदिक दृष्टी, पारंपरिक वनस्पती, हालचाल, श्वास आणि दैनंदिन लय वाचा — मग कधी काळजी हवी ते तपासा.", "view": "आयुर्वेदिक दृष्टी", "herbs": "पारंपरिकपणे वापरल्या जाणाऱ्या वनस्पती", "yoga": "योग + प्राणायाम", "daily": "दिनचर्या टीप", "shastra": "शास्त्र संदर्भ", "care": "कधी काळजी घ्यावी", "library": "ग्रंथ ग्रंथालय", "librarySub": "ज्या ग्रंथांमधून हा मार्गदर्शक शिकतो. हळू वाचा; सराव पात्र वैद्याकडून तपासून घ्या.", "galleries": "चित्र दालने", "herbG": "वनस्पती दालन", "yogaG": "योग दालन", "therapyG": "चिकित्सा दालन", "journal": "आयुर्योग जर्नल", "journalSub": "शास्त्रीय जीवनावर छोटे, व्यावहारिक विचार.", "manage": "पोस्ट व्यवस्थापित करा", "add": "पोस्ट जोडा", "safety": "आधी सुरक्षितता", "safetySub": "आयुर्वेद काळजीला साथ देतो — वेळेवर वैद्यकीय मदतीचा पर्याय नाही.", "footerTitle": "स्रोत आणि प्रामाणिकपणा", "close": "बंद करा", "edit": "बदला", "del": "काढा", "save": "पोस्ट जतन करा", "cancel": "रद्द करा", "saved": "जर्नल नोंदींद्वारे जतन केले.", "load": "जर्नल लोड होत आहे…", "noPost": "शोधाशी जुळणारी पोस्ट नाही.", "seedNote": "जर्नल लोड होईपर्यंत सुरुवातीच्या पोस्ट दाखवत आहोत.", "offline": "जर्नल साठवण सध्या उपलब्ध नाही. तरीही तुम्ही सुरुवातीच्या पोस्ट वाचू शकता.", "disclaimer": "केवळ शिक्षणासाठी, निदान नाही. सतत किंवा गंभीर लक्षणांसाठी वैद्य / डॉक्टरांचा सल्ला घ्या.", "readMore": "तपशील वाचा", "selected": "निवडलेला मार्गदर्शक", "back": "सर्व स्थिती", "category": "वर्ग", "minutes": "मिनिटे वाचा"}};
+const CHAT={"en": {"greeting": "Namaste! I’m AyurYog Mitra, your Shastra guide. Tell me a concern in your own words — for example, “I can’t sleep” or “gas and acidity”. I’ll share traditional learning from the existing guides, never a diagnosis or a dose.", "placeholder": "Type your concern…", "viewGuide": "View full guide", "another": "Talk about another concern", "noMatch": "I did not find an exact match in the guides.", "clarify": "Is it more about sleep, digestion, pain, or stress? Tap a suggestion below, or tell me a little more.", "precaution": "Traditionally used — no doses are given here. Consider speaking to a vaidya / doctor before use.", "urgent": "Please seek same-day / emergency care right away and do not rely on herbs or yoga for this. If you feel unsafe, reach out to someone near you or local emergency help at once. I will not give herb advice for this concern.", "showAll": "Show all conditions", "chips": [{"id": "stress", "label": "Stress"}, {"id": "sleep", "label": "Sleep"}, {"id": "acidity", "label": "Digestion"}, {"id": "joint", "label": "Joint Pain"}]}, "hi": {"greeting": "नमस्ते! मैं आयुर्योग मित्र हूँ — आपका शास्त्र मार्गदर्शक। अपनी चिंता अपने शब्दों में बताइए — जैसे “नींद नहीं आती” या “गैस-अम्लता”। मैं मौजूदा मार्गदर्शिकाओं से पारंपरिक शिक्षा साझा करूँगा, निदान या मात्रा नहीं।", "placeholder": "अपनी चिंता लिखें…", "viewGuide": "पूरी मार्गदर्शिका देखें", "another": "किसी और चिंता पर बात करें", "noMatch": "मुझे मार्गदर्शिकाओं में सटीक मेल नहीं मिला।", "clarify": "क्या यह ज़्यादा नींद, पाचन, दर्द, या तनाव से जुड़ा है? नीचे कोई सुझाव चुनें या थोड़ा और बताइए।", "precaution": "पारंपरिक रूप से प्रयुक्त — यहाँ कोई मात्रा नहीं दी जाती। उपयोग से पहले किसी वैद्य / डॉक्टर से बात करने पर विचार करें।", "urgent": "कृपया तुरंत आज ही / आपातकालीन देखभाल लें और इसके लिए जड़ी-बूटियों या योग पर निर्भर न रहें। असुरक्षित महसूस करें तो पास के किसी व्यक्ति या स्थानीय आपात सहायता से तुरंत संपर्क करें। इस चिंता के लिए मैं जड़ी-बूटी की सलाह नहीं दूँगा।", "showAll": "सभी स्थितियाँ देखें", "chips": [{"id": "stress", "label": "तनाव"}, {"id": "sleep", "label": "नींद"}, {"id": "acidity", "label": "पाचन"}, {"id": "joint", "label": "जोड़ों का दर्द"}]}, "mr": {"greeting": "नमस्कार! मी आयुर्योग मित्र आहे — तुमचा शास्त्र मार्गदर्शक. तुमची तक्रार तुमच्या शब्दांत सांगा — उदा. “झोप येत नाही” किंवा “गॅस-आम्लता”. मी विद्यमान मार्गदर्शकांमधून पारंपरिक शिक्षण देईन, निदान किंवा मात्रा नाही.", "placeholder": "तुमची तक्रार लिहा…", "viewGuide": "पूर्ण मार्गदर्शक पाहा", "another": "दुसऱ्या तक्रारीबद्दल बोला", "noMatch": "मला मार्गदर्शकांमध्ये नेमका जुळणारा विषय सापडला नाही.", "clarify": "हे जास्त झोप, पचन, वेदना, की ताण याबद्दल आहे? खालील सूचना निवडा किंवा थोडे अधिक सांगा.", "precaution": "पारंपरिकपणे वापरली जाते — येथे कोणतीही मात्रा दिली जात नाही. वापरण्यापूर्वी वैद्य / डॉक्टरांशी बोलण्याचा विचार करा.", "urgent": "कृपया तात्काळ आजच / आपत्कालीन काळजी घ्या आणि यासाठी औषधी वनस्पती किंवा योगावर अवलंबून राहू नका. असुरक्षित वाटल्यास जवळच्या व्यक्तीशी किंवा स्थानिक आपत्कालीन मदतीशी तात्काळ संपर्क साधा. या तक्रारीसाठी मी वनस्पतींचा सल्ला देणार नाही.", "showAll": "सर्व स्थिती पाहा", "chips": [{"id": "stress", "label": "ताण"}, {"id": "sleep", "label": "झोप"}, {"id": "acidity", "label": "पचन"}, {"id": "joint", "label": "सांधेदुखी"}]}};
+const POSTS=[{"title": "Dinacharya: A Morning That Holds You", "excerpt": "Wake, water, light, movement — a simple classical rhythm for Vata, Pitta and Kapha.", "category": "Dinacharya", "read": "4", "body": "Classical Dinacharya begins before the day rushes in. Warm water, sunlight, gentle movement and a regular breakfast time are small anchors. The point is not perfection — it is a rhythm the body can trust."}, {"title": "What Is Dosha, Really?", "excerpt": "Vata, Pitta and Kapha are patterns, not labels. Learn to read them gently.", "category": "Foundations", "read": "5", "body": "Dosha describes tendencies: movement and dryness, heat and transformation, heaviness and stability. Most people carry a mix. This guide uses dosha as a learning lens, not a diagnosis."}, {"title": "Abhyanga at Home: Gentle, Not Complicated", "excerpt": "Warm oil, slow strokes, and rest afterwards. That is the heart of it.", "category": "Therapies", "read": "4", "body": "Ashtanga Hridayam (Sutrasthana 2) advises abhyanga daily, especially on the head, ears and feet. At home: warm sesame oil for Vata, coconut or sunflower for Pitta, a lighter oil and less of it for Kapha. Keep strokes slow, skip it during fever or indigestion, and rest with warm water afterwards."}, {"title": "Marma: Small Points, Quiet Attention", "excerpt": "Sushruta describes 107 marma points. At home, they call for gentle attention — not pressure.", "category": "Therapies", "read": "3", "body": "Marma are vital points where muscle, vessels, ligaments, bone and joints meet. Sushruta Samhita (Sharira 6) lists 107 of them and warns that injury to some can be serious. At home this means gentle, respectful touch and breath during abhyanga — never strong pressure or 'treatment'. Therapeutic marma work needs a trained practitioner."}, {"title": "Food as Daily Medicine", "excerpt": "Warm, timely, simple. Agni is protected by how we eat.", "category": "Food", "read": "4", "body": "Classical food wisdom is simple: eat warm, eat on time, chew well, and leave space. Cold, hurried and late meals are traditionally seen as burdens on agni."}, {"title": "Sleep Is a Pillar, Not a Luxury", "excerpt": "Ahara, nidra and brahmacharya — the three supports of life in Charaka Samhita.", "category": "Sleep", "read": "3", "body": "Charaka Samhita (Sutrasthana 11) names three supports (upastambha) of life: food, sleep and a disciplined life. Charaka (Sutrasthana 21) adds that happiness and sorrow, strength and weakness all depend on sleep. A dark room, a regular time and a calm last hour are the gentlest medicines for a restless mind."}, {"title": "Brihat Trayi and Laghu Trayi", "excerpt": "The six books every Ayurveda student starts with — and why.", "category": "Foundations", "read": "5", "body": "The Brihat Trayi (great three) are Charaka Samhita (internal medicine), Sushruta Samhita (surgery and anatomy) and Ashtanga Hridayam (Vagbhata's clear summary of both). The Laghu Trayi (lesser three) are Madhava Nidana (diagnosis), Sharangadhara Samhita (pharmacy) and Bhavaprakasha (a later compendium with the most-used herb dictionary). Together they cover principles, diagnosis, medicines and herbs."}, {"title": "Reading a Herb Card", "excerpt": "Rasa, guna, virya, vipaka — four words that describe every herb.", "category": "Foundations", "read": "4", "body": "Rasa is taste (sweet, sour, salty, pungent, bitter, astringent). Guna are qualities such as heavy or light, oily or dry. Virya is potency — heating or cooling. Vipaka is the effect after digestion. Together they predict which dosha a herb calms or raises. Example: Amla is sour, cooling and sweet after digestion, so it calms Pitta even though it is sour. Texts sometimes disagree — that is normal."}];
+// Grantha library — every book the user asked for, grouped.
+// Eras are approximate scholarly ranges; dates of classical texts are debated.
+const BOOKS = [
+  // ---- Ayurveda: Brihat Trayi
+  {id:"charaka", group:"brihat", title:"Charaka Samhita", dev:"चरक संहिता", author:"Agnivesha's teaching, redacted by Charaka; completed by Dridhabala", era:"c. 2nd c. BCE – 4th c. CE (layers)",
+   structure:"8 sthanas · 120 adhyayas",
+   about:"The core text of Kayachikitsa (internal medicine). Sutrasthana sets out principles, daily regimen and herb groups; Nidana and Chikitsa sthanas describe causes and treatment disease by disease; Chikitsa ch. 1 is the great chapter on Rasayana.",
+   inApp:"Principles, daily rhythm, the 50 herb groups (Su 4), Medhya Rasayana (Chi 1), and the disease chapters behind most condition cards.",
+   verse:{dev:"स्वस्थस्य स्वास्थ्यरक्षणम् आतुरस्य विकारप्रशमनं च", iast:"svasthasya svāsthya-rakṣaṇam āturasya vikāra-praśamanaṃ ca", where:"Sutrasthana 30.26", meaning:"The aim of Ayurveda: protect the health of the healthy, and relieve the disorder of the sick."}},
+  {id:"sushruta", group:"brihat", title:"Sushruta Samhita", dev:"सुश्रुत संहिता", author:"Sushruta (later redaction)", era:"c. 1st millennium BCE – early CE (layers)",
+   structure:"6 sthanas incl. Uttara Tantra",
+   about:"The classic of Shalya (surgery) and anatomy. Sutrasthana 38 arranges herbs into 37 groups by action. Uttara Tantra covers diseases of the eye, ear, nose and head in detail.",
+   inApp:"Herb groups, the definition of a healthy person (Su 15), and the eye, ear, nose and head chapters.",
+   verse:{dev:"समदोषः समाग्निश्च समधातुमलक्रियः। प्रसन्नात्मेन्द्रियमनाः स्वस्थ इत्यभिधीयते॥", iast:"sama-doṣaḥ samāgniś ca sama-dhātu-mala-kriyaḥ, prasannātmendriya-manāḥ svastha ity abhidhīyate", where:"Sutrasthana 15", meaning:"One whose doshas, agni, tissues and excretions are balanced, and whose self, senses and mind are clear, is called healthy."}},
+  {id:"ah", group:"brihat", title:"Ashtanga Hridayam", dev:"अष्टाङ्ग हृदयम्", author:"Vagbhata", era:"c. 6th–7th c. CE",
+   structure:"6 sthanas · 120 adhyayas",
+   about:"A clear verse summary of Charaka and Sushruta, and the most memorised text in practice. Sutrasthana 2 (Dinacharya) and 3 (Ritucharya) are the classic chapters on daily and seasonal routine; Su 20 is Nasya; Su 24 is eye therapy (Tarpana).",
+   inApp:"Daily routine, nasya, eye care, and the three doshas.",
+   verse:{dev:"वायुः पित्तं कफश्चेति त्रयो दोषाः समासतः", iast:"vāyuḥ pittaṃ kaphaś ceti trayo doṣāḥ samāsataḥ", where:"Sutrasthana 1", meaning:"In brief, the doshas are three: Vata, Pitta and Kapha."}},
+  // ---- Laghu Trayi
+  {id:"madhava", group:"laghu", title:"Madhava Nidana", dev:"माधव निदानम्", author:"Madhavakara", era:"c. 7th–8th c. CE",
+   structure:"~69 chapters, one per disease group",
+   about:"The classic of diagnosis (Nidana): causes, early signs, symptoms and prognosis of each disease. It is the first text to give Amavata and Amlapitta their own chapters. Usually read alongside treatment texts.",
+   inApp:"Disease names and patterns: Amlapitta, Amavata, Anaha, Kshudraroga (acne, hair loss) and more."},
+  {id:"sharangadhara", group:"laghu", title:"Sharangadhara Samhita", dev:"शार्ङ्गधर संहिता", author:"Sharangadhara", era:"c. 13th–14th c. CE",
+   structure:"3 khandas (Purva, Madhyama, Uttara)",
+   about:"The standard text of pharmacy. The Madhyama Khanda describes how to make each dosage form — swarasa, kwatha, churna, vati, guggulu, avaleha, ghrita, taila, asava-arishta. Also notable for early pulse examination.",
+   inApp:"Classical formulation names such as Sitopaladi, Talisadi, Yogaraja and Kaishore guggulu."},
+  {id:"bhavaprakasha", group:"laghu", title:"Bhavaprakasha", dev:"भावप्रकाश", author:"Bhavamishra", era:"16th c. CE",
+   structure:"Purva, Madhya, Uttara khandas + Nighantu",
+   about:"A late, practical compendium that adds new diseases and new plants (it even describes 'Phiranga roga'). Its Nighantu section is the most used herb dictionary today.",
+   inApp:"The herb properties (rasa, guna, virya, vipaka, dosha action) in the Herb Library."},
+  // ---- Nighantus
+  {id:"bpn", group:"nighantu", title:"Bhavaprakasha Nighantu", dev:"भावप्रकाश निघण्टु", author:"Bhavamishra", era:"16th c. CE",
+   structure:"Vargas (chapters) of plants, foods, minerals",
+   about:"A herb dictionary arranged in vargas such as Haritakyadi and Guduchyadi. For each plant it gives synonyms, taste, qualities, potency, post-digestive effect and uses.",
+   inApp:"Main source for herb property cards."},
+  {id:"dhanvantari", group:"nighantu", title:"Dhanvantari Nighantu", dev:"धन्वन्तरि निघण्टु", author:"Unknown (attributed to the Dhanvantari tradition)", era:"c. 10th–13th c. CE (debated)",
+   structure:"Vargas of plants and substances",
+   about:"One of the oldest surviving Ayurvedic glossaries, organised partly around Sushruta's herb groups. Valuable for synonyms and identification.",
+   inApp:"Synonyms and identity cross-checks for herbs."},
+  {id:"raja", group:"nighantu", title:"Raja Nighantu", dev:"राज निघण्टु", author:"Narahari Pandita", era:"c. 14th–15th c. CE",
+   structure:"~23 vargas",
+   about:"A very large dictionary describing hundreds of substances, with many synonyms and regional names. Also called Abhidhana Chudamani.",
+   inApp:"Extra synonyms and properties."},
+  {id:"kaiyadeva", group:"nighantu", title:"Kaiyadeva Nighantu", dev:"कैयदेव निघण्टु", author:"Kaiyadeva", era:"c. 15th c. CE",
+   structure:"Vargas incl. foods and drinks",
+   about:"Also called Pathyapathya Vibodhaka — it covers herbs and also everyday foods, telling what is wholesome (pathya) and what is not.",
+   inApp:"Food and diet guidance on condition cards."},
+  // ---- Treatment manuals
+  {id:"chakradatta", group:"chikitsa", title:"Chakradatta", dev:"चक्रदत्त", author:"Chakrapanidatta", era:"11th c. CE",
+   structure:"Chapters follow Madhava Nidana's disease order",
+   about:"A treatment manual: for each disease in Madhava Nidana it gives tested remedies. Chakrapani also wrote the major commentary on Charaka.",
+   inApp:"Remedies for Amlapitta, Amavata, Hridroga and others (names only, no doses)."},
+  {id:"br", group:"chikitsa", title:"Bhaishajya Ratnavali", dev:"भैषज्य रत्नावली", author:"Govinda Das (later edited by Brahmashankar Mishra)", era:"c. 18th c. CE",
+   structure:"~106 chapters by disease",
+   about:"A large collection of formulations, many still made by pharmacies today — Avipattikara churna, Khadirarishta, Arjunarishta, Mahanarayana taila and more.",
+   inApp:"Formulation names on condition cards (practitioner use only)."},
+  {id:"yogaratnakara", group:"chikitsa", title:"Yogaratnakara", dev:"योगरत्नाकर", author:"Unknown", era:"c. 17th c. CE",
+   structure:"Diagnosis + treatment by disease",
+   about:"A practical guide combining diagnosis (including eight-fold examination with pulse) and treatment, widely used in Maharashtra.",
+   inApp:"Examination method and practical remedies context."},
+  // ---- Yoga classics
+  {id:"ys", group:"yogaclassic", title:"Yoga Sutras of Patanjali", dev:"पातञ्जल योगसूत्र", author:"Patanjali", era:"c. 2nd c. BCE – 4th c. CE",
+   structure:"4 padas · 195/196 sutras",
+   about:"The root text of yoga philosophy. It defines yoga, sets out the eight limbs (ashtanga) and describes the mind. It names asana only as a steady, comfortable seat — it does not describe poses.",
+   inApp:"The mind and meditation framework, and the definition of asana.",
+   verse:{dev:"योगश्चित्तवृत्तिनिरोधः", iast:"yogaś citta-vṛtti-nirodhaḥ", where:"1.2", meaning:"Yoga is the stilling of the movements of the mind."}},
+  {id:"gita", group:"yogaclassic", title:"Bhagavad Gita", dev:"भगवद्गीता", author:"Part of the Mahabharata (attributed to Vyasa)", era:"c. 2nd c. BCE – 2nd c. CE",
+   structure:"18 chapters · 700 verses",
+   about:"Teaches Karma, Bhakti, Jnana and Dhyana yoga. Chapter 6 (Dhyana Yoga) is about meditation and moderation in food, sleep and activity.",
+   inApp:"Moderation in food, sleep and effort.",
+   verse:{dev:"युक्ताहारविहारस्य युक्तचेष्टस्य कर्मसु। युक्तस्वप्नावबोधस्य योगो भवति दुःखहा॥", iast:"yuktāhāra-vihārasya yukta-ceṣṭasya karmasu, yukta-svapnāvabodhasya yogo bhavati duḥkha-hā", where:"6.17", meaning:"For one who is moderate in food and recreation, in effort at work, and in sleep and waking, yoga removes sorrow."}},
+  {id:"hyp", group:"yogaclassic", title:"Hatha Yoga Pradipika", dev:"हठयोग प्रदीपिका", author:"Svatmarama", era:"15th c. CE",
+   structure:"4 chapters (upadeshas)",
+   about:"The key Hatha text. Ch. 1: 15 asanas and diet; ch. 2: the six cleansing practices and eight pranayamas; ch. 3: mudras and bandhas incl. Viparita Karani; ch. 4: samadhi and nada.",
+   inApp:"Classical asanas, pranayama and cleansing methods.",
+   verse:{dev:"चले वाते चलं चित्तं निश्चले निश्चलं भवेत्", iast:"cale vāte calaṃ cittaṃ niścale niścalaṃ bhavet", where:"2.2", meaning:"When the breath moves, the mind moves; when the breath is still, the mind becomes still."}},
+  {id:"gheranda", group:"yogaclassic", title:"Gheranda Samhita", dev:"घेरण्ड संहिता", author:"Teaching of the sage Gheranda", era:"c. 17th c. CE",
+   structure:"7 chapters",
+   about:"The most practical manual: six cleansing practices, 32 asanas (incl. Bhujanga, Shalabha, Vajra, Vriksha, Ushtra), 25 mudras, pratyahara, pranayama, dhyana and samadhi.",
+   inApp:"Classical sources for many asanas in the Yoga Library."},
+  {id:"shiva", group:"yogaclassic", title:"Shiva Samhita", dev:"शिव संहिता", author:"Unknown", era:"c. 15th–17th c. CE",
+   structure:"5 chapters",
+   about:"Combines Vedanta philosophy with practice: the subtle body (nadis, chakras), pranayama, mudras, and the qualities of a practitioner.",
+   inApp:"Background on the subtle body and pranayama."},
+  {id:"hr", group:"yogaclassic", title:"Hatha Ratnavali", dev:"हठरत्नावली", author:"Srinivasa", era:"c. 17th c. CE",
+   structure:"4 chapters",
+   about:"A lesser-known Hatha text that lists more asanas than the Pradipika and expands the cleansing practices into eight.",
+   inApp:"Additional classical asanas and cleansing practices."},
+  {id:"goraksha", group:"yogaclassic", title:"Goraksha Shataka", dev:"गोरक्ष शतक", author:"Attributed to Gorakhnath", era:"c. 11th–13th c. CE",
+   structure:"~100 verses",
+   about:"An early Nath text on posture, breath control, bandhas and meditation; one of the foundations of Hatha Yoga.",
+   inApp:"Roots of pranayama and bandha practice."},
+  {id:"yup", group:"yogaclassic", title:"Yoga Upanishads", dev:"योग उपनिषद्", author:"Various", era:"Various, c. 1st millennium CE onward",
+   structure:"~20 texts incl. Yoga Tattva, Dhyana Bindu, Yoga Kundalini",
+   about:"A group of Upanishads on yoga practice: breath, meditation on sound and light, nadis and kundalini.",
+   inApp:"Meditation and breath background."},
+  // ---- Modern references (copyrighted: cited, never reproduced)
+  {id:"lightyoga", group:"modern", title:"Light on Yoga", author:"B.K.S. Iyengar", era:"1966",
+   about:"The classic modern manual of over 200 asanas, with an appendix of practices for specific ailments.", inApp:"Pointer for modern pose forms. Copyrighted — cited, not reproduced."},
+  {id:"lightpranayama", group:"modern", title:"Light on Pranayama", author:"B.K.S. Iyengar", era:"1981",
+   about:"Detailed modern guide to breathing practices and their safe progression.", inApp:"Pointer for safe pranayama. Copyrighted — cited, not reproduced."},
+  {id:"apmb", group:"modern", title:"Asana Pranayama Mudra Bandha", author:"Swami Satyananda Saraswati (Bihar School of Yoga)", era:"1969",
+   about:"Widely used manual that gives benefits and contraindications for each practice.", inApp:"Pointer for contraindications. Copyrighted — cited, not reproduced."},
+  {id:"kuvalayananda", group:"modern", title:"Yoga Therapy", author:"Swami Kuvalayananda & S.L. Vinekar (Kaivalyadhama)", era:"1963",
+   about:"Early scientific work on yoga for health, from India's first yoga research institute.", inApp:"Research context. Copyrighted — cited, not reproduced."},
+  {id:"ymcd", group:"modern", title:"Yogic Management of Common Diseases", author:"Swami Karmananda (Bihar School of Yoga)", era:"1983",
+   about:"Practice plans organised by condition, with cautions.", inApp:"Pointer for condition-wise yoga. Copyrighted — cited, not reproduced."},
+  {id:"enc", group:"modern", title:"The Ayurveda Encyclopedia", author:"Swami Sada Shiva Tirtha", era:"1998",
+   about:"A modern English bridge to the classics, covering philosophy, diagnosis and therapies.", inApp:"Kept from the first version for therapy descriptions. Copyrighted — cited, not reproduced."}
+];
+
+const BOOK_GROUPS = [
+  {id:"brihat", en:"Brihat Trayi — the great three", hi:"बृहत्त्रयी — महान तीन", mr:"बृहत्त्रयी — महान तीन"},
+  {id:"laghu", en:"Laghu Trayi — the lesser three", hi:"लघुत्रयी — लघु तीन", mr:"लघुत्रयी — लघु तीन"},
+  {id:"nighantu", en:"Nighantus — herb dictionaries", hi:"निघण्टु — जड़ी-बूटी कोश", mr:"निघण्टु — वनस्पती कोश"},
+  {id:"chikitsa", en:"Treatment manuals", hi:"चिकित्सा ग्रंथ", mr:"चिकित्सा ग्रंथ"},
+  {id:"yogaclassic", en:"Classical yoga texts", hi:"शास्त्रीय योग ग्रंथ", mr:"शास्त्रीय योग ग्रंथ"},
+  {id:"modern", en:"Modern references", hi:"आधुनिक संदर्भ", mr:"आधुनिक संदर्भ"}
+];
+
+// Herb library. Properties follow the classical nighantu tradition (mainly Bhavaprakasha Nighantu);
+// some properties differ between texts and commentators. No doses are given anywhere.
+// dosha: what the herb is classically said to pacify (-) or aggravate (+).
+const HERBS = [
+  {id:"amalaki", name:"Amla", san:"Amalaki", dev:"आमलकी", hi:"आंवला", latin:"Phyllanthus emblica", part:"Fruit",
+   rasa:"All tastes except salty; sour predominant", guna:"Heavy, dry", virya:"Cooling", vipaka:"Sweet", dosha:"Balances all three doshas", code:"VPK-",
+   karma:"Rasayana (rejuvenative), good for eyes, hair and skin", uses:"Acidity, burning, weak digestion, hair, eyes, immunity", safety:"Generally food-safe; check with a doctor if on blood thinners or diabetes medicine.",
+   src:["charaka","bpn"], note:"Charaka places Amalaki first among rejuvenatives (Chikitsa 1)."},
+  {id:"haritaki", name:"Haritaki", san:"Haritaki", dev:"हरीतकी", hi:"हरड़", latin:"Terminalia chebula", part:"Fruit",
+   rasa:"Five tastes, astringent predominant", guna:"Light, dry", virya:"Heating", vipaka:"Sweet", dosha:"Balances all three, especially Vata", code:"VPK-",
+   karma:"Gentle laxative, digestive, rejuvenative", uses:"Constipation, sluggish digestion, Triphala", safety:"Avoid in pregnancy, severe weakness, dehydration or diarrhoea.",
+   src:["charaka","bpn"], note:"Called Abhaya and Pathya; Bhavaprakasha Nighantu opens with it."},
+  {id:"bibhitaki", name:"Bibhitaki", san:"Bibhitaki", dev:"बिभीतकी", hi:"बहेड़ा", latin:"Terminalia bellirica", part:"Fruit",
+   rasa:"Astringent", guna:"Light, dry", virya:"Heating", vipaka:"Sweet", dosha:"Mainly Kapha; balances all three in Triphala", code:"K-",
+   karma:"Clears Kapha, good for voice, eyes and hair", uses:"Cough, throat, Triphala", safety:"Not for long use alone without guidance.",
+   src:["bpn"], note:"One of the three fruits of Triphala."},
+  {id:"guduchi", name:"Giloy", san:"Guduchi", dev:"गुडूची", hi:"गिलोय", latin:"Tinospora cordifolia", part:"Stem",
+   rasa:"Bitter, astringent", guna:"Heavy, unctuous", virya:"Heating", vipaka:"Sweet", dosha:"Balances all three", code:"VPK-",
+   karma:"Rasayana, fever-reducing, Medhya (supports the mind)", uses:"Recurrent fever, immunity, joint pain, Medhya Rasayana", safety:"Liver injury has been reported with some products; avoid with autoimmune disease unless a doctor agrees.",
+   src:["charaka","bpn"], note:"One of the four Medhya Rasayanas in Charaka Chikitsa 1."},
+  {id:"ashwagandha", name:"Ashwagandha", san:"Ashwagandha", dev:"अश्वगन्धा", hi:"अश्वगंधा", latin:"Withania somnifera", part:"Root",
+   rasa:"Bitter, astringent, sweet", guna:"Light, unctuous", virya:"Heating", vipaka:"Sweet", dosha:"Calms Vata and Kapha; may raise Pitta", code:"VK- P+",
+   karma:"Strength-giving (balya), rejuvenative, supports sleep", uses:"Weakness, low weight, stress, Vata pain", safety:"Avoid in pregnancy; check with a doctor if you have thyroid disease or take sedatives.",
+   src:["bpn","charaka"]},
+  {id:"shatavari", name:"Shatavari", san:"Shatavari", dev:"शतावरी", hi:"शतावर", latin:"Asparagus racemosus", part:"Root",
+   rasa:"Sweet, bitter", guna:"Heavy, unctuous", virya:"Cooling", vipaka:"Sweet", dosha:"Calms Vata and Pitta; may raise Kapha", code:"VP- K+",
+   karma:"Nourishing, rejuvenative, supports women's health and milk", uses:"Acidity, weakness, low weight, women's health", safety:"Caution with hormone-sensitive conditions; check with a doctor.",
+   src:["bpn"]},
+  {id:"brahmi", name:"Brahmi", san:"Brahmi", dev:"ब्राह्मी", hi:"ब्राह्मी", latin:"Bacopa monnieri", part:"Whole plant",
+   rasa:"Bitter, astringent, sweet", guna:"Light", virya:"Cooling", vipaka:"Sweet", dosha:"Calms Vata and Kapha; cooling, so it does not raise Pitta", code:"VPK-",
+   karma:"Medhya (memory, calm), nervine", uses:"Stress, sleep, memory, headache", safety:"May cause stomach upset; check with a doctor if on thyroid or sedative medicine.",
+   src:["bpn","charaka"], note:"Fixed: the first version marked Brahmi as raising Pitta while also calling it cooling."},
+  {id:"mandukaparni", name:"Mandukaparni", san:"Mandukaparni", dev:"मण्डूकपर्णी", hi:"ब्राह्मी (दक्षिण भारत) / गोटु कोला", latin:"Centella asiatica", part:"Whole plant",
+   rasa:"Bitter", guna:"Light", virya:"Cooling", vipaka:"Sweet", dosha:"Calms Kapha and Pitta", code:"PK-",
+   karma:"Medhya, skin and wound healing", uses:"Memory, calm, skin", safety:"Avoid with liver disease; not in pregnancy without advice.",
+   src:["charaka","bpn"], note:"First of the four Medhya Rasayanas in Charaka Chikitsa 1."},
+  {id:"shankhapushpi", name:"Shankhapushpi", san:"Shankhapushpi", dev:"शङ्खपुष्पी", hi:"शंखपुष्पी", latin:"Convolvulus pluricaulis", part:"Whole plant",
+   rasa:"Astringent, bitter", guna:"Unctuous, slimy", virya:"Cooling", vipaka:"Sweet", dosha:"Balances all three", code:"VPK-",
+   karma:"Medhya, calming", uses:"Stress, sleep, memory", safety:"Check with a doctor if on sedatives or BP medicine.",
+   src:["charaka","bpn"], note:"One of the four Medhya Rasayanas."},
+  {id:"jatamansi", name:"Jatamansi", san:"Jatamansi", dev:"जटामांसी", hi:"जटामांसी", latin:"Nardostachys jatamansi", part:"Rhizome",
+   rasa:"Bitter, astringent, sweet", guna:"Light, unctuous", virya:"Cooling", vipaka:"Pungent", dosha:"Balances all three", code:"VPK-",
+   karma:"Calming, supports sleep, good for skin and hair", uses:"Restlessness, poor sleep", safety:"Endangered plant — buy only certified sustainable stock. Avoid with sedatives.",
+   src:["bpn"]},
+  {id:"vacha", name:"Vacha", san:"Vacha", dev:"वचा", hi:"वच", latin:"Acorus calamus", part:"Rhizome",
+   rasa:"Pungent, bitter", guna:"Light, sharp", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata", code:"VK- P+",
+   karma:"Medhya, clears the channels, improves speech", uses:"Classically for speech and memory", safety:"Practitioner only — some varieties contain beta-asarone, which may be toxic.",
+   src:["charaka","bpn"]},
+  {id:"yashtimadhu", name:"Licorice", san:"Yashtimadhu", dev:"यष्टिमधु", hi:"मुलेठी", latin:"Glycyrrhiza glabra", part:"Root",
+   rasa:"Sweet", guna:"Heavy, unctuous", virya:"Cooling", vipaka:"Sweet", dosha:"Calms Vata and Pitta; may raise Kapha", code:"VP- K+",
+   karma:"Soothing, good for voice, eyes and hair, Medhya", uses:"Acidity, sore throat, dry cough", safety:"Long or heavy use can raise blood pressure and lower potassium. Avoid with high BP, heart or kidney disease, pregnancy.",
+   src:["charaka","bpn"], note:"One of the four Medhya Rasayanas (taken with milk, per Charaka)."},
+  {id:"tulasi", name:"Tulsi", san:"Tulasi", dev:"तुलसी", hi:"तुलसी", latin:"Ocimum tenuiflorum", part:"Leaf",
+   rasa:"Pungent, bitter", guna:"Light, dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata; raises Pitta", code:"VK- P+",
+   karma:"Clears Kapha, eases cough and breathing", uses:"Cold, cough, low immunity", safety:"Check with a doctor if on blood thinners or trying to conceive.",
+   src:["bpn"]},
+  {id:"haridra", name:"Turmeric", san:"Haridra", dev:"हरिद्रा", hi:"हल्दी", latin:"Curcuma longa", part:"Rhizome",
+   rasa:"Bitter, pungent", guna:"Dry, light", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Pitta (balances all three in some texts)", code:"KP- (VPK- in some texts)",
+   karma:"Good for skin and blood, anti-itch, used in prameha", uses:"Skin, joints, cold, blood sugar support (with amla)", safety:"High-dose supplements: caution with gallstones, blood thinners, before surgery.",
+   src:["bpn","charaka"], note:"Turmeric with amla (Nisha-Amalaki) is a classical pairing for prameha."},
+  {id:"daruharidra", name:"Daruharidra", san:"Daruharidra", dev:"दारुहरिद्रा", hi:"दारुहल्दी", latin:"Berberis aristata", part:"Stem, root",
+   rasa:"Bitter, astringent", guna:"Light, dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Pitta", code:"KP-",
+   karma:"Good for eyes and skin, anti-inflammatory", uses:"Eye and skin conditions (classically as Rasanjana)", safety:"Practitioner guidance; avoid in pregnancy.",
+   src:["bpn"]},
+  {id:"shunthi", name:"Ginger (dry)", san:"Shunthi", dev:"शुण्ठी", hi:"सोंठ", latin:"Zingiber officinale", part:"Dried rhizome",
+   rasa:"Pungent", guna:"Light, unctuous", virya:"Heating", vipaka:"Sweet", dosha:"Calms Vata and Kapha; may raise Pitta", code:"VK- P+",
+   karma:"Kindles agni, digests ama, eases pain", uses:"Gas, bloating, cold, joint stiffness", safety:"Caution with severe acidity, bleeding disorders, blood thinners.",
+   src:["bpn","charaka"], note:"Its synonym 'Vishvabheshaja' means the universal medicine."},
+  {id:"pippali", name:"Long Pepper", san:"Pippali", dev:"पिप्पली", hi:"पीपल / पिपली", latin:"Piper longum", part:"Fruit",
+   rasa:"Pungent", guna:"Light, unctuous", virya:"Mildly heating (fresh is heating)", vipaka:"Sweet", dosha:"Calms Vata and Kapha", code:"VK-",
+   karma:"Rasayana for lungs, digestive", uses:"Cough, breathing, weak digestion", safety:"Not for long use in high amounts; caution with acidity.",
+   src:["charaka","bpn"]},
+  {id:"maricha", name:"Black Pepper", san:"Maricha", dev:"मरिच", hi:"काली मिर्च", latin:"Piper nigrum", part:"Fruit",
+   rasa:"Pungent", guna:"Light, sharp", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata; raises Pitta", code:"VK- P+",
+   karma:"Digestive, clears Kapha", uses:"Cold, sluggish digestion (part of Trikatu)", safety:"Avoid excess with acidity or ulcers.",
+   src:["bpn"]},
+  {id:"jeeraka", name:"Cumin", san:"Jeeraka", dev:"जीरक", hi:"जीरा", latin:"Cuminum cyminum", part:"Seed",
+   rasa:"Pungent", guna:"Light, dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata", code:"VK-",
+   karma:"Digestive, eases gas", uses:"Bloating, gas, weak appetite", safety:"Food-safe in kitchen amounts.",
+   src:["bpn"]},
+  {id:"yavani", name:"Ajwain", san:"Yavani", dev:"यवानी", hi:"अजवाइन", latin:"Trachyspermum ammi", part:"Seed",
+   rasa:"Pungent, bitter", guna:"Light, dry, sharp", virya:"Heating", vipaka:"Pungent", dosha:"Calms Vata and Kapha; raises Pitta", code:"VK- P+",
+   karma:"Digestive, relieves colic and gas", uses:"Bloating, gas pain, indigestion", safety:"Avoid excess in pregnancy or with acidity.",
+   src:["bpn"]},
+  {id:"dhanyaka", name:"Coriander", san:"Dhanyaka", dev:"धान्यक", hi:"धनिया", latin:"Coriandrum sativum", part:"Seed",
+   rasa:"Astringent, bitter, sweet, pungent", guna:"Light, unctuous", virya:"Mild (seeds used as cooling in practice)", vipaka:"Sweet", dosha:"Balances all three", code:"VPK-",
+   karma:"Digestive without heat, eases burning and thirst", uses:"Acidity, burning urination, thirst", safety:"Food-safe.",
+   src:["bpn"]},
+  {id:"hingu", name:"Asafoetida", san:"Hingu", dev:"हिङ्गु", hi:"हींग", latin:"Ferula assa-foetida", part:"Resin",
+   rasa:"Pungent", guna:"Light, unctuous, sharp", virya:"Heating", vipaka:"Pungent", dosha:"Calms Vata and Kapha; raises Pitta", code:"VK- P+",
+   karma:"Relieves gas, colic and distension", uses:"Bloating, gas (Hingvashtaka churna)", safety:"Avoid in pregnancy in medicinal amounts.",
+   src:["bpn","ah"]},
+  {id:"nimba", name:"Neem", san:"Nimba", dev:"निम्ब", hi:"नीम", latin:"Azadirachta indica", part:"Leaf, bark",
+   rasa:"Bitter, astringent", guna:"Light, dry", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Pitta and Kapha; raises Vata", code:"PK- V+",
+   karma:"Cleanses blood and skin, anti-itch, kills worms", uses:"Acne, skin rashes, itching", safety:"Never give neem oil by mouth to children. Avoid in pregnancy and when trying to conceive.",
+   src:["bpn","charaka"]},
+  {id:"manjishtha", name:"Manjishtha", san:"Manjishtha", dev:"मञ्जिष्ठा", hi:"मजीठ", latin:"Rubia cordifolia", part:"Root",
+   rasa:"Sweet, bitter, astringent", guna:"Heavy, dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Pitta and Kapha", code:"PK-",
+   karma:"Purifies blood (raktashodhaka), improves complexion", uses:"Acne, skin pigmentation, skin health", safety:"May colour urine red (harmless). Avoid in pregnancy.",
+   src:["bpn","charaka"]},
+  {id:"bhringaraja", name:"Bhringraj", san:"Bhringaraja", dev:"भृङ्गराज", hi:"भांगरा", latin:"Eclipta prostrata", part:"Whole plant",
+   rasa:"Pungent, bitter", guna:"Dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata", code:"VK-",
+   karma:"Keshya (good for hair), good for liver, eyes and skin", uses:"Hair fall, premature greying (usually as oil)", safety:"External use is common; internal use under guidance.",
+   src:["bpn"]},
+  {id:"guggulu", name:"Guggulu", san:"Guggulu", dev:"गुग्गुलु", hi:"गुग्गुल", latin:"Commiphora wightii", part:"Resin (purified)",
+   rasa:"Bitter, pungent", guna:"Light, dry, subtle", virya:"Heating", vipaka:"Pungent", dosha:"Balances all three, mainly Vata and Kapha", code:"VK- (VPK-)",
+   karma:"Scraping (lekhana), eases joint pain and swelling", uses:"Joint pain, weight gain (as Yogaraja / Kaishore guggulu)", safety:"Practitioner only. Must be purified (shodhita). Avoid in pregnancy, thyroid and liver disease without advice.",
+   src:["sharangadhara","bpn"]},
+  {id:"arjuna", name:"Arjuna", san:"Arjuna", dev:"अर्जुन", hi:"अर्जुन", latin:"Terminalia arjuna", part:"Bark",
+   rasa:"Astringent", guna:"Light, dry", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Kapha and Pitta", code:"PK-",
+   karma:"Hridya (good for the heart), heals fractures and wounds", uses:"Heart support (classically as milk decoction)", safety:"May add to the effect of BP and heart medicines — doctor first.",
+   src:["bpn","chakradatta"]},
+  {id:"meshashringi", name:"Gudmar", san:"Meshashringi", dev:"मेषशृङ्गी", hi:"गुड़मार", latin:"Gymnema sylvestre", part:"Leaf",
+   rasa:"Astringent, bitter", guna:"Light, dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata", code:"VK-",
+   karma:"Reduces sweet taste and sugar craving", uses:"Prameha (blood sugar) support", safety:"Can drop blood sugar too low with diabetes medicines — doctor first.",
+   src:["bpn"]},
+  {id:"methika", name:"Fenugreek", san:"Methika", dev:"मेथिका", hi:"मेथी", latin:"Trigonella foenum-graecum", part:"Seed",
+   rasa:"Pungent, bitter", guna:"Light, unctuous", virya:"Heating", vipaka:"Pungent", dosha:"Calms Vata and Kapha", code:"VK-",
+   karma:"Digestive, eases joint stiffness", uses:"Blood sugar support, joint stiffness", safety:"Can lower blood sugar; avoid in pregnancy in medicinal amounts.",
+   src:["bpn","kaiyadeva"]},
+  {id:"punarnava", name:"Punarnava", san:"Punarnava", dev:"पुनर्नवा", hi:"पुनर्नवा", latin:"Boerhavia diffusa", part:"Root, whole plant",
+   rasa:"Sweet, bitter, astringent", guna:"Light, dry", virya:"Heating", vipaka:"Sweet", dosha:"Calms Kapha and Vata", code:"VK-",
+   karma:"Reduces swelling (shothahara), diuretic", uses:"Swelling, fluid retention", safety:"Swelling can signal heart or kidney disease — see a doctor first.",
+   src:["bpn","charaka"]},
+  {id:"vasa", name:"Vasaka", san:"Vasa", dev:"वासा", hi:"अडूसा", latin:"Justicia adhatoda", part:"Leaf",
+   rasa:"Bitter, astringent", guna:"Light, dry", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Kapha and Pitta", code:"PK-",
+   karma:"Eases cough and breathing, stops bleeding (raktapitta)", uses:"Cough with phlegm", safety:"Avoid in pregnancy.",
+   src:["bpn","charaka"]},
+  {id:"kantakari", name:"Kantakari", san:"Kantakari", dev:"कण्टकारी", hi:"कटेरी", latin:"Solanum virginianum", part:"Whole plant",
+   rasa:"Pungent, bitter", guna:"Light, dry, sharp", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata", code:"VK-",
+   karma:"Eases cough and breathlessness", uses:"Cough, cold, wheeze (with practitioner)", safety:"Practitioner guidance.",
+   src:["bpn","charaka"]},
+  {id:"bilva", name:"Bael", san:"Bilva", dev:"बिल्व", hi:"बेल", latin:"Aegle marmelos", part:"Unripe fruit, root",
+   rasa:"Astringent, bitter", guna:"Light, dry", virya:"Heating", vipaka:"Pungent", dosha:"Calms Kapha and Vata", code:"VK-",
+   karma:"Binds stool, digestive", uses:"Loose stools, grahani", safety:"Unripe fruit binds — not for constipation.",
+   src:["bpn"]},
+  {id:"musta", name:"Nagarmotha", san:"Musta", dev:"मुस्ता", hi:"नागरमोथा", latin:"Cyperus rotundus", part:"Rhizome",
+   rasa:"Bitter, pungent, astringent", guna:"Light, dry", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Kapha and Pitta", code:"PK-",
+   karma:"Digestive without heat, relieves thirst and fever", uses:"Indigestion, loose stools, burning", safety:"Generally mild.",
+   src:["bpn","charaka"]},
+  {id:"kumari", name:"Aloe", san:"Kumari", dev:"कुमारी", hi:"घृतकुमारी / एलोवेरा", latin:"Aloe vera", part:"Leaf gel",
+   rasa:"Bitter, sweet", guna:"Heavy, unctuous, slimy", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Pitta (and Vata in some texts)", code:"P-",
+   karma:"Cooling, soothes skin, liver support", uses:"Skin burning, dryness (gel on skin)", safety:"Do not take the yellow latex by mouth — it is a strong laxative. Avoid internally in pregnancy.",
+   src:["bpn"]},
+  {id:"chandana", name:"Sandalwood", san:"Chandana", dev:"चन्दन", hi:"चंदन", latin:"Santalum album", part:"Heartwood",
+   rasa:"Bitter, sweet", guna:"Light, dry", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Pitta and Kapha", code:"PK-",
+   karma:"Cooling, calms burning, good for skin", uses:"Skin heat, rashes (as paste)", safety:"Use genuine sandalwood; patch-test on skin.",
+   src:["bpn"]},
+  {id:"lodhra", name:"Lodhra", san:"Lodhra", dev:"लोध्र", hi:"लोध", latin:"Symplocos racemosa", part:"Bark",
+   rasa:"Astringent", guna:"Light, dry", virya:"Cooling", vipaka:"Pungent", dosha:"Calms Kapha and Pitta", code:"PK-",
+   karma:"Astringent, good for skin and women's health", uses:"Acne (as face pack), women's health with a vaidya", safety:"Practitioner guidance for internal use.",
+   src:["bpn"]},
+  {id:"bala", name:"Bala", san:"Bala", dev:"बला", hi:"खरैटी", latin:"Sida cordifolia", part:"Root",
+   rasa:"Sweet", guna:"Heavy, unctuous, slimy", virya:"Cooling", vipaka:"Sweet", dosha:"Calms Vata and Pitta", code:"VP-",
+   karma:"Strength-giving, nourishes nerves", uses:"Vata disorders (mostly as oil, e.g. Bala taila)", safety:"Contains ephedrine-like compounds — no internal use with heart disease or high BP.",
+   src:["bpn","charaka"]},
+  {id:"eranda", name:"Castor", san:"Eranda", dev:"एरण्ड", hi:"अरंडी", latin:"Ricinus communis", part:"Root, seed oil",
+   rasa:"Sweet, pungent, astringent", guna:"Heavy, unctuous, sharp", virya:"Heating", vipaka:"Sweet", dosha:"Calms Vata and Kapha", code:"VK-",
+   karma:"Purgative oil, best for Vata", uses:"Constipation, sciatica (Gridhrasi), joint pain", safety:"Seeds are poisonous. Oil is a strong purgative: not in pregnancy, children, bowel blockage.",
+   src:["charaka","bpn"], note:"Charaka's list of 'best' remedies names castor root foremost for Vata (Sutrasthana 25)."},
+  {id:"ghee", name:"Ghee", san:"Go-ghrita", dev:"गोघृत", hi:"घी", latin:"Clarified cow's butter", part:"—",
+   rasa:"Sweet", guna:"Heavy, unctuous, soft", virya:"Cooling", vipaka:"Sweet", dosha:"Calms Vata and Pitta; increases Kapha", code:"VP- K+",
+   karma:"Nourishing, good for memory, eyes and agni (in moderation)", uses:"Dryness, low weight, eyes (classical ghritas)", safety:"Limit with high cholesterol, obesity or weak digestion.",
+   src:["charaka","bpn","kaiyadeva"], note:"Fixed: the first version said ghee lowers Kapha. Classically it increases Kapha."},
+  {id:"tila", name:"Sesame Oil", san:"Tila taila", dev:"तिल तैल", hi:"तिल का तेल", latin:"Sesamum indicum oil", part:"Seed oil",
+   rasa:"Sweet (astringent, bitter after-taste)", guna:"Heavy, unctuous, subtle", virya:"Heating", vipaka:"Sweet", dosha:"Best for Vata; excess can raise Pitta", code:"V- P+",
+   karma:"The classic oil for abhyanga (massage)", uses:"Dryness, stiffness, abhyanga, oil pulling", safety:"Patch-test; avoid on inflamed or infected skin.",
+   src:["charaka","ah","bpn"], note:"Charaka ranks sesame oil the best of plant oils (Sutrasthana 13)."}
+];
+
+// Classical formulations — names only, for learning. Practitioner use. No doses.
+const FORMULAS = {
+  triphala:{name:"Triphala churna", src:"Charaka Samhita (Chikitsa 1) · Sharangadhara Samhita"},
+  avipattikara:{name:"Avipattikara churna", src:"Bhaishajya Ratnavali (Amlapitta)"},
+  hingvashtaka:{name:"Hingvashtaka churna", src:"Ashtanga Hridayam (Chikitsa — Gulma)"},
+  sitopaladi:{name:"Sitopaladi churna", src:"Sharangadhara Samhita (Madhyama Khanda)"},
+  talisadi:{name:"Talisadi churna", src:"Sharangadhara Samhita (Madhyama Khanda)"},
+  yogaraja:{name:"Yogaraja guggulu", src:"Sharangadhara Samhita (Madhyama Khanda)"},
+  kaishore:{name:"Kaishore guggulu", src:"Sharangadhara Samhita (Madhyama Khanda)"},
+  mahanarayana:{name:"Mahanarayana taila (external)", src:"Bhaishajya Ratnavali (Vatavyadhi)"},
+  chyawanprash:{name:"Chyawanprasha", src:"Charaka Samhita (Chikitsa 1)"},
+  medhya:{name:"Medhya Rasayana — Mandukaparni, Yashtimadhu, Guduchi, Shankhapushpi", src:"Charaka Samhita (Chikitsa 1)"},
+  brahmighrita:{name:"Brahmi ghrita", src:"Charaka Samhita (Chikitsa 10 — Apasmara)"},
+  anutaila:{name:"Anu taila (nasya)", src:"Ashtanga Hridayam (Sutrasthana 20)"},
+  pathyadi:{name:"Pathyadi kwatha", src:"Sharangadhara Samhita (Madhyama Khanda)"},
+  nishamalaki:{name:"Nisha-Amalaki (turmeric + amla)", src:"Classical prameha pairing (Charaka / Vagbhata tradition)"},
+  chandraprabha:{name:"Chandraprabha vati", src:"Sharangadhara Samhita (Madhyama Khanda)"},
+  arjunaksheera:{name:"Arjuna ksheerapaka (milk decoction)", src:"Chakradatta (Hridroga)"},
+  khadirarishta:{name:"Khadirarishta", src:"Bhaishajya Ratnavali (Kushtha)"},
+  kumkumadi:{name:"Kumkumadi taila (external)", src:"Bhaishajya Ratnavali (Kshudraroga)"},
+  amalakirasayana:{name:"Amalaki Rasayana", src:"Charaka Samhita (Chikitsa 1)"}
+};
+
+// Yoga library. "kind": classical asana / mudra / pranayama / kriya / modern.
+// src lists where the practice is actually described. Modern = 20th-century practice, not in the classical texts.
+const YOGA = [
+  {id:"padmasana", name:"Padmasana", en:"Lotus", dev:"पद्मासन", kind:"asana", src:["hyp","gheranda"], benefit:"Steady seat for pranayama and meditation.", contra:"Avoid with knee or ankle injury; use Swastikasana instead."},
+  {id:"siddhasana", name:"Siddhasana", en:"Accomplished pose", dev:"सिद्धासन", kind:"asana", src:["hyp","gheranda"], benefit:"Called the foremost seat in Hatha Yoga Pradipika.", contra:"Avoid with knee or hip pain."},
+  {id:"swastikasana", name:"Swastikasana / Sukhasana", en:"Auspicious / easy seat", dev:"स्वस्तिकासन", kind:"asana", src:["hyp","gheranda"], benefit:"Gentle cross-legged seat; Sukhasana is its easy modern form.", contra:"Sit on a cushion if the back rounds."},
+  {id:"vajrasana", name:"Vajrasana", en:"Thunderbolt", dev:"वज्रासन", kind:"asana", src:["gheranda"], benefit:"Traditionally sat in after meals to support digestion.", contra:"Avoid with knee injury or varicose veins."},
+  {id:"gomukhasana", name:"Gomukhasana", en:"Cow face", dev:"गोमुखासन", kind:"asana", src:["hyp","gheranda"], benefit:"Opens shoulders and hips.", contra:"Avoid with shoulder injury."},
+  {id:"virasana", name:"Virasana", en:"Hero", dev:"वीरासन", kind:"asana", src:["hyp","gheranda"], benefit:"Seated pose for legs and digestion.", contra:"Avoid with knee pain; sit on a block."},
+  {id:"simhasana", name:"Simhasana", en:"Lion", dev:"सिंहासन", kind:"asana", src:["hyp","gheranda"], benefit:"Face, throat and voice release.", contra:"Gentle on the jaw and knees."},
+  {id:"matsyendrasana", name:"Matsyendrasana (Ardha)", en:"Seated twist", dev:"मत्स्येन्द्रासन", kind:"asana", src:["hyp","gheranda"], benefit:"Twist for digestion and spine; the half form is the common modern version.", contra:"Avoid in pregnancy, hernia or acute disc problems."},
+  {id:"paschimottanasana", name:"Paschimottanasana", en:"Seated forward bend", dev:"पश्चिमोत्तानासन", kind:"asana", src:["hyp","gheranda"], benefit:"HYP says it kindles digestive fire and slims the belly.", contra:"Avoid with slipped disc or sciatica; bend knees."},
+  {id:"dhanurasana", name:"Dhanurasana", en:"Bow", dev:"धनुरासन", kind:"asana", src:["hyp","gheranda"], benefit:"Strong back bend, energising.", contra:"Avoid with high BP, hernia, ulcer, pregnancy, back injury."},
+  {id:"bhujangasana", name:"Bhujangasana", en:"Cobra", dev:"भुजंगासन", kind:"asana", src:["gheranda"], benefit:"Gentle back strength; Gheranda says it kindles digestive fire.", contra:"Avoid with recent back injury, hernia or pregnancy."},
+  {id:"shalabhasana", name:"Shalabhasana", en:"Locust", dev:"शलभासन", kind:"asana", src:["gheranda"], benefit:"Strengthens lower back and legs.", contra:"Avoid with high BP, heart disease, pregnancy."},
+  {id:"ushtrasana", name:"Ushtrasana", en:"Camel", dev:"उष्ट्रासन", kind:"asana", src:["gheranda"], benefit:"Opens chest and front body.", contra:"Avoid with neck injury, high or low BP."},
+  {id:"vrikshasana", name:"Vrikshasana", en:"Tree", dev:"वृक्षासन", kind:"asana", src:["gheranda"], benefit:"Balance and focus.", contra:"Use a wall with vertigo or unstable ankles."},
+  {id:"makarasana", name:"Makarasana", en:"Crocodile", dev:"मकरासन", kind:"asana", src:["gheranda"], benefit:"Prone rest pose for back and breath.", contra:"Comfortable for most people."},
+  {id:"matsyasana", name:"Matsyasana", en:"Fish", dev:"मत्स्यासन", kind:"asana", src:["gheranda"], benefit:"Opens chest and throat.", contra:"Avoid with neck problems; support the head."},
+  {id:"shavasana", name:"Shavasana", en:"Corpse / rest", dev:"शवासन", kind:"asana", src:["hyp","gheranda"], benefit:"HYP says it removes fatigue and brings rest to the mind.", contra:"Support knees if the lower back aches."},
+  {id:"viparitakarani", name:"Viparita Karani", en:"Inverted action (legs up the wall)", dev:"विपरीत करणी", kind:"mudra", src:["hyp","gheranda"], benefit:"A classical mudra; the supported legs-up-the-wall version is a modern gentle form.", contra:"Avoid with glaucoma, uncontrolled BP, heart disease, during periods for some traditions."},
+  // modern
+  {id:"tadasana", name:"Tadasana", en:"Mountain", dev:"ताडासन", kind:"modern", src:["lightyoga"], benefit:"Posture and grounding.", contra:"Suitable for most people."},
+  {id:"trikonasana", name:"Trikonasana", en:"Triangle", dev:"त्रिकोणासन", kind:"modern", src:["lightyoga"], benefit:"Side stretch, steadiness.", contra:"Avoid deep bend with low BP or neck pain."},
+  {id:"virabhadrasana", name:"Virabhadrasana", en:"Warrior", dev:"वीरभद्रासन", kind:"modern", src:["lightyoga"], benefit:"Leg strength and stamina.", contra:"Avoid with knee injury or high BP (arms down)."},
+  {id:"utkatasana", name:"Utkatasana (modern chair)", en:"Chair", dev:"उत्कटासन", kind:"modern", src:["lightyoga"], benefit:"Leg strength. Gheranda has a different squat by this name.", contra:"Avoid with knee pain."},
+  {id:"setubandha", name:"Setu Bandhasana", en:"Bridge", dev:"सेतुबन्धासन", kind:"modern", src:["lightyoga","apmb"], benefit:"Gentle back and hip strength.", contra:"Avoid with neck injury or late pregnancy."},
+  {id:"balasana", name:"Balasana", en:"Child's pose", dev:"बालासन", kind:"modern", src:["apmb"], benefit:"Rest for back and breath.", contra:"Avoid with knee injury or late pregnancy."},
+  {id:"pawanmukta", name:"Pawanmuktasana", en:"Wind-relieving pose", dev:"पवनमुक्तासन", kind:"modern", src:["apmb"], benefit:"Eases gas and lower back.", contra:"Avoid with hernia or recent abdominal surgery."},
+  {id:"marjari", name:"Marjariasana", en:"Cat-cow", dev:"मार्जरी आसन", kind:"modern", src:["apmb"], benefit:"Gentle spine movement with breath.", contra:"Pad the knees."},
+  {id:"adhomukha", name:"Adho Mukha Svanasana", en:"Downward dog", dev:"अधोमुख श्वानासन", kind:"modern", src:["lightyoga"], benefit:"Stretches back and legs.", contra:"Avoid with high BP, glaucoma, wrist injury."},
+  {id:"suptabaddha", name:"Supta Baddha Konasana", en:"Reclining bound angle", dev:"सुप्त बद्धकोणासन", kind:"modern", src:["lightyoga"], benefit:"Restful hip opener.", contra:"Support knees with cushions."},
+  {id:"malasana", name:"Malasana", en:"Garland squat", dev:"मालासन", kind:"modern", src:["lightyoga"], benefit:"Hip opening; natural squat supports elimination.", contra:"Avoid with knee injury."},
+  {id:"suryanamaskar", name:"Surya Namaskar", en:"Sun salutation", dev:"सूर्य नमस्कार", kind:"modern", src:["apmb"], benefit:"Warming full-body sequence.", contra:"Go slowly with high BP, heart or back problems; avoid in fever."},
+  {id:"suptamatsyendra", name:"Supta Matsyendrasana", en:"Reclining twist", dev:"सुप्त मत्स्येन्द्रासन", kind:"modern", src:["lightyoga"], benefit:"Gentle release for the lower back.", contra:"Keep it gentle with disc problems."},
+  {id:"palming", name:"Palming & eye exercises", en:"Eye relaxation", dev:"नेत्र व्यायाम", kind:"modern", src:["apmb"], benefit:"Rests the eyes after screen work.", contra:"Stop if eyes hurt."},
+  {id:"yoganidra", name:"Yoga Nidra", en:"Guided deep relaxation", dev:"योग निद्रा", kind:"modern", src:["apmb"], benefit:"Systematic relaxation, widely used for sleep and stress (developed by Swami Satyananda).", contra:"Suitable for most people."},
+  // pranayama + kriya
+  {id:"nadishodhana", name:"Nadi Shodhana", en:"Alternate-nostril breath", dev:"नाडी शोधन", kind:"pranayama", src:["hyp","gheranda"], benefit:"HYP describes it to purify the channels; calming and balancing.", contra:"Never force or hold the breath; stop if dizzy."},
+  {id:"ujjayi", name:"Ujjayi", en:"Victorious breath", dev:"उज्जायी", kind:"pranayama", src:["hyp","gheranda"], benefit:"Slow, steady breath with a soft throat sound.", contra:"Skip breath-holding with high BP or heart disease."},
+  {id:"sheetali", name:"Sheetali", en:"Cooling breath", dev:"शीतली", kind:"pranayama", src:["hyp","gheranda"], benefit:"HYP says it cools and relieves excess heat.", contra:"Avoid in cold, cough, asthma, low BP."},
+  {id:"sitkari", name:"Sitkari", en:"Hissing cooling breath", dev:"सीत्कारी", kind:"pranayama", src:["hyp"], benefit:"Cooling, alternative to Sheetali if the tongue cannot roll.", contra:"Avoid in cold or cough."},
+  {id:"bhramari", name:"Bhramari", en:"Humming-bee breath", dev:"भ्रामरी", kind:"pranayama", src:["hyp","gheranda"], benefit:"Calming hum; soothing for the mind.", contra:"Avoid lying down; stop with ear infection."},
+  {id:"bhastrika", name:"Bhastrika", en:"Bellows breath", dev:"भस्त्रिका", kind:"pranayama", src:["hyp","gheranda"], benefit:"Strong, heating, energising breath.", contra:"Avoid with high BP, heart disease, pregnancy, hernia, epilepsy."},
+  {id:"suryabhedana", name:"Surya Bhedana", en:"Right-nostril breath", dev:"सूर्य भेदन", kind:"pranayama", src:["hyp","gheranda"], benefit:"Warming breath, classically for Vata and cold.", contra:"Avoid with high BP or heat."},
+  {id:"chandrabhedana", name:"Chandra Bhedana (modern)", en:"Left-nostril breath", dev:"चन्द्र भेदन", kind:"modern", src:["apmb"], benefit:"Cooling, calming left-nostril breathing; a modern counterpart to Surya Bhedana.", contra:"Avoid with low BP or cold."},
+  {id:"dirgha", name:"Dirgha Shwasa (modern)", en:"Full slow belly breath", dev:"दीर्घ श्वास", kind:"modern", src:["apmb"], benefit:"Slow three-part breath; safe for most people.", contra:"Keep it relaxed."},
+  {id:"kapalabhati", name:"Kapalabhati", en:"Skull-shining breath", dev:"कपालभाति", kind:"kriya", src:["hyp","gheranda"], benefit:"A cleansing practice (shatkarma) that clears Kapha and energises.", contra:"Avoid with high BP, heart disease, hernia, pregnancy, periods, epilepsy, recent surgery."},
+  {id:"neti", name:"Neti", en:"Nasal cleansing", dev:"नेति", kind:"kriya", src:["hyp","gheranda"], benefit:"HYP describes sutra neti; jala neti (with water) is the common modern form.", contra:"Use only boiled-and-cooled or sterile water. Avoid with ear infection or nosebleeds. Learn from a teacher."},
+  {id:"trataka", name:"Trataka", en:"Steady gazing", dev:"त्राटक", kind:"kriya", src:["hyp","gheranda"], benefit:"HYP says it benefits the eyes and steadies the mind.", contra:"Keep it brief; avoid with epilepsy, glaucoma or eye strain."}
+];
+
+const THERAPIES = [
+  {name:"Abhyanga", dev:"अभ्यङ्ग", what:"Warm-oil full-body massage. Ashtanga Hridayam (Su 2) advises it daily, especially on the head, ears and feet.", safety:"Home: gentle self-massage. Avoid during fever, indigestion or right after meals."},
+  {name:"Padabhyanga", dev:"पादाभ्यङ्ग", what:"Warm-oil foot massage, traditionally for sleep, calm and the eyes.", safety:"Home: suitable for most people."},
+  {name:"Nasya", dev:"नस्य", what:"Oil or medicine through the nose. Ashtanga Hridayam Sutrasthana 20 describes it, including daily Pratimarsha nasya with Anu taila.", safety:"Learn from a vaidya first. Not during cold, fever, pregnancy or right after meals."},
+  {name:"Karna Purana", dev:"कर्णपूरण", what:"Classical ear oiling, mentioned in daily routine texts.", safety:"Practitioner only. Never put oil in the ear with ear pain, discharge or a perforated eardrum."},
+  {name:"Netra Tarpana", dev:"नेत्र तर्पण", what:"Classical eye therapy with medicated ghee held in a dough ring (Ashtanga Hridayam Sutrasthana 24).", safety:"Practitioner only. Never attempt at home."},
+  {name:"Kati Basti", dev:"कटि बस्ति", what:"Warm medicated oil held over the lower back in a dough ring.", safety:"Practitioner only. Needs assessment."},
+  {name:"Shirodhara", dev:"शिरोधारा", what:"A steady stream of warm oil or liquid on the forehead, used for stress and sleep.", safety:"Practitioner only."},
+  {name:"Panchakarma", dev:"पञ्चकर्म", what:"The five classical cleansing procedures (vamana, virechana, basti, nasya, raktamokshana) from Charaka and Sushruta.", safety:"Only under a qualified vaidya, after full assessment."}
+];
+
+// Extra classical data per condition, merged with the original trilingual text.
+// refs are chapter-level pointers; verify against a standard edition (e.g. Chaukhamba).
+const V = {
+  hyp22:{dev:"चले वाते चलं चित्तं निश्चले निश्चलं भवेत्", iast:"cale vāte calaṃ cittaṃ niścale niścalaṃ bhavet", where:"Hatha Yoga Pradipika 2.2", meaning:"When the breath moves, the mind moves; when the breath is still, the mind becomes still."},
+  nidra:{dev:"निद्रायत्तं सुखं दुःखं पुष्टिः कार्श्यं बलाबलम्", iast:"nidrāyattaṃ sukhaṃ duḥkhaṃ puṣṭiḥ kārśyaṃ balābalam", where:"Charaka Samhita, Sutrasthana 21", meaning:"Happiness and sorrow, nourishment and wasting, strength and weakness all depend on sleep."},
+  agni:{dev:"रोगाः सर्वेऽपि मन्देऽग्नौ", iast:"rogāḥ sarve 'pi mande 'gnau", where:"Ashtanga Hridayam, Nidanasthana 12", meaning:"All diseases arise when the digestive fire is weak."},
+  vega:{dev:"न वेगान् धारयेद्धीमाञ्जातान् मूत्रपुरीषयोः", iast:"na vegān dhārayed dhīmāñ jātān mūtra-purīṣayoḥ", where:"Charaka Samhita, Sutrasthana 7", meaning:"A wise person does not hold back natural urges such as urine and stool."},
+  svastha:{dev:"समदोषः समाग्निश्च समधातुमलक्रियः", iast:"sama-doṣaḥ samāgniś ca sama-dhātu-mala-kriyaḥ", where:"Sushruta Samhita, Sutrasthana 15", meaning:"Health is balanced doshas, balanced agni, and balanced tissues and excretions."},
+  sthira:{dev:"कुर्यात्तदासनं स्थैर्यमारोग्यं चाङ्गलाघवम्", iast:"kuryāt tad āsanaṃ sthairyam ārogyaṃ cāṅga-lāghavam", where:"Hatha Yoga Pradipika 1.17", meaning:"Asana should be practised for steadiness, health and lightness of the body."},
+  brahma:{dev:"ब्राह्मे मुहूर्त उत्तिष्ठेत् स्वस्थो रक्षार्थमायुषः", iast:"brāhme muhūrta uttiṣṭhet svastho rakṣārtham āyuṣaḥ", where:"Ashtanga Hridayam, Sutrasthana 2.1", meaning:"A healthy person should rise in Brahma muhurta (before dawn) to protect life."},
+  gita:{dev:"युक्ताहारविहारस्य युक्तचेष्टस्य कर्मसु", iast:"yuktāhāra-vihārasya yukta-ceṣṭasya karmasu", where:"Bhagavad Gita 6.17", meaning:"For one moderate in food, recreation and effort, yoga removes sorrow."},
+  upastambha:{dev:"त्रय उपस्तम्भा इति — आहारः स्वप्नो ब्रह्मचर्यमिति", iast:"traya upastambhā iti — āhāraḥ svapno brahmacaryam iti", where:"Charaka Samhita, Sutrasthana 11.35", meaning:"Life rests on three supports: food, sleep and a disciplined life."},
+  prayojana:{dev:"स्वस्थस्य स्वास्थ्यरक्षणम् आतुरस्य विकारप्रशमनं च", iast:"svasthasya svāsthya-rakṣaṇam āturasya vikāra-praśamanaṃ ca", where:"Charaka Samhita, Sutrasthana 30.26", meaning:"Protect the health of the healthy; relieve the disorder of the sick."},
+  prameha:{dev:"आस्यासुखं स्वप्नसुखं दधीनि…", iast:"āsyāsukhaṃ svapnasukhaṃ dadhīni…", where:"Charaka Samhita, Chikitsasthana 6.4", meaning:"Too much comfortable sitting and sleeping, curd and heavy foods are listed among the causes of prameha."},
+  pranayama:{dev:"प्राणायामेन युक्तेन सर्वरोगक्षयो भवेत्। अयुक्ताभ्यासयोगेन सर्वरोगसमुद्भवः॥", iast:"prāṇāyāmena yuktena sarva-roga-kṣayo bhavet, ayuktābhyāsa-yogena sarva-roga-samudbhavaḥ", where:"Hatha Yoga Pradipika 2.16", meaning:"Correct pranayama is said to remove disease; wrong practice creates it. Practise gently, with a teacher."}
+};
+
+const COND = {
+  stress:{term:"Chittodvega / Manasika vikara", herbs:["brahmi","shankhapushpi","jatamansi","ashwagandha"], yoga:["swastikasana","balasana","shavasana","yoganidra"], breath:["nadishodhana","bhramari"], formulas:["medhya"], therapies:["Shirodhara","Padabhyanga"],
+    refs:[{b:"charaka",w:"Chikitsa 1 — Medhya Rasayana"},{b:"ys",w:"1.2 and 1.33 — stilling and steadying the mind"},{b:"hyp",w:"2.2 — breath and mind"}], verse:"hyp22",
+    diet:"Warm, regular, simple meals; less caffeine late in the day."},
+  sleep:{term:"Anidra / Nidranasha", herbs:["ashwagandha","jatamansi","brahmi","shankhapushpi"], yoga:["viparitakarani","suptabaddha","shavasana","yoganidra"], breath:["bhramari","chandrabhedana"], formulas:["brahmighrita"], therapies:["Padabhyanga","Abhyanga","Shirodhara"],
+    refs:[{b:"charaka",w:"Sutrasthana 21 — on sleep (nidra)"},{b:"ah",w:"Sutrasthana 7 — sleep section"},{b:"charaka",w:"Sutrasthana 11.35 — the three supports of life"}], verse:"nidra",
+    diet:"Light early dinner; warm milk (if it suits you) at night is a traditional sleep aid."},
+  acidity:{term:"Amlapitta", herbs:["amalaki","yashtimadhu","shatavari","dhanyaka","musta"], yoga:["vajrasana","pawanmukta","shavasana"], breath:["sheetali","nadishodhana"], formulas:["avipattikara"], therapies:[],
+    refs:[{b:"madhava",w:"Amlapitta Nidana — first described as its own disease here"},{b:"chakradatta",w:"Amlapitta Chikitsa"},{b:"br",w:"Amlapitta chapter"},{b:"kaiyadeva",w:"Pathya-apathya of foods"}], verse:"agni",
+    diet:"Avoid very spicy, sour, fermented and fried food, and long gaps between meals."},
+  constipation:{term:"Vibandha / Malavashtambha", herbs:["haritaki","amalaki","bibhitaki","eranda","ghee"], yoga:["pawanmukta","malasana","matsyendrasana","bhujangasana"], breath:["dirgha"], formulas:["triphala"], therapies:["Abhyanga"],
+    refs:[{b:"charaka",w:"Sutrasthana 7 — never suppress natural urges"},{b:"charaka",w:"Chikitsa 1 — Triphala"},{b:"bpn",w:"Haritaki — Bhavaprakasha Nighantu"}], verse:"vega",
+    diet:"Warm water, cooked vegetables, a little ghee; enough fluid and fibre."},
+  bloating:{term:"Adhmana / Anaha", herbs:["shunthi","jeeraka","yavani","hingu"], yoga:["pawanmukta","vajrasana","marjari","matsyendrasana"], breath:["dirgha"], formulas:["hingvashtaka"], therapies:[],
+    refs:[{b:"madhava",w:"Anaha Nidana"},{b:"ah",w:"Chikitsa — Gulma (Hingvashtaka)"},{b:"charaka",w:"Chikitsa 15 — Grahani (agni)"}], verse:"svastha",
+    diet:"Warm, cooked, freshly made food; avoid cold drinks and raw salads late in the day."},
+  cold:{term:"Pratishyaya / Kasa", herbs:["tulasi","shunthi","pippali","haridra","vasa","yashtimadhu"], yoga:["simhasana","matsyasana","bhujangasana"], breath:["ujjayi","suryabhedana"], formulas:["sitopaladi","talisadi"], therapies:[],
+    refs:[{b:"charaka",w:"Chikitsa 18 — Kasa (cough)"},{b:"sushruta",w:"Uttara Tantra — Pratishyaya"},{b:"sharangadhara",w:"Madhyama Khanda — Sitopaladi, Talisadi"}], verse:null,
+    diet:"Warm soups, ginger-tulsi tea, rest; avoid cold, heavy and very sweet food."},
+  sinus:{term:"Pinasa / Pratishyaya", herbs:["tulasi","haridra","shunthi","pippali"], yoga:["simhasana","matsyasana","bhujangasana"], breath:["nadishodhana","bhramari"], formulas:["anutaila"], therapies:["Nasya"],
+    refs:[{b:"sushruta",w:"Uttara Tantra — nose diseases"},{b:"ah",w:"Sutrasthana 20 — Nasya"},{b:"hyp",w:"Chapter 2 — Neti (cleansing)"}], verse:null,
+    diet:"Warm food, steam with care; less dairy and cold food if it worsens congestion."},
+  headache:{term:"Shirahshula (Ardhavabhedaka = one-sided)", herbs:["brahmi","jatamansi","dhanyaka","chandana"], yoga:["balasana","shavasana","viparitakarani"], breath:["nadishodhana","bhramari","sheetali"], formulas:["pathyadi"], therapies:["Nasya","Shirodhara"],
+    refs:[{b:"charaka",w:"Sutrasthana 17 — diseases of the head"},{b:"sushruta",w:"Uttara Tantra — Shiroroga"},{b:"sharangadhara",w:"Pathyadi kwatha"}], verse:null,
+    diet:"Regular meals and water; note triggers like skipped meals, sun or screens."},
+  back:{term:"Katishula / Gridhrasi (sciatica)", herbs:["ashwagandha","guggulu","shunthi","eranda","tila"], yoga:["makarasana","marjari","bhujangasana","suptamatsyendra"], breath:["dirgha"], formulas:["mahanarayana","yogaraja"], therapies:["Abhyanga","Kati Basti"],
+    refs:[{b:"charaka",w:"Chikitsa 28 — Vatavyadhi (incl. Gridhrasi)"},{b:"sushruta",w:"Nidana 1 — Vatavyadhi"},{b:"br",w:"Vatavyadhi — Mahanarayana taila"}], verse:"sthira",
+    diet:"Warm, cooked, slightly oily food; avoid cold, dry and stale food."},
+  joint:{term:"Sandhigata Vata / Amavata", herbs:["guggulu","haridra","shunthi","methika","guduchi"], yoga:["tadasana","virabhadrasana","marjari","gomukhasana"], breath:["ujjayi"], formulas:["yogaraja","mahanarayana"], therapies:["Abhyanga"],
+    refs:[{b:"charaka",w:"Chikitsa 28 — Sandhigata Vata"},{b:"madhava",w:"Amavata Nidana — first described here"},{b:"chakradatta",w:"Amavata Chikitsa"}], verse:"sthira",
+    diet:"Hot red, swollen joints (Amavata): light warm food, dry ginger water; avoid heavy, cold food."},
+  energy:{term:"Klama / Daurbalya; Ojas", herbs:["ashwagandha","shatavari","amalaki","guduchi"], yoga:["suryanamaskar","trikonasana","virabhadrasana"], breath:["bhastrika","nadishodhana"], formulas:["chyawanprash"], therapies:["Abhyanga"],
+    refs:[{b:"charaka",w:"Chikitsa 1 — Rasayana"},{b:"charaka",w:"Sutrasthana 17 & 30 — Ojas"},{b:"ah",w:"Sutrasthana 2 — Dinacharya"}], verse:"brahma",
+    diet:"Regular nourishing meals; check iron, thyroid and vitamin levels with a doctor if tiredness persists."},
+  weightgain:{term:"Sthaulya / Medoroga", herbs:["haritaki","shunthi","haridra","guggulu"], yoga:["suryanamaskar","utkatasana","matsyendrasana","paschimottanasana"], breath:["kapalabhati","bhastrika"], formulas:["triphala","kaishore"], therapies:["Udvartana (dry powder massage)"],
+    refs:[{b:"charaka",w:"Sutrasthana 21 — Sthaulya and Karshya"},{b:"hyp",w:"Chapter 1 — Paschimottanasana and digestion"},{b:"gita",w:"6.17 — moderation"}], verse:"gita",
+    diet:"Lighter, warm meals, no snacking between meals; avoid day-sleep after lunch."},
+  weightloss:{term:"Karshya", herbs:["ashwagandha","shatavari","ghee","bala"], yoga:["vrikshasana","setubandha","shavasana"], breath:["nadishodhana"], formulas:["chyawanprash"], therapies:["Abhyanga"],
+    refs:[{b:"charaka",w:"Sutrasthana 21 — Karshya"},{b:"charaka",w:"Sutrasthana 11.35 — food, sleep, discipline"}], verse:"upastambha",
+    diet:"Regular, nourishing, sweet-tasting meals with milk, ghee, rice, dates. Unexplained weight loss needs a doctor."},
+  acne:{term:"Yuvana Pidaka / Mukhadushika", herbs:["nimba","manjishtha","haridra","lodhra","chandana"], yoga:["marjari","simhasana","shavasana"], breath:["sheetali","sitkari"], formulas:["khadirarishta","kumkumadi"], therapies:[],
+    refs:[{b:"madhava",w:"Kshudraroga — Yuvana pidaka"},{b:"sushruta",w:"Nidana — Kshudraroga"},{b:"br",w:"Kshudraroga — Kumkumadi taila"}], verse:null,
+    diet:"Less fried, very spicy and sugary food; enough sleep."},
+  hairfall:{term:"Khalitya / Indralupta", herbs:["bhringaraja","amalaki","brahmi","yashtimadhu"], yoga:["adhomukha","viparitakarani","shavasana"], breath:["nadishodhana","bhramari"], formulas:["anutaila"], therapies:["Abhyanga","Nasya"],
+    refs:[{b:"madhava",w:"Kshudraroga — Khalitya, Indralupta"},{b:"ah",w:"Sutrasthana 20 — Nasya (benefits for hair)"},{b:"ah",w:"Sutrasthana 2 — head oiling"}], verse:null,
+    diet:"Protein, iron and amla in the diet; sudden heavy hair loss or patches need a doctor."},
+  immunity:{term:"Vyadhikshamatva / Ojas", herbs:["amalaki","guduchi","tulasi","ashwagandha"], yoga:["suryanamaskar","bhujangasana","setubandha"], breath:["nadishodhana","dirgha"], formulas:["chyawanprash","amalakirasayana"], therapies:["Abhyanga"],
+    refs:[{b:"charaka",w:"Sutrasthana 28 — Vyadhikshamatva"},{b:"charaka",w:"Chikitsa 1 — Rasayana"},{b:"ah",w:"Sutrasthana 3 — Ritucharya"}], verse:"prayojana",
+    diet:"Seasonal food, enough sleep; follow standard vaccinations."},
+  diabetes:{term:"Prameha / Madhumeha", herbs:["meshashringi","haridra","amalaki","methika","guduchi"], yoga:["matsyendrasana","pawanmukta","vrikshasana","suryanamaskar"], breath:["nadishodhana"], formulas:["nishamalaki","chandraprabha"], therapies:[],
+    refs:[{b:"charaka",w:"Nidana 4 & Chikitsa 6 — Prameha"},{b:"sushruta",w:"Chikitsa — Prameha"},{b:"madhava",w:"Prameha Nidana"}], verse:"prameha",
+    diet:"Barley, millets, bitter vegetables, daily walking. Never stop diabetes medicine for herbs."},
+  bp:{term:"No exact classical equivalent (modern correlations debated)", herbs:["arjuna","brahmi","jatamansi","dhanyaka"], yoga:["shavasana","balasana","makarasana","yoganidra"], breath:["nadishodhana","bhramari","sheetali"], formulas:["arjunaksheera"], therapies:["Shirodhara"],
+    refs:[{b:"charaka",w:"Sutrasthana 30 — the heart (hridaya)"},{b:"charaka",w:"Chikitsa 26 — Hridroga"},{b:"chakradatta",w:"Hridroga — Arjuna"}], verse:"hyp22",
+    diet:"Less salt and processed food. Avoid Kapalabhati, Bhastrika, breath-holding and inversions. Never stop BP medicine for herbs."},
+  pcos:{term:"No exact classical equivalent (Artava kshaya / Yonivyapat discussed)", herbs:["shatavari","haridra","guduchi","methika"], yoga:["malasana","setubandha","suptabaddha","suryanamaskar"], breath:["nadishodhana","bhramari"], formulas:[], therapies:[],
+    refs:[{b:"charaka",w:"Chikitsa 30 — Yonivyapat"},{b:"sushruta",w:"Sharira 2 — Artava"}], verse:null,
+    diet:"Regular meals, less refined sugar, daily movement; work with a gynaecologist."},
+  eye:{term:"Netra roga (eye strain has no single classical name)", herbs:["amalaki","haritaki","ghee","daruharidra"], yoga:["palming","trataka","shavasana"], breath:["sheetali"], formulas:["triphala"], therapies:["Netra Tarpana","Padabhyanga"],
+    refs:[{b:"sushruta",w:"Uttara Tantra 1–19 — eye diseases"},{b:"ah",w:"Sutrasthana 24 — Tarpana"},{b:"hyp",w:"2 — Trataka"}], verse:null,
+    diet:"20-20-20 rule for screens; amla and greens. Do not put home remedies into the eye."},
+  ear:{term:"Karna roga (Karnanada = ringing)", herbs:["tila","ghee","bala"], yoga:["simhasana","shavasana"], breath:["bhramari"], formulas:[], therapies:["Karna Purana","Abhyanga"],
+    refs:[{b:"sushruta",w:"Uttara Tantra — ear diseases"},{b:"ah",w:"Sutrasthana 2 — oiling head, ears, feet"}], verse:null,
+    diet:"Keep ears dry; no cotton buds deep inside."},
+  skin:{term:"Kushtha (skin disease, broadly) / Vicharchika", herbs:["manjishtha","haridra","nimba","kumari","chandana"], yoga:["shavasana","simhasana","matsyendrasana"], breath:["sheetali","nadishodhana"], formulas:["khadirarishta"], therapies:["Abhyanga"],
+    refs:[{b:"charaka",w:"Chikitsa 7 — Kushtha"},{b:"charaka",w:"Sutrasthana 4 — skin-healing herb groups"},{b:"br",w:"Kushtha — Khadirarishta"}], verse:null,
+    diet:"Less fried, very sour and salty food; avoid incompatible combinations like fish with milk (viruddha ahara)."}
+};
+
+// New UI strings (merged over the original trilingual strings).
+const UI_NEW = {
+  en:{ all:"All", navCond:"Conditions", navLib:"Granthas", navHerb:"Herbs", navYoga:"Yoga", navTher:"Therapies", navJournal:"Journal", navSafety:"Safety",
+    heroText:"A classical learning companion for everyday wellbeing — built on Charaka, Sushruta, Vagbhata, the nighantus and the Hatha Yoga texts. Educational, not a prescription.",
+    statCond:"Conditions & daily care", statBooks:"Ayurveda + Yoga texts", statHerbs:"Herbs with classical properties", statDose:"No doses", statDoseSub:"Education only",
+    explore:"Explore the guide", openLib:"Open the granthas",
+    term:"Classical name", formulas:"Classical formulations", formulasNote:"Names only, for learning. Practitioner use — no doses here.", therapies:"Classical therapies", refs:"Where the texts discuss it", refsNote:"Chapter-level pointers. Check a standard edition.", verse:"From the texts", diet:"Food (pathya)", breathL:"Pranayama",
+    library:"Grantha Library", librarySub:"Every book this guide draws on — Ayurveda classics, herb dictionaries, treatment manuals, yoga texts, and modern references.", structure:"Structure", era:"Period", author:"Author", inApp:"Used in this guide for",
+    herbLib:"Herb Library", herbLibSub:"Taste, qualities, potency and dosha action as given in the nighantus, mainly Bhavaprakasha Nighantu.", herbSearch:"Search herbs — English, Sanskrit or Hindi…",
+    rasa:"Taste (rasa)", guna:"Qualities (guna)", virya:"Potency (virya)", vipaka:"After digestion (vipaka)", doshaL:"Dosha action", karma:"Actions (karma)", usesL:"Traditional uses", cautionL:"Caution", sourcesL:"Sources", part:"Part used", noteL:"Note", usedFor:"Appears in",
+    yogaLib:"Yoga Library", yogaLibSub:"Each practice shows where it is actually described. 'Modern' means 20th-century practice, not found in the classical texts.", fClassical:"Classical asana", fBreath:"Pranayama & kriya", fModern:"Modern", fMudra:"Mudra",
+    benefit:"Benefit", contra:"Avoid if", therSub:"Classical procedures. Most need a trained practitioner.",
+    journalLocal:"Your posts are saved in this browser only.", title_:"Title", excerpt_:"Short summary", body_:"Text", cat_:"Category", read_:"Minutes to read", confirmDel:"Tap again to delete", newPost:"New post", editPost:"Edit post", resetPosts:"Restore starter posts",
+    chatOpen:"Ask AyurYog Mitra", helpline:"In India you can call Tele-MANAS on 14416 — free, 24×7, in many languages. You are not alone.", send:"Send", herbCard:"Herb", englishNote:"Detailed classical notes are in English.", noResults:"Nothing matches your search.",
+    safetyItems:["Chest pain, breathlessness, fainting, high fever, bleeding, sudden weakness or thoughts of self-harm need emergency care — not herbs or yoga.","Never stop or change prescribed medicine on your own.","Pregnancy, breastfeeding, children and older adults: ask a vaidya or doctor before any herb.","Herbs can interact with medicines for blood sugar, blood pressure, thyroid and blood thinning.","Buy only from licensed (AYUSH / GMP) pharmacies — some products have been found with heavy metals.","Practise breathing gently. The Hatha Yoga Pradipika itself warns that wrong practice causes disease."],
+    footerText:"This guide draws on the classical texts listed in the Grantha Library. References are chapter-level pointers — the same verse can have different numbers in different editions, so check a standard edition such as Chaukhamba. Herb properties follow the nighantu tradition; texts sometimes disagree. Modern books are cited, never reproduced. No doses. No cure claims.",
+    fixes:"What changed in this version", fixList:["Fixed: Ashtanga Hridayam is part of the Brihat Trayi (not Laghu Trayi).","Fixed: ghee increases Kapha; Brahmi is cooling and does not raise Pitta.","Fixed: yoga sources — Shavasana and Viparita Karani are in the Hatha Yoga Pradipika, not the Yoga Sutras.","Replaced made-up 'Sanskrit' quotes with real verses, each with its source.","Chat now understands Hindi and Marathi typed in Devanagari, and checks for emergencies in all three languages."]},
+  hi:{ all:"सभी", navCond:"स्थितियाँ", navLib:"ग्रंथ", navHerb:"जड़ी-बूटी", navYoga:"योग", navTher:"चिकित्सा", navJournal:"जर्नल", navSafety:"सुरक्षा",
+    heroText:"दैनिक स्वास्थ्य के लिए एक शास्त्रीय शिक्षण साथी — चरक, सुश्रुत, वाग्भट, निघण्टु और हठयोग ग्रंथों पर आधारित। यह शिक्षा है, नुस्खा नहीं।",
+    statCond:"स्थितियाँ और दैनिक देखभाल", statBooks:"आयुर्वेद + योग ग्रंथ", statHerbs:"शास्त्रीय गुणों सहित जड़ी-बूटियाँ", statDose:"कोई मात्रा नहीं", statDoseSub:"केवल शिक्षा",
+    explore:"मार्गदर्शिका देखें", openLib:"ग्रंथ खोलें",
+    term:"शास्त्रीय नाम", formulas:"शास्त्रीय योग (औषधियाँ)", formulasNote:"केवल नाम, सीखने के लिए। वैद्य के मार्गदर्शन में — यहाँ कोई मात्रा नहीं।", therapies:"शास्त्रीय चिकित्साएँ", refs:"ग्रंथों में कहाँ वर्णित", refsNote:"अध्याय स्तर के संदर्भ। किसी मानक संस्करण में जाँचें।", verse:"ग्रंथ से", diet:"आहार (पथ्य)", breathL:"प्राणायाम",
+    library:"ग्रंथ पुस्तकालय", librarySub:"वे सभी ग्रंथ जिनसे यह मार्गदर्शिका सीखती है — आयुर्वेद संहिताएँ, निघण्टु, चिकित्सा ग्रंथ, योग ग्रंथ और आधुनिक संदर्भ।", structure:"संरचना", era:"काल", author:"लेखक", inApp:"इस मार्गदर्शिका में उपयोग",
+    herbLib:"जड़ी-बूटी पुस्तकालय", herbLibSub:"निघण्टुओं (मुख्यतः भावप्रकाश निघण्टु) के अनुसार रस, गुण, वीर्य, विपाक और दोष कर्म।", herbSearch:"जड़ी-बूटी खोजें — अंग्रेज़ी, संस्कृत या हिंदी…",
+    rasa:"रस", guna:"गुण", virya:"वीर्य", vipaka:"विपाक", doshaL:"दोष कर्म", karma:"कर्म", usesL:"पारंपरिक उपयोग", cautionL:"सावधानी", sourcesL:"स्रोत", part:"प्रयोज्य अंग", noteL:"टिप्पणी", usedFor:"इनमें शामिल",
+    yogaLib:"योग पुस्तकालय", yogaLibSub:"हर अभ्यास के साथ उसका वास्तविक स्रोत। 'आधुनिक' यानी 20वीं सदी का अभ्यास, शास्त्रीय ग्रंथों में नहीं।", fClassical:"शास्त्रीय आसन", fBreath:"प्राणायाम और क्रिया", fModern:"आधुनिक", fMudra:"मुद्रा",
+    benefit:"लाभ", contra:"इनमें न करें", therSub:"शास्त्रीय प्रक्रियाएँ। अधिकांश के लिए प्रशिक्षित वैद्य आवश्यक।",
+    journalLocal:"आपकी पोस्ट केवल इसी ब्राउज़र में सहेजी जाती हैं।", title_:"शीर्षक", excerpt_:"संक्षेप", body_:"पाठ", cat_:"वर्ग", read_:"पढ़ने के मिनट", confirmDel:"हटाने के लिए फिर दबाएँ", newPost:"नई पोस्ट", editPost:"पोस्ट संपादित करें", resetPosts:"प्रारंभिक पोस्ट वापस लाएँ",
+    chatOpen:"आयुर्योग मित्र से पूछें", helpline:"भारत में आप टेली-मानस 14416 पर कॉल कर सकते हैं — निःशुल्क, 24×7, कई भाषाओं में। आप अकेले नहीं हैं।", send:"भेजें", herbCard:"जड़ी-बूटी", englishNote:"विस्तृत शास्त्रीय टिप्पणियाँ अंग्रेज़ी में हैं।", noResults:"खोज से कुछ नहीं मिला।",
+    safetyItems:["सीने में दर्द, साँस फूलना, बेहोशी, तेज़ बुखार, रक्तस्राव, अचानक कमजोरी या खुद को नुकसान के विचार — तुरंत आपात चिकित्सा लें, जड़ी-बूटी या योग नहीं।","डॉक्टर की दी दवा अपने आप बंद या न बदलें।","गर्भावस्था, स्तनपान, बच्चे और बुज़ुर्ग: कोई भी जड़ी-बूटी लेने से पहले वैद्य/डॉक्टर से पूछें।","जड़ी-बूटियाँ शुगर, बीपी, थायरॉइड और खून पतला करने की दवाओं से प्रतिक्रिया कर सकती हैं।","केवल लाइसेंस प्राप्त (आयुष / GMP) फ़ार्मेसी से खरीदें — कुछ उत्पादों में भारी धातुएँ पाई गई हैं।","श्वास अभ्यास सौम्यता से करें। हठयोग प्रदीपिका स्वयं कहती है कि गलत अभ्यास रोग पैदा करता है।"],
+    footerText:"यह मार्गदर्शिका ग्रंथ पुस्तकालय में दिए शास्त्रीय ग्रंथों पर आधारित है। संदर्भ अध्याय स्तर के हैं — अलग संस्करणों में श्लोक संख्या बदल सकती है, इसलिए चौखम्बा जैसे मानक संस्करण में जाँचें। आधुनिक पुस्तकों का केवल उल्लेख है, पुनरुत्पादन नहीं। कोई मात्रा नहीं। कोई इलाज का दावा नहीं।",
+    fixes:"इस संस्करण में क्या बदला", fixList:["सुधार: अष्टांग हृदयम् बृहत्त्रयी का भाग है (लघुत्रयी नहीं)।","सुधार: घी कफ बढ़ाता है; ब्राह्मी शीतल है और पित्त नहीं बढ़ाती।","सुधार: शवासन और विपरीत करणी हठयोग प्रदीपिका में हैं, योगसूत्र में नहीं।","बनावटी 'संस्कृत' उद्धरणों की जगह स्रोत सहित वास्तविक श्लोक।","चैट अब देवनागरी में हिंदी और मराठी समझता है और तीनों भाषाओं में आपात स्थिति जाँचता है।"]},
+  mr:{ all:"सर्व", navCond:"तक्रारी", navLib:"ग्रंथ", navHerb:"वनस्पती", navYoga:"योग", navTher:"चिकित्सा", navJournal:"जर्नल", navSafety:"सुरक्षितता",
+    heroText:"दैनंदिन आरोग्यासाठी शास्त्रीय शिक्षण सोबती — चरक, सुश्रुत, वाग्भट, निघण्टु आणि हठयोग ग्रंथांवर आधारित. हे शिक्षण आहे, औषधोपचार नाही.",
+    statCond:"तक्रारी आणि दैनंदिन काळजी", statBooks:"आयुर्वेद + योग ग्रंथ", statHerbs:"शास्त्रीय गुणांसह वनस्पती", statDose:"मात्रा नाही", statDoseSub:"केवळ शिक्षण",
+    explore:"मार्गदर्शक पहा", openLib:"ग्रंथ उघडा",
+    term:"शास्त्रीय नाव", formulas:"शास्त्रीय कल्प (औषधे)", formulasNote:"केवळ नावे, शिकण्यासाठी. वैद्याच्या मार्गदर्शनाखाली — येथे मात्रा नाही.", therapies:"शास्त्रीय चिकित्सा", refs:"ग्रंथांमध्ये कुठे वर्णन", refsNote:"अध्याय पातळीवरील संदर्भ. प्रमाणित आवृत्तीत तपासा.", verse:"ग्रंथातून", diet:"आहार (पथ्य)", breathL:"प्राणायाम",
+    library:"ग्रंथ ग्रंथालय", librarySub:"हा मार्गदर्शक ज्या ग्रंथांवर आधारित आहे ते सर्व — आयुर्वेद संहिता, निघण्टु, चिकित्सा ग्रंथ, योग ग्रंथ आणि आधुनिक संदर्भ.", structure:"रचना", era:"काळ", author:"लेखक", inApp:"या मार्गदर्शकात वापर",
+    herbLib:"वनस्पती ग्रंथालय", herbLibSub:"निघण्टूंनुसार (मुख्यतः भावप्रकाश निघण्टु) रस, गुण, वीर्य, विपाक आणि दोष कर्म.", herbSearch:"वनस्पती शोधा — इंग्रजी, संस्कृत किंवा हिंदी…",
+    rasa:"रस", guna:"गुण", virya:"वीर्य", vipaka:"विपाक", doshaL:"दोष कर्म", karma:"कर्म", usesL:"पारंपरिक उपयोग", cautionL:"खबरदारी", sourcesL:"स्रोत", part:"वापरला जाणारा भाग", noteL:"टीप", usedFor:"यात समाविष्ट",
+    yogaLib:"योग ग्रंथालय", yogaLibSub:"प्रत्येक सरावासोबत त्याचा खरा स्रोत. 'आधुनिक' म्हणजे 20व्या शतकातील सराव, शास्त्रीय ग्रंथांत नाही.", fClassical:"शास्त्रीय आसन", fBreath:"प्राणायाम आणि क्रिया", fModern:"आधुनिक", fMudra:"मुद्रा",
+    benefit:"फायदा", contra:"यात करू नका", therSub:"शास्त्रीय प्रक्रिया. बहुतेकांसाठी प्रशिक्षित वैद्य आवश्यक.",
+    journalLocal:"तुमच्या पोस्ट फक्त या ब्राउझरमध्ये जतन होतात.", title_:"शीर्षक", excerpt_:"सारांश", body_:"मजकूर", cat_:"वर्ग", read_:"वाचण्याची मिनिटे", confirmDel:"हटवण्यासाठी पुन्हा दाबा", newPost:"नवीन पोस्ट", editPost:"पोस्ट संपादित करा", resetPosts:"सुरुवातीच्या पोस्ट परत आणा",
+    chatOpen:"आयुर्योग मित्राला विचारा", helpline:"भारतात तुम्ही टेली-मानस 14416 वर कॉल करू शकता — मोफत, 24×7, अनेक भाषांत. तुम्ही एकटे नाही.", send:"पाठवा", herbCard:"वनस्पती", englishNote:"सविस्तर शास्त्रीय टिपा इंग्रजीत आहेत.", noResults:"शोधाशी काहीही जुळले नाही.",
+    safetyItems:["छातीत दुखणे, दम लागणे, बेशुद्ध होणे, खूप ताप, रक्तस्राव, अचानक अशक्तपणा किंवा स्वतःला इजा करण्याचे विचार — लगेच आपत्कालीन उपचार घ्या, वनस्पती किंवा योग नव्हे.","डॉक्टरांनी दिलेले औषध स्वतःहून बंद किंवा बदलू नका.","गर्भारपण, स्तनपान, मुले आणि वृद्ध: कोणतीही वनस्पती घेण्यापूर्वी वैद्य/डॉक्टरांना विचारा.","वनस्पती साखर, रक्तदाब, थायरॉईड आणि रक्त पातळ करणाऱ्या औषधांशी प्रतिक्रिया करू शकतात.","फक्त परवानाधारक (आयुष / GMP) फार्मसीतून खरेदी करा — काही उत्पादनांत जड धातू आढळले आहेत.","श्वसन सराव सौम्यपणे करा. हठयोग प्रदीपिका स्वतः सांगते की चुकीचा सराव रोग निर्माण करतो."],
+    footerText:"हा मार्गदर्शक ग्रंथालयातील शास्त्रीय ग्रंथांवर आधारित आहे. संदर्भ अध्याय पातळीवरील आहेत — वेगवेगळ्या आवृत्त्यांत श्लोक क्रमांक बदलू शकतात, म्हणून चौखंबासारख्या प्रमाणित आवृत्तीत तपासा. आधुनिक पुस्तकांचा फक्त उल्लेख आहे, पुनरुत्पादन नाही. मात्रा नाही. उपचाराचा दावा नाही.",
+    fixes:"या आवृत्तीत काय बदलले", fixList:["दुरुस्ती: अष्टांग हृदयम् बृहत्त्रयीचा भाग आहे (लघुत्रयी नाही).","दुरुस्ती: तूप कफ वाढवते; ब्राह्मी शीत आहे आणि पित्त वाढवत नाही.","दुरुस्ती: शवासन आणि विपरीत करणी हठयोग प्रदीपिकेत आहेत, योगसूत्रांत नाहीत.","बनावट 'संस्कृत' उद्धरणांऐवजी स्रोतासह खरे श्लोक.","चॅट आता देवनागरीतील हिंदी आणि मराठी समजते आणि तिन्ही भाषांत आपत्कालीन स्थिती तपासते."]}
+};
+
+// Chat keywords. Latin = whole-word match. Devanagari = contains.
+const KW = {
+  stress:["stress","stressed","anxiety","anxious","worry","worried","restless","panic","tension","tanav","tanaav","chinta","tense","overthinking","तनाव","चिंता","घबराहट","बेचैन","ताण","काळजी","अस्वस्थ","टेंशन"],
+  sleep:["sleep","insomnia","neend","nind","nidra","cannot sleep","cant sleep","can't sleep","can’t sleep","sleepless","jhop","zop","नींद","अनिद्रा","झोप","निद्रा"],
+  acidity:["acidity","acid","acidic","heartburn","reflux","burning","belching","sour burps","amlapitta","amlata","pitta","एसिडिटी","अम्लता","जलन","खट्टी डकार","आम्लपित्त","छातीत जळजळ","आम्लता","पित्त"],
+  constipation:["constipation","constipated","hard stool","straining","kabj","kabz","malavrodh","कब्ज","कब्ज़","मलावरोध","पोट साफ","शौच"],
+  bloating:["bloat","bloated","bloating","gas","gassy","flatulence","afara","pet phool","अफारा","पेट फूल","गैस","पोट फुग","वायू","गॅस"],
+  cold:["cold","cough","coughing","sneeze","sneezing","stuffy","runny nose","sardi","khansi","khokla","जुकाम","सर्दी","खांसी","खाँसी","खोकला","छींक","शिंका"],
+  sinus:["sinus","sinusitis","congestion","blocked nose","nose block","sainas","साइनस","सायनस","नाक बंद"],
+  headache:["headache","head pain","migraine","head ache","sir dard","sar dard","sirdard","dokedukhi","सिरदर्द","सिर दर्द","सर दर्द","माइग्रेन","डोकेदुखी","डोके दुख"],
+  back:["back pain","backache","lower back","sciatica","spine","kamar","kamar dard","pathdukhi","कमर दर्द","पीठ दर्द","कंबरदुखी","पाठदुखी","कमर","पाठ दुख"],
+  joint:["joint","joints","knee","knees","arthritis","shoulder pain","ankle","stiff","ghutna","sandhivat","जोड़ों","जोड़","घुटने","घुटना","गठिया","सांधेदुखी","गुडघे","संधिवात","सांधे"],
+  energy:["energy","tired","tiredness","fatigue","weak","weakness","exhausted","sluggish","thakan","thakwa","थकान","कमजोरी","कमज़ोरी","थकावट","थकवा","अशक्तपणा"],
+  weightgain:["weight gain","gaining weight","overweight","obese","obesity","fat","belly fat","lose weight","motapa","मोटापा","वजन बढ़","लठ्ठपणा","वजन वाढ","चरबी"],
+  weightloss:["weight loss","losing weight","underweight","too thin","skinny","gain weight","dubla","दुबला","वजन कम","बारीक","वजन कमी","वजन घट"],
+  acne:["acne","pimple","pimples","breakout","breakouts","muhase","मुंहासे","मुँहासे","फुंसी","मुरुम","पुरळ"],
+  hairfall:["hair","hairfall","hair fall","hair loss","dandruff","bald","balding","greying","baal","बाल","केस","गंजापन","टक्कल","कोंडा"],
+  immunity:["immunity","immune","often sick","frequent cold","low immunity","इम्युनिटी","रोग प्रतिरोधक","बार बार बीमार","प्रतिकारशक्ती"],
+  diabetes:["diabetes","diabetic","sugar","blood sugar","madhumeha","prameha","मधुमेह","शुगर","डायबिटीज","डायबिटीस","साखर"],
+  bp:["bp","blood pressure","hypertension","high bp","raktadab","रक्तचाप","बीपी","ब्लड प्रेशर","रक्तदाब"],
+  pcos:["pcos","pcod","period","periods","irregular periods","menstrual","cycle","पीसीओएस","पीसीओडी","मासिक","पाळी","माहवारी"],
+  eye:["eye","eyes","eye strain","screen","vision","dry eyes","aankh","आँख","आंख","डोळे","डोळा","नेत्र"],
+  ear:["ear","ears","earache","ringing","tinnitus","hearing","kaan","कान","कानात","कर्ण"],
+  skin:["skin","dry skin","itch","itching","itchy","rash","eczema","tvacha","त्वचा","खुजली","खाज","त्वचेवर"]
+};
+
+const SELFHARM=["suicid","kill myself","harm myself","self harm","self-harm","end my life","want to die","आत्महत्या","मरना चाहत","जीना नहीं","मरायचं","मरायचे","जीव द्याय"];
+const EMERGENCY = ["chest pain","chest tightness","chest pressure","breathless","breathlessness","difficulty breathing","can't breathe","cant breathe","cannot breathe","shortness of breath","high fever","severe pain","bleeding","blood in","coughing blood","vomiting blood","black stool","faint","fainted","fainting","unconscious","seizure","stroke","slurred","face drooping","numb","numbness","paralysis","vision loss","overdose","poison","suicidal","suicide","kill myself","harm myself","self harm","self-harm","end my life","want to die","emergency",
+  "सीने में दर्द","छाती में दर्द","छातीत दुख","छातीत वेदना","सांस नहीं","साँस नहीं","सांस फूल","साँस फूल","श्वास घेता येत नाही","दम लागत","बेहोश","बेशुद्ध","खून की उल्टी","रक्ताची उलटी","खून आ","रक्तस्राव","आत्महत्या","मरना चाहत","जीना नहीं","मरायचं","मरायचे","जीव द्याय","लकवा","अर्धांगवायू","दौरा","झटके","फिट येत","तेज बुखार","खूप ताप","सुन्न"];
+
+const UI={};for(const l of ['en','hi','mr']){UI[l]=Object.assign({},UI_BASE[l],UI_NEW[l]);}
+const CONDS_BASE=[{"id": "stress", "dosha": "Vata ↑ · Pitta ↑", "tag": "Mind", "en": {"name": "Stress & Anxiety", "short": "Restless mind, tight breath, difficulty settling.", "view": "Aggravated Vata disturbs manas; warmth, routine and slow breath are traditionally calming.", "tip": "Keep regular sleep and meal times. End the day with a warm drink, dim light and quiet."}, "hi": {"name": "तनाव और चिंता", "short": "बेचैन मन, उथली साँस, शांत न हो पाना।", "view": "बढ़ा वात मन को विचलित करता है; ऊष्मा, दिनचर्या और धीमी साँस पारंपरिक रूप से शांत करती हैं।", "tip": "सोने और खाने का समय नियमित रखें। दिन की समाप्ति हल्के प्रकाश और शांति से करें।"}, "mr": {"name": "ताण आणि चिंता", "short": "अस्वस्थ मन, उथळ श्वास, शांत न होता येणे.", "view": "वाढलेला वात मनाला विचलित करतो; उष्णता, दिनचर्या आणि मंद श्वास पारंपरिकपणे शांत करतात.", "tip": "झोप आणि जेवणाची वेळ नियमित ठेवा. दिवस शांत प्रकाशात संपवा."}, "care": "Panic, persistent low mood, thoughts of harm, or symptoms lasting more than two weeks."}, {"id": "sleep", "dosha": "Vata ↑", "tag": "Mind", "en": {"name": "Poor Sleep", "short": "Late sleep, broken sleep, waking unrefreshed.", "view": "Vata lightness and excess stimulation are traditionally linked with disturbed nidra.", "tip": "No bright screens for the last hour. Keep the room cool, dark and quiet."}, "hi": {"name": "नींद की कमी", "short": "देर से नींद, टूटी नींद, थककर उठना।", "view": "वात की लघुता और अत्यधिक उत्तेजना पारंपरिक रूप से बिगड़ी निद्रा से जुड़ी है।", "tip": "अंतिम घंटे में तेज स्क्रीन से बचें। कमरा ठंडा, अंधेरा और शांत रखें।"}, "mr": {"name": "झोपेची कमतरता", "short": "उशिरा झोप, तुटक झोप, थकून उठणे.", "view": "वाताची लघुता आणि अतिउत्तेजना पारंपरिकपणे बिघडलेल्या निद्रेशी जोडली आहे.", "tip": "शेवटच्या तासात तेजस्वी स्क्रीन टाळा. खोली थंड, अंधारी आणि शांत ठेवा."}, "care": "Loud snoring with pauses in breath, severe daytime sleepiness, or sleep loss affecting safety."}, {"id": "acidity", "dosha": "Pitta ↑", "tag": "Digestion", "en": {"name": "Acidity & Gas", "short": "Burning, sour belching, heaviness after meals.", "view": "Aggravated Pitta and weak agni are traditionally linked with amla-pitta and erratic digestion.", "tip": "Eat warm, simple, on time. Avoid skipping meals and very spicy, sour or late-night food."}, "hi": {"name": "अम्लता और गैस", "short": "जलन, खट्टी डकार, भोजन के बाद भारीपन।", "view": "बढ़ा पित्त और मंद अग्नि पारंपरिक रूप से अम्ल-पित्त से जुड़े हैं।", "tip": "गर्म, सरल भोजन समय पर लें। बहुत तीखा, खट्टा या देर रात का भोजन टालें।"}, "mr": {"name": "आम्लता आणि गॅस", "short": "जळजळ, आंबट ढेकर, जेवणानंतर जडपणा.", "view": "वाढलेला पित्त आणि मंद अग्नी पारंपरिकपणे आम्ल-पित्ताशी जोडले आहेत.", "tip": "गरम, साधे जेवण वेळेवर घ्या. खूप तिखट, आंबट किंवा उशिरा जेवण टाळा."}, "care": "Black stools, vomiting blood, trouble swallowing, severe chest pain, or symptoms more than 2 weeks."}, {"id": "constipation", "dosha": "Vata ↑", "tag": "Digestion", "en": {"name": "Constipation", "short": "Hard stools, straining, incomplete feeling.", "view": "Dry, aggravated Vata in the colon is traditionally linked with vibandha.", "tip": "Warm water on waking, fibre-rich meals, regular morning routine and gentle movement."}, "hi": {"name": "कब्ज", "short": "कठोर मल, ज़ोर लगना, अधूरापन लगना।", "view": "बृहदांत्र में रूखा बढ़ा वात पारंपरिक रूप से विबंध से जुड़ा है।", "tip": "सुबह गर्म पानी, रेशेदार भोजन, नियमित सुबह की दिनचर्या और हल्की गति।"}, "mr": {"name": "बद्धकोष्ठता", "short": "कठीण मल, जोर लावणे, अपूर्णतेची भावना.", "view": "आतड्यातील कोरडा वाढलेला वात पारंपरिकपणे विबंधाशी जोडला आहे.", "tip": "सकाळी कोमट पाणी, तंतुमय जेवण, नियमित सकाळची दिनचर्या आणि सौम्य हालचाल."}, "care": "Blood in stool, severe pain, sudden change lasting weeks, or unexplained weight loss."}, {"id": "bloating", "dosha": "Vata ↑ · Kapha ↑", "tag": "Digestion", "en": {"name": "Bloating", "short": "Fullness, gurgling, tight belly after eating.", "view": "Weak agni and aggravated Vata are traditionally linked with adhmana.", "tip": "Eat slowly, chew well, keep portions moderate and avoid cold drinks with meals."}, "hi": {"name": "पेट फूलना", "short": "भारीपन, गुड़गुड़ाहट, खाने के बाद पेट कसना।", "view": "मंद अग्नि और बढ़ा वात पारंपरिक रूप से आध्मान से जुड़े हैं।", "tip": "धीरे खाएँ, अच्छी तरह चबाएँ, मात्रा संतुलित रखें, भोजन के साथ ठंडे पेय से बचें।"}, "mr": {"name": "पोट फुगणे", "short": "पोट भरल्यासारखे, गुरगुर, जेवणानंतर पोट घट्ट होणे.", "view": "मंद अग्नी आणि वाढलेला वात पारंपरिकपणे आध्मानाशी जोडले आहेत.", "tip": "हळू खा, चांगले चावा, प्रमाण मध्यम ठेवा, जेवणासोबत थंड पेय टाळा."}, "care": "Severe pain, vomiting, swelling, or bloating with fever."}, {"id": "cold", "dosha": "Kapha ↑ · Vata ↑", "tag": "Immunity", "en": {"name": "Cold & Cough", "short": "Stuffy nose, sneezing, mild cough, heaviness.", "view": "Kapha accumulation with cold and damp is traditionally linked with pratishyaya.", "tip": "Warm fluids, steam with care, rest, and warm light meals."}, "hi": {"name": "सर्दी और खाँसी", "short": "नाक बंद, छींक, हल्की खाँसी, भारीपन।", "view": "शीत और नमी के साथ कफ संचय पारंपरिक रूप से प्रतिश्याय से जुड़ा है।", "tip": "गर्म तरल, सावधानी से भाप, आराम और गर्म हल्का भोजन।"}, "mr": {"name": "सर्दी आणि खोकला", "short": "नाक बंद, शिंका, हलका खोकला, जडपणा.", "view": "थंडी आणि ओलसरपणासोबत कफसंचय पारंपरिकपणे प्रतिश्यायाशी जोडला आहे.", "tip": "गरम द्रव, काळजीपूर्वक वाफ, विश्रांती आणि गरम हलके जेवण."}, "care": "Breathlessness, high fever, chest pain, cough with blood, or symptoms beyond 10 days."}, {"id": "sinus", "dosha": "Kapha ↑", "tag": "Immunity", "en": {"name": "Sinus", "short": "Pressure around nose and forehead, congestion.", "view": "Kapha stagnation in the head is traditionally linked with sinus heaviness.", "tip": "Warm steam with care, warm water, and avoid cold damp air and heavy dairy when congested."}, "hi": {"name": "साइनस", "short": "नाक और माथे के आसपास दबाव, जकड़न।", "view": "सिर में कफ का ठहराव पारंपरिक रूप से साइनस भारीपन से जुड़ा है।", "tip": "सावधानी से गर्म भाप, गर्म पानी, ठंडी नम हवा और भारी डेयरी से बचें।"}, "mr": {"name": "सायनस", "short": "नाक आणि कपाळाभोवती दाब, कोंडी.", "view": "डोक्यात कफ साठणे पारंपरिकपणे सायनस जडपणाशी जोडले आहे.", "tip": "काळजीपूर्वक गरम वाफ, कोमट पाणी, थंड ओलसर हवा आणि जड दुग्धजन्य पदार्थ टाळा."}, "care": "Vision changes, severe headache, high fever, or facial swelling."}, {"id": "headache", "dosha": "Vata ↑ · Pitta ↑", "tag": "Mind", "en": {"name": "Headache", "short": "Tight, throbbing or dull head pain.", "view": "Vata, Pitta or Kapha may be involved; routine, light and hydration are traditionally emphasised.", "tip": "Rest in a dark quiet room, sip warm water, avoid skipping meals and bright screens."}, "hi": {"name": "सिरदर्द", "short": "कसाव, धड़कन या मंद सिर दर्द।", "view": "वात, पित्त या कफ शामिल हो सकते हैं; दिनचर्या, प्रकाश और जल पारंपरिक रूप से महत्वपूर्ण हैं।", "tip": "अंधेरे शांत कमरे में आराम करें, गर्म पानी पिएँ, भोजन न छोड़ें, तेज स्क्रीन से बचें।"}, "mr": {"name": "डोकेदुखी", "short": "घट्टपणा, ठणक किंवा मंद डोकेदुखी.", "view": "वात, पित्त किंवा कफ यात असू शकतात; दिनचर्या, प्रकाश आणि पाणी पारंपरिकपणे महत्त्वाचे आहेत.", "tip": "अंधाऱ्या शांत खोलीत विश्रांती घ्या, कोमट पाणी प्या, जेवण चुकवू नका, तेजस्वी स्क्रीन टाळा."}, "care": "Sudden worst-ever headache, weakness, slurred speech, fever with stiff neck, or after injury."}, {"id": "back", "dosha": "Vata ↑", "tag": "Body", "en": {"name": "Back Pain", "short": "Stiffness, ache, tight lower back.", "view": "Aggravated Vata in asthi and majja is traditionally linked with kati shool.", "tip": "Move gently every hour, support the lower back, keep warm and avoid sudden lifting."}, "hi": {"name": "कमर दर्द", "short": "जकड़न, दर्द, निचली कमर में कसाव।", "view": "अस्थि और मज्जा में बढ़ा वात पारंपरिक रूप से कटि शूल से जुड़ा है।", "tip": "हर घंटे हल्की गति करें, निचली कमर को सहारा दें, गर्म रखें, अचानक भार न उठाएँ।"}, "mr": {"name": "पाठदुखी", "short": "ताठरपणा, वेदना, खालच्या पाठीत घट्टपणा.", "view": "अस्थी आणि मज्जेमधील वाढलेला वात पारंपरिकपणे कटी शूलाशी जोडला आहे.", "tip": "दर तासाला सौम्य हालचाल करा, खालच्या पाठीला आधार द्या, उबदार ठेवा, अचानक वजन उचलू नका."}, "care": "Numbness, bladder/bowel changes, fever, trauma, or pain after a fall."}, {"id": "joint", "dosha": "Vata ↑ · Kapha ↑", "tag": "Body", "en": {"name": "Joint Pain", "short": "Stiff, achy joints, worse in cold or damp.", "view": "Vata dryness and ama are traditionally linked with sandhigata discomfort.", "tip": "Keep joints warm, move gently daily, and favour warm cooked food."}, "hi": {"name": "जोड़ों का दर्द", "short": "जकड़े, दर्द भरे जोड़, ठंड या नमी में बढ़ना।", "view": "वात की रूक्षता और आम पारंपरिक रूप से संधिगत असुविधा से जुड़े हैं।", "tip": "जोड़ गर्म रखें, रोज हल्की गति करें, गर्म पका भोजन लें।"}, "mr": {"name": "सांधेदुखी", "short": "ताठर, दुखणारे सांधे, थंडी किंवा ओलसरपणात वाढ.", "view": "वाताची कोरडेपणा आणि आम पारंपरिकपणे संधिगत अस्वस्थतेशी जोडले आहेत.", "tip": "सांधे उबदार ठेवा, रोज सौम्य हालचाल करा, गरम शिजवलेले जेवण घ्या."}, "care": "Hot swollen joint, fever, sudden inability to move a joint, or injury."}, {"id": "energy", "dosha": "Kapha ↑ · Vata ↑", "tag": "Energy", "en": {"name": "Low Energy", "short": "Heavy mornings, low motivation, afternoon dip.", "view": "Kapha heaviness and weak agni are traditionally linked with low ojas and vitality.", "tip": "Wake before sunrise if possible, sunlight, warm water, light breakfast and brisk walking."}, "hi": {"name": "कम ऊर्जा", "short": "भारी सुबह, कम प्रेरणा, दोपहर में थकान।", "view": "कफ की गुरुता और मंद अग्नि पारंपरिक रूप से कम ओजस से जुड़ी है।", "tip": "यदि संभव हो सूर्योदय से पहले उठें, धूप, गर्म पानी, हल्का नाश्ता और तेज चाल।"}, "mr": {"name": "कमी ऊर्जा", "short": "जड सकाळ, कमी प्रेरणा, दुपारी थकवा.", "view": "कफाची गुरुता आणि मंद अग्नी पारंपरिकपणे कमी ओजसशी जोडली आहेत.", "tip": "शक्य असल्यास सूर्योदयापूर्वी उठा, सूर्यप्रकाश, कोमट पाणी, हलका नाश्ता आणि जलद चालणे."}, "care": "Fainting, chest pain, breathlessness, or fatigue lasting weeks."}, {"id": "weightgain", "dosha": "Kapha ↑", "tag": "Metabolism", "en": {"name": "Weight Gain", "short": "Heaviness, slow digestion, craving for heavy food.", "view": "Kapha excess and slow agni are traditionally linked with meda increase.", "tip": "Largest meal at midday, lighter dinner, daily walking and warm water."}, "hi": {"name": "वजन बढ़ना", "short": "भारीपन, धीमा पाचन, भारी भोजन की इच्छा।", "view": "कफ अधिकता और मंद अग्नि पारंपरिक रूप से मेद वृद्धि से जुड़ी है।", "tip": "सबसे बड़ा भोजन दोपहर में, हल्का रात का भोजन, रोज टहलना और गर्म पानी।"}, "mr": {"name": "वजन वाढणे", "short": "जडपणा, मंद पचन, जड अन्नाची इच्छा.", "view": "कफ अधिकता आणि मंद अग्नी पारंपरिकपणे मेदवृद्धीशी जोडले आहेत.", "tip": "सर्वात मोठे जेवण दुपारी, हलके रात्रीचे जेवण, रोज चालणे आणि कोमट पाणी."}, "care": "Rapid unexplained gain, swelling, breathlessness, or thyroid symptoms — seek medical review."}, {"id": "weightloss", "dosha": "Vata ↑", "tag": "Metabolism", "en": {"name": "Weight Loss", "short": "Difficulty gaining, dryness, low appetite.", "view": "Aggravated Vata and variable agni are traditionally linked with under-nourishment.", "tip": "Warm, nourishing, regular meals; rest after eating; avoid skipping meals."}, "hi": {"name": "वजन घटना", "short": "वजन बढ़ने में कठिनाई, रूक्षता, कम भूख।", "view": "बढ़ा वात और अस्थिर अग्नि पारंपरिक रूप से अल्प पोषण से जुड़े हैं।", "tip": "गर्म, पौष्टिक, नियमित भोजन; भोजन के बाद आराम; भोजन न छोड़ें।"}, "mr": {"name": "वजन कमी होणे", "short": "वजन वाढण्यात अडचण, कोरडेपणा, कमी भूक.", "view": "वाढलेला वात आणि अस्थिर अग्नी पारंपरिकपणे अल्पपोषणाशी जोडले आहेत.", "tip": "गरम, पौष्टिक, नियमित जेवण; जेवणानंतर विश्रांती; जेवण चुकवू नका."}, "care": "Rapid unexplained loss, fever, persistent diarrhoea, or loss of appetite for weeks."}, {"id": "acne", "dosha": "Pitta ↑ · Kapha ↑", "tag": "Skin", "en": {"name": "Acne", "short": "Red bumps, oily skin, heat-related breakouts.", "view": "Aggravated Pitta and Kapha are traditionally linked with mukhadushika.", "tip": "Cool, simple food, gentle cleansing, avoid picking and heavy oily cosmetics."}, "hi": {"name": "मुँहासे", "short": "लाल दाने, तैलीय त्वचा, गर्मी से फोड़े।", "view": "बढ़ा पित्त और कफ पारंपरिक रूप से मुखदूषिका से जुड़े हैं।", "tip": "ठंडा सरल भोजन, सौम्य सफाई, दाने न दबाएँ, भारी तैलीय प्रसाधन से बचें।"}, "mr": {"name": "पुरळ", "short": "लाल पुरळ, तेलकट त्वचा, उष्णतेमुळे फोड.", "view": "वाढलेला पित्त आणि कफ पारंपरिकपणे मुखदूषिकेशी जोडले आहेत.", "tip": "थंड साधे जेवण, सौम्य स्वच्छता, पुरळ दाबू नका, जड तेलकट सौंदर्यप्रसाधने टाळा."}, "care": "Severe painful cysts, scarring, or acne with fever."}, {"id": "hairfall", "dosha": "Pitta ↑ · Vata ↑", "tag": "Skin", "en": {"name": "Hair Fall", "short": "Excess shedding, dry scalp, weak roots.", "view": "Aggravated Pitta heat and Vata dryness are traditionally linked with khalitya.", "tip": "Gentle scalp oil massage, mild cleansing, adequate sleep and iron-rich food."}, "hi": {"name": "बाल झड़ना", "short": "अधिक झड़ना, रूखी खोपड़ी, कमज़ोर जड़ें।", "view": "बढ़ा पित्त ताप और वात रूक्षता पारंपरिक रूप से खालित्य से जुड़ी है।", "tip": "सौम्य खोपड़ी मालिश, मृदु सफाई, पर्याप्त नींद और लौह-युक्त भोजन।"}, "mr": {"name": "केस गळणे", "short": "जास्त गळणे, कोरडी टाळू, कमकुवत मुळे.", "view": "वाढलेला पित्त उष्णता आणि वात कोरडेपणा पारंपरिकपणे खालित्याशी जोडले आहेत.", "tip": "सौम्य टाळू मसाज, सौम्य स्वच्छता, पुरेशी झोप आणि लोहयुक्त जेवण."}, "care": "Patchy loss, scalp infection, or sudden heavy shedding."}, {"id": "immunity", "dosha": "Ojas ↓", "tag": "Immunity", "en": {"name": "Low Immunity", "short": "Frequent colds, slow recovery, low resilience.", "view": "Low ojas and weak agni are traditionally linked with frequent illness.", "tip": "Regular sleep, warm cooked food, sunlight, gentle movement and rest."}, "hi": {"name": "कम प्रतिरक्षा", "short": "बार-बार सर्दी, धीमी रिकवरी, कम सहनशक्ति।", "view": "कम ओजस और मंद अग्नि पारंपरिक रूप से बार-बार बीमारी से जुड़े हैं।", "tip": "नियमित नींद, गर्म पका भोजन, धूप, हल्की गति और आराम।"}, "mr": {"name": "कमी प्रतिकारशक्ती", "short": "वारंवार सर्दी, मंद बरे होणे, कमी सहनशक्ती.", "view": "कमी ओजस आणि मंद अग्नी पारंपरिकपणे वारंवार आजाराशी जोडले आहेत.", "tip": "नियमित झोप, गरम शिजवलेले जेवण, सूर्यप्रकाश, सौम्य हालचाल आणि विश्रांती."}, "care": "Recurrent high fever, unexplained weight loss, or frequent infections."}, {"id": "diabetes", "dosha": "Kapha ↑ · Vata ↑", "tag": "Metabolism", "en": {"name": "Diabetes lifestyle support", "short": "Supportive daily rhythm alongside medical care.", "view": "Madhumeha is a classical condition; lifestyle, food rhythm and movement are traditional supports — never a replacement for care.", "tip": "Regular meals, walking after meals, consistent sleep and medical follow-up."}, "hi": {"name": "मधुमेह जीवनशैली सहायता", "short": "चिकित्सा देखभाल के साथ सहायक दैनिक लय।", "view": "मधुमेह एक शास्त्रीय स्थिति है; जीवनशैली, भोजन लय और गति पारंपरिक सहायक हैं — देखभाल का विकल्प नहीं।", "tip": "नियमित भोजन, भोजन के बाद टहलना, नियमित नींद और चिकित्सा अनुवर्तन।"}, "mr": {"name": "मधुमेह जीवनशैली सहाय्य", "short": "वैद्यकीय काळजीसोबत सहाय्यक दैनंदिन लय.", "view": "मधुमेह ही शास्त्रीय स्थिती आहे; जीवनशैली, जेवणाची लय आणि हालचाल पारंपरिक सहाय्य आहेत — काळजीचा पर्याय नाही.", "tip": "नियमित जेवण, जेवणानंतर चालणे, नियमित झोप आणि वैद्यकीय पाठपुरावा."}, "care": "High/low sugar symptoms, wounds not healing, vision change, or numbness — seek urgent care."}, {"id": "bp", "dosha": "Vata ↑ · Pitta ↑", "tag": "Metabolism", "en": {"name": "BP lifestyle support", "short": "Calm rhythm alongside medical care.", "view": "Rakta pressure is a modern measure; classical care emphasises calm, salt awareness, sleep and routine.", "tip": "Low salt, regular sleep, slow breathing, gentle walking and medical follow-up."}, "hi": {"name": "बीपी जीवनशैली सहायता", "short": "चिकित्सा देखभाल के साथ शांत लय।", "view": "रक्तचाप एक आधुनिक माप है; शास्त्रीय देखभाल शांति, नमक जागरूकता, नींद और दिनचर्या पर बल देती है।", "tip": "कम नमक, नियमित नींद, धीमी साँस, हल्की सैर और चिकित्सा अनुवर्तन।"}, "mr": {"name": "बीपी जीवनशैली सहाय्य", "short": "वैद्यकीय काळजीसोबत शांत लय.", "view": "रक्तदाब हे आधुनिक माप आहे; शास्त्रीय काळजी शांतता, मीठ जागरूकता, झोप आणि दिनचर्येवर भर देते.", "tip": "कमी मीठ, नियमित झोप, मंद श्वास, सौम्य चालणे आणि वैद्यकीय पाठपुरावा."}, "care": "Chest pain, severe headache, breathlessness, or BP readings in emergency range."}, {"id": "pcos", "dosha": "Kapha ↑ · Vata ↑", "tag": "Metabolism", "en": {"name": "PCOS lifestyle support", "short": "Rhythm, movement and food timing alongside care.", "view": "Classical view links Kapha, ama and cycle irregularity; lifestyle is a traditional support alongside medical care.", "tip": "Regular meals, daily movement, stress care, consistent sleep and medical follow-up."}, "hi": {"name": "पीसीओएस जीवनशैली सहायता", "short": "देखभाल के साथ लय, गति और भोजन समय।", "view": "शास्त्रीय दृष्टि कफ, आम और चक्र अनियमितता को जोड़ती है; जीवनशैली चिकित्सा के साथ पारंपरिक सहायक है।", "tip": "नियमित भोजन, रोज गति, तनाव देखभाल, नियमित नींद और चिकित्सा अनुवर्तन।"}, "mr": {"name": "पीसीओएस जीवनशैली सहाय्य", "short": "काळजीसोबत लय, हालचाल आणि जेवणाची वेळ.", "view": "शास्त्रीय दृष्टी कफ, आम आणि चक्र अनियमिततेशी जोडते; जीवनशैली वैद्यकीय काळजीसोबत पारंपरिक सहाय्य आहे.", "tip": "नियमित जेवण, रोज हालचाल, ताण काळजी, नियमित झोप आणि वैद्यकीय पाठपुरावा."}, "care": "Severe pelvic pain, heavy bleeding, fainting, or fertility concerns — seek medical review."}, {"id": "eye", "dosha": "Pitta ↑", "tag": "Senses", "en": {"name": "Eye Strain", "short": "Tired, dry, burning eyes after screens.", "view": "Aggravated Pitta and overuse are traditionally linked with eye fatigue.", "tip": "20-20-20 rest, blink often, cool water splash, dim screens at night."}, "hi": {"name": "आँखों की थकान", "short": "स्क्रीन के बाद थकी, रूखी, जलती आँखें।", "view": "बढ़ा पित्त और अत्यधिक उपयोग पारंपरिक रूप से आँखों की थकान से जुड़े हैं।", "tip": "20-20-20 विश्राम, बार-बार पलकें झपकाएँ, ठंडे पानी के छींटे, रात में स्क्रीन मंद करें।"}, "mr": {"name": "डोळ्यांचा थकवा", "short": "स्क्रीननंतर थकलेले, कोरडे, जळजळणारे डोळे.", "view": "वाढलेला पित्त आणि अतिवापर पारंपरिकपणे डोळ्यांच्या थकव्याशी जोडले आहेत.", "tip": "20-20-20 विश्रांती, वारंवार पापण्या मिटा, थंड पाण्याचा शिडकावा, रात्री स्क्रीन मंद करा."}, "care": "Vision loss, flashes, severe eye pain, or injury."}, {"id": "ear", "dosha": "Vata ↑", "tag": "Senses", "en": {"name": "Ear Care", "short": "Dryness, mild ringing, sensitivity to cold wind.", "view": "Vata in the ear is traditionally linked with dryness and sensitivity.", "tip": "Keep ears warm in wind, avoid loud sound, gentle warm oil around — not inside — only if comfortable."}, "hi": {"name": "कान की देखभाल", "short": "रूक्षता, हल्की झनझनाहट, ठंडी हवा से संवेदनशीलता।", "view": "कान में वात पारंपरिक रूप से रूक्षता और संवेदनशीलता से जुड़ा है।", "tip": "हवा में कान गर्म रखें, तेज आवाज़ से बचें, केवल आरामदायक हो तो आसपास सौम्य गर्म तेल।"}, "mr": {"name": "कानांची काळजी", "short": "कोरडेपणा, सौम्य गुणगुण, थंड वाऱ्याची संवेदनशीलता.", "view": "कानातील वात पारंपरिकपणे कोरडेपणा आणि संवेदनशीलतेशी जोडला आहे.", "tip": "वाऱ्यात कान उबदार ठेवा, मोठा आवाज टाळा, आरामदायक असेल तरच आसपास सौम्य गरम तेल."}, "care": "Hearing loss, severe pain, discharge, dizziness, or after injury."}, {"id": "skin", "dosha": "Pitta ↑ · Vata ↑", "tag": "Skin", "en": {"name": "Skin Care", "short": "Dry, dull, sensitive or easily irritated skin.", "view": "Pitta heat and Vata dryness are traditionally linked with skin imbalance.", "tip": "Gentle cleansing, warm oil massage, hydration, sleep and sun protection."}, "hi": {"name": "त्वचा देखभाल", "short": "रूखी, फीकी, संवेदनशील या आसानी से चिढ़ने वाली त्वचा।", "view": "पित्त ताप और वात रूक्षता पारंपरिक रूप से त्वचा असंतुलन से जुड़ी है।", "tip": "सौम्य सफाई, गर्म तेल मालिश, जलयोजन, नींद और धूप से सुरक्षा।"}, "mr": {"name": "त्वचा काळजी", "short": "कोरडी, निस्तेज, संवेदनशील किंवा सहज चिडणारी त्वचा.", "view": "पित्त उष्णता आणि वात कोरडेपणा पारंपरिकपणे त्वचा असंतुलनाशी जोडले आहेत.", "tip": "सौम्य स्वच्छता, गरम तेल मसाज, हायड्रेशन, झोप आणि उन्हापासून संरक्षण."}, "care": "Spreading rash, blisters, infection, or severe itching."}];
+const CONDS=CONDS_BASE.map(c=>Object.assign({},c,COND[c.id]));
+
+</script>
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v);return true}catch(e){return false}}};
+const CAT_T={Mind:{hi:"मन",mr:"मन"},Digestion:{hi:"पाचन",mr:"पचन"},Immunity:{hi:"प्रतिरक्षा",mr:"प्रतिकारशक्ती"},Body:{hi:"शरीर",mr:"शरीर"},Energy:{hi:"ऊर्जा",mr:"ऊर्जा"},Metabolism:{hi:"चयापचय",mr:"चयापचय"},Skin:{hi:"त्वचा",mr:"त्वचा"},Senses:{hi:"इंद्रियाँ",mr:"इंद्रिये"},All:{hi:"सभी",mr:"सर्व"}};
+const herbById=Object.fromEntries(HERBS.map(h=>[h.id,h]));
+const yogaById=Object.fromEntries(YOGA.map(y=>[y.id,y]));
+const bookById=Object.fromEntries(BOOKS.map(b=>[b.id,b]));
+const condById=Object.fromEntries(CONDS.map(c=>[c.id,c]));
+let lang=store.get("ayuryog_lang")||"en"; if(!UI[lang]) lang="en";
+let cat="All", herbCat="all", yogaCat="all";
+const t=k=>(UI[lang]&&UI[lang][k]!=null?UI[lang][k]:UI.en[k]);
+const catName=c=>lang==="en"?c:(CAT_T[c]&&CAT_T[c][lang])||c;
+const cn=c=>c[lang]||c.en;
+
+function applyStatic(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-t]").forEach(el=>{el.textContent=t(el.dataset.t)});
+  $("#q").placeholder=t("search"); $("#hq").placeholder=t("herbSearch"); $("#cin").placeholder=CHAT[lang].placeholder;
+  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+  $("#sCond").textContent=CONDS.length;
+  $("#sBooks").textContent=BOOKS.filter(b=>b.group!=="modern").length+" + "+BOOKS.filter(b=>b.group==="modern").length;
+  $("#sHerbs").textContent=HERBS.length;
+  $("#fixList").innerHTML=t("fixList").map(x=>"<li>"+esc(x)+"</li>").join("");
+  $("#safeList").innerHTML=t("safetyItems").map(x=>"<li>"+esc(x)+"</li>").join("");
+}
+
+/* ---------- conditions ---------- */
+function condText(c){
+  const L=cn(c), parts=[c.en.name,c.hi.name,c.mr.name,L.short,c.term,c.dosha,c.tag];
+  (c.herbs||[]).forEach(h=>{const x=herbById[h]; if(x) parts.push(x.name,x.san,x.hi)});
+  (c.yoga||[]).concat(c.breath||[]).forEach(y=>{const x=yogaById[y]; if(x) parts.push(x.name,x.en)});
+  return parts.join(" ").toLowerCase();
+}
+function renderCats(){
+  const cats=["All",...new Set(CONDS.map(c=>c.tag))];
+  $("#cats").innerHTML=cats.map(c=>`<button class="chip${c===cat?" on":""}" data-c="${esc(c)}">${esc(c==="All"?t("all")+" "+CONDS.length:catName(c))}</button>`).join("");
+}
+function renderConds(){
+  const q=$("#q").value.trim().toLowerCase();
+  const list=CONDS.filter(c=>(cat==="All"||c.tag===cat)&&(!q||condText(c).includes(q)));
+  $("#condGrid").innerHTML=list.length?list.map(c=>{const L=cn(c);return `<button class="card" data-cond="${c.id}"><div class="ctop"><span class="tag">${esc(catName(c.tag))}</span><span class="dosha">${esc(c.dosha)}</span></div><h3>${esc(L.name)}</h3><p>${esc(L.short)}</p><span class="sub">${esc(c.term)}</span><span class="more">${esc(t("readMore"))} →</span></button>`}).join(""):`<p class="empty">${esc(t("noResults"))}</p>`;
+}
+function bookLabel(id){const b=bookById[id];return b?b.title:id}
+function verseHTML(v){ if(!v) return ""; return `<div class="blk verse"><h4>${esc(t("verse"))}</h4><div class="dev">${esc(v.dev)}</div><i>${esc(v.iast)}</i><p>${esc(v.meaning)}</p><div class="note">— ${esc(v.where)}</div></div>`;}
+function openCond(id){
+  const c=condById[id]; if(!c) return; const L=cn(c);
+  const herbs=(c.herbs||[]).map(h=>herbById[h]).filter(Boolean);
+  const yoga=(c.yoga||[]).map(y=>yogaById[y]).filter(Boolean);
+  const breath=(c.breath||[]).map(y=>yogaById[y]).filter(Boolean);
+  const forms=(c.formulas||[]).map(f=>FORMULAS[f]).filter(Boolean);
+  open(`<div class="ctop"><span class="tag">${esc(catName(c.tag))}</span><span class="dosha">${esc(c.dosha)}</span></div>
+  <h2>${esc(L.name)}</h2><p class="sub">${esc(L.short)}</p>
+  <div class="blk"><h4>${esc(t("term"))}</h4><p>${esc(c.term)}</p></div>
+  <div class="blk"><h4>${esc(t("view"))}</h4><p>${esc(L.view)}</p></div>
+  <div class="blk"><h4>${esc(t("herbs"))}</h4><div class="links">${herbs.map(h=>`<button class="lk" data-herb="${h.id}">${esc(h.name)} · ${esc(h.san)} <span class="code">${esc(h.code)}</span></button>`).join("")}</div><div class="note">${esc(CHAT[lang].precaution)}</div></div>
+  <div class="blk"><h4>${esc(t("yoga"))}</h4><div class="links">${yoga.map(y=>`<button class="lk" data-yoga="${y.id}">${esc(y.name)}</button>`).join("")}</div>
+   <h4 style="margin-top:10px">${esc(t("breathL"))}</h4><div class="links">${breath.map(y=>`<button class="lk" data-yoga="${y.id}">${esc(y.name)}</button>`).join("")}</div></div>
+  <div class="blk"><h4>${esc(t("daily"))}</h4><p>${esc(L.tip)}</p></div>
+  <div class="blk"><h4>${esc(t("diet"))}</h4><p>${esc(c.diet)}</p></div>
+  ${forms.length?`<div class="blk"><h4>${esc(t("formulas"))}</h4><ul>${forms.map(f=>`<li><b>${esc(f.name)}</b> — <span class="sub">${esc(f.src)}</span></li>`).join("")}</ul><div class="note">${esc(t("formulasNote"))}</div></div>`:""}
+  ${(c.therapies||[]).length?`<div class="blk"><h4>${esc(t("therapies"))}</h4><p>${c.therapies.map(esc).join(" · ")}</p></div>`:""}
+  ${verseHTML(c.verse?V[c.verse]:null)}
+  <div class="blk"><h4>${esc(t("refs"))}</h4><ul>${c.refs.map(r=>`<li><button class="lk" data-book="${r.b}" style="margin:2px 0">${esc(bookLabel(r.b))}</button> <span class="sub">${esc(r.w)}</span></li>`).join("")}</ul><div class="note">${esc(t("refsNote"))}</div></div>
+  <div class="blk care"><h4>${esc(t("care"))}</h4><p>${esc(c.care)}</p></div>
+  ${lang!=="en"?`<p class="note">${esc(t("englishNote"))}</p>`:""}`);
+}
+
+/* ---------- library ---------- */
+function renderLib(){
+  $("#libList").innerHTML=BOOK_GROUPS.map(g=>{
+    const items=BOOKS.filter(b=>b.group===g.id);
+    return `<div class="group">${esc(g[lang]||g.en)}</div><div class="grid three">${items.map(b=>`<button class="card" data-book="${b.id}"><div class="ctop"><span class="tag">${esc(b.era)}</span></div><h3>${esc(b.title)}</h3>${b.dev?`<span class="dev" style="color:var(--maroon);font-size:18px">${esc(b.dev)}</span>`:""}<p class="sub">${esc(b.author)}</p><span class="more">${esc(t("readMore"))} →</span></button>`).join("")}</div>`;
+  }).join("");
+}
+function openBook(id){
+  const b=bookById[id]; if(!b) return;
+  const usedHerbs=HERBS.filter(h=>h.src.includes(id)).map(h=>h.name);
+  const usedYoga=YOGA.filter(y=>y.src.includes(id)).map(y=>y.name);
+  const usedCond=CONDS.filter(c=>c.refs.some(r=>r.b===id));
+  open(`<span class="tag">${esc(b.era)}</span><h2>${esc(b.title)}</h2>${b.dev?`<div class="dev" style="font-size:22px;color:var(--maroon)">${esc(b.dev)}</div>`:""}
+  <dl class="props" style="margin-top:10px"><dt>${esc(t("author"))}</dt><dd>${esc(b.author)}</dd>${b.structure?`<dt>${esc(t("structure"))}</dt><dd>${esc(b.structure)}</dd>`:""}<dt>${esc(t("era"))}</dt><dd>${esc(b.era)}</dd></dl>
+  <div class="blk"><p>${esc(b.about)}</p></div>
+  <div class="blk"><h4>${esc(t("inApp"))}</h4><p>${esc(b.inApp)}</p></div>
+  ${verseHTML(b.verse?Object.assign({},b.verse,{where:b.title+" "+b.verse.where}):null)}
+  ${usedCond.length?`<div class="blk"><h4>${esc(t("usedFor"))}</h4><div class="links">${usedCond.map(c=>`<button class="lk" data-cond="${c.id}">${esc(cn(c).name)}</button>`).join("")}</div></div>`:""}
+  ${usedHerbs.length?`<div class="blk"><h4>${esc(t("herbLib"))}</h4><p>${usedHerbs.map(esc).join(", ")}</p></div>`:""}
+  ${usedYoga.length?`<div class="blk"><h4>${esc(t("yogaLib"))}</h4><p>${usedYoga.map(esc).join(", ")}</p></div>`:""}`);
+}
+
+/* ---------- herbs ---------- */
+const HCATS=[{id:"all",en:"All"},{id:"V",en:"Calms Vata"},{id:"P",en:"Calms Pitta"},{id:"K",en:"Calms Kapha"},{id:"T",en:"Tridosha"}];
+const HCAT_T={all:{hi:"सभी",mr:"सर्व"},V:{hi:"वात शामक",mr:"वात शामक"},P:{hi:"पित्त शामक",mr:"पित्त शामक"},K:{hi:"कफ शामक",mr:"कफ शामक"},T:{hi:"त्रिदोष",mr:"त्रिदोष"}};
+function calms(h,d){const c=h.code.split(" ")[0]; if(d==="T") return /^VPK-/.test(h.code); return c.includes(d)&&c.endsWith("-");}
+function renderHerbs(){
+  $("#hcats").innerHTML=HCATS.map(c=>`<button class="chip${c.id===herbCat?" on":""}" data-h="${c.id}">${esc(lang==="en"?c.en:HCAT_T[c.id][lang])}</button>`).join("");
+  const q=$("#hq").value.trim().toLowerCase();
+  const list=HERBS.filter(h=>(herbCat==="all"||calms(h,herbCat))&&(!q||[h.name,h.san,h.dev,h.hi,h.latin,h.uses].join(" ").toLowerCase().includes(q)));
+  $("#herbGrid").innerHTML=list.length?list.map(h=>`<button class="card" data-herb="${h.id}"><div class="ctop"><span class="tag">${esc(h.part)}</span><span class="code">${esc(h.code)}</span></div><h3>${esc(h.name)}</h3><span class="dev" style="color:var(--maroon)">${esc(h.dev)} · ${esc(h.hi)}</span><p class="sub"><i>${esc(h.latin)}</i></p><p>${esc(h.uses)}</p></button>`).join(""):`<p class="empty">${esc(t("noResults"))}</p>`;
+}
+function openHerb(id){
+  const h=herbById[id]; if(!h) return;
+  const inConds=CONDS.filter(c=>(c.herbs||[]).includes(id));
+  open(`<div class="ctop"><span class="tag">${esc(t("herbCard"))}</span><span class="code">${esc(h.code)}</span></div><h2>${esc(h.name)}</h2>
+  <div class="dev" style="font-size:20px;color:var(--maroon)">${esc(h.dev)} (${esc(h.san)}) · ${esc(h.hi)}</div><p class="sub"><i>${esc(h.latin)}</i> · ${esc(t("part"))}: ${esc(h.part)}</p>
+  <div class="blk"><dl class="props"><dt>${esc(t("rasa"))}</dt><dd>${esc(h.rasa)}</dd><dt>${esc(t("guna"))}</dt><dd>${esc(h.guna)}</dd><dt>${esc(t("virya"))}</dt><dd>${esc(h.virya)}</dd><dt>${esc(t("vipaka"))}</dt><dd>${esc(h.vipaka)}</dd><dt>${esc(t("doshaL"))}</dt><dd>${esc(h.dosha)}</dd></dl></div>
+  <div class="blk"><h4>${esc(t("karma"))}</h4><p>${esc(h.karma)}</p></div>
+  <div class="blk"><h4>${esc(t("usesL"))}</h4><p>${esc(h.uses)}</p></div>
+  ${h.note?`<div class="blk"><h4>${esc(t("noteL"))}</h4><p>${esc(h.note)}</p></div>`:""}
+  <div class="blk care"><h4>${esc(t("cautionL"))}</h4><p>${esc(h.safety)}</p><p class="note">${esc(CHAT[lang].precaution)}</p></div>
+  <div class="blk"><h4>${esc(t("sourcesL"))}</h4><div class="links">${h.src.map(b=>`<button class="lk" data-book="${b}">${esc(bookLabel(b))}</button>`).join("")}</div></div>
+  ${inConds.length?`<div class="blk"><h4>${esc(t("usedFor"))}</h4><div class="links">${inConds.map(c=>`<button class="lk" data-cond="${c.id}">${esc(cn(c).name)}</button>`).join("")}</div></div>`:""}`);
+}
+
+/* ---------- yoga ---------- */
+const YCATS=[{id:"all",k:"all"},{id:"asana",k:"fClassical"},{id:"breath",k:"fBreath"},{id:"mudra",k:"fMudra"},{id:"modern",k:"fModern"}];
+const kindLabel=k=>k==="asana"?t("fClassical"):k==="modern"?t("fModern"):k==="mudra"?t("fMudra"):t("fBreath");
+function renderYoga(){
+  $("#ycats").innerHTML=YCATS.map(c=>`<button class="chip${c.id===yogaCat?" on":""}" data-y="${c.id}">${esc(t(c.k))}</button>`).join("");
+  const list=YOGA.filter(y=>yogaCat==="all"||(yogaCat==="breath"?(y.kind==="pranayama"||y.kind==="kriya"):y.kind===yogaCat));
+  $("#yogaGrid").innerHTML=list.map(y=>`<button class="card" data-yoga="${y.id}"><div class="ctop"><span class="kind k-${y.kind}">${esc(kindLabel(y.kind))}</span></div><h3>${esc(y.name)}</h3><span class="dev" style="color:var(--maroon)">${esc(y.dev)} · ${esc(y.en)}</span><p>${esc(y.benefit)}</p><span class="sub">${y.src.map(bookLabel).map(esc).join(" · ")}</span></button>`).join("");
+}
+function openYoga(id){
+  const y=yogaById[id]; if(!y) return;
+  const inConds=CONDS.filter(c=>(c.yoga||[]).concat(c.breath||[]).includes(id));
+  open(`<span class="kind k-${y.kind}">${esc(kindLabel(y.kind))}</span><h2>${esc(y.name)}</h2><div class="dev" style="font-size:20px;color:var(--maroon)">${esc(y.dev)}</div><p class="sub">${esc(y.en)}</p>
+  <div class="blk"><h4>${esc(t("benefit"))}</h4><p>${esc(y.benefit)}</p></div>
+  <div class="blk care"><h4>${esc(t("contra"))}</h4><p>${esc(y.contra)}</p></div>
+  <div class="blk"><h4>${esc(t("sourcesL"))}</h4><div class="links">${y.src.map(b=>`<button class="lk" data-book="${b}">${esc(bookLabel(b))}</button>`).join("")}</div></div>
+  ${inConds.length?`<div class="blk"><h4>${esc(t("usedFor"))}</h4><div class="links">${inConds.map(c=>`<button class="lk" data-cond="${c.id}">${esc(cn(c).name)}</button>`).join("")}</div></div>`:""}
+  ${(y.kind==="pranayama"||y.kind==="kriya")?verseHTML(V.pranayama):""}`);
+}
+function renderTher(){ $("#therGrid").innerHTML=THERAPIES.map(x=>`<div class="card"><h3>${esc(x.name)}</h3><span class="dev" style="color:var(--maroon)">${esc(x.dev)}</span><p>${esc(x.what)}</p><p class="sub"><b>⚠</b> ${esc(x.safety)}</p></div>`).join(""); }
+
+/* ---------- journal (this browser only) ---------- */
+const PKEY="ayuryog_posts_v2";
+let posts=null, pendingDel=null;
+function loadPosts(){ const raw=store.get(PKEY); if(raw){try{const p=JSON.parse(raw); if(Array.isArray(p)) return p;}catch(e){}} return POSTS.map((p,i)=>Object.assign({id:"s"+i},p)); }
+function savePosts(){ store.set(PKEY,JSON.stringify(posts)); }
+function renderPosts(){
+  $("#postGrid").innerHTML=posts.map(p=>`<div class="card"><div class="ctop"><span class="tag">${esc(p.category)}</span><span class="sub">${esc(p.read)} ${esc(t("minutes"))}</span></div><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p>
+  <div class="row" style="margin-top:6px"><button class="lk" data-post="${p.id}">${esc(t("readMore"))}</button><button class="lk" data-edit="${p.id}">${esc(t("edit"))}</button><button class="lk" data-del="${p.id}" style="${pendingDel===p.id?"background:#a3242f;color:#fff":""}">${esc(pendingDel===p.id?t("confirmDel"):t("del"))}</button></div></div>`).join("")||`<p class="empty">${esc(t("noPost"))}</p>`;
+}
+function postForm(p){
+  p=p||{title:"",excerpt:"",category:"Dinacharya",read:"4",body:""};
+  open(`<h2>${esc(p.id?t("editPost"):t("newPost"))}</h2><form id="pform">
+  <label>${esc(t("title_"))}<input class="field" name="title" required value="${esc(p.title)}"></label>
+  <label>${esc(t("excerpt_"))}<input class="field" name="excerpt" value="${esc(p.excerpt)}"></label>
+  <label>${esc(t("cat_"))}<input class="field" name="category" value="${esc(p.category)}"></label>
+  <label>${esc(t("read_"))}<input class="field" name="read" inputmode="numeric" value="${esc(p.read)}"></label>
+  <label>${esc(t("body_"))}<textarea class="field" name="body">${esc(p.body)}</textarea></label>
+  <div class="row"><button class="btn sm">${esc(t("save"))}</button><button type="button" class="btn sm ghost" data-close>${esc(t("cancel"))}</button></div></form>`);
+  $("#pform").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);const v=Object.fromEntries(f.entries());
+    if(p.id){Object.assign(posts.find(x=>x.id===p.id),v)}else{posts.unshift(Object.assign({id:"u"+Date.now()},v))}
+    savePosts();renderPosts();close();});
+}
+
+/* ---------- modal ---------- */
+function open(html){ $("#sheet").innerHTML=`<button class="x" data-close aria-label="${esc(t("close"))}">×</button>`+html; $("#ov").classList.add("show"); $("#sheet").scrollTop=0; document.body.style.overflow="hidden"; }
+function close(){ $("#ov").classList.remove("show"); document.body.style.overflow=""; }
+
+/* ---------- chat ---------- */
+const isDev=s=>/[ऀ-ॿ]/.test(s);
+const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+function hit(text,kw){ kw=kw.toLowerCase(); if(isDev(kw)) return text.includes(kw); return new RegExp("(^|[^a-z])"+reEsc(kw)+"(s|es)?(?![a-z])","i").test(text); }
+const HERB_KEYS=HERBS.map(h=>({id:h.id,keys:[h.name,h.name.split(" (")[0],h.san,h.hi,h.dev].concat(h.hi.split(/\s*\/\s*/)).filter(k=>k&&k.length>2&&k!=="—")}));
+function analyse(msg){
+  const text=msg.toLowerCase();
+  if(EMERGENCY.some(k=>isDev(k)?text.includes(k):text.includes(k.toLowerCase()))) return {kind:"urgent"};
+  const scores=CONDS.map(c=>({id:c.id,s:(KW[c.id]||[]).reduce((a,k)=>a+(hit(text,k)?(k.length>4?2:1):0),0)})).sort((a,b)=>b.s-a.s);
+  const herbs=HERB_KEYS.filter(h=>h.keys.some(k=>hit(text,k))).map(h=>h.id);
+  if(scores[0].s>0) return {kind:"cond",id:scores[0].id,also:scores.filter(x=>x.s>0).slice(1,3).map(x=>x.id),herbs};
+  if(herbs.length) return {kind:"herb",herbs};
+  return {kind:"none"};
+}
+let chatLog=[];
+function bot(html,cls){ chatLog.push(`<div class="msg bot${cls?" "+cls:""}">${html}</div>`); }
+function chips(ids){ return `<div class="links">${ids.map(id=>`<button class="lk" data-chat="${id}">${esc(cn(condById[id]).name)}</button>`).join("")}</div>`; }
+function condReply(id,also){
+  const c=condById[id], L=cn(c);
+  const herbs=(c.herbs||[]).slice(0,3).map(h=>herbById[h].name).join(", ");
+  const yoga=(c.yoga||[]).slice(0,2).concat((c.breath||[]).slice(0,1)).map(y=>yogaById[y].name).join(", ");
+  bot(`<b>${esc(L.name)}</b> · <span class="sub">${esc(c.term)}</span><br>${esc(L.view)}<br><br>🌿 ${esc(herbs)}<br>🧘 ${esc(yoga)}<br><span class="note">${esc(CHAT[lang].precaution)}</span><br><span class="note">⚠ ${esc(c.care)}</span><div class="links"><button class="lk" data-cond="${id}">${esc(CHAT[lang].viewGuide)}</button></div>${also&&also.length?chips(also):""}`);
+}
+function herbReply(ids){ ids.slice(0,2).forEach(id=>{const h=herbById[id]; bot(`<b>${esc(h.name)}</b> · <span class="dev">${esc(h.dev)}</span> <span class="code">${esc(h.code)}</span><br>${esc(h.dosha)}. ${esc(h.uses)}.<br><span class="note">⚠ ${esc(h.safety)}</span><div class="links"><button class="lk" data-herb="${id}">${esc(t("readMore"))}</button></div>`);}); }
+function renderChat(){ if(!chatLog.length){ bot(esc(CHAT[lang].greeting)+chips(CHAT.en.chips.map(c=>c.id))); } $("#cbody").innerHTML=chatLog.join(""); $("#cbody").scrollTop=1e6; }
+function userSays(text){
+  chatLog.push(`<div class="msg user">${esc(text)}</div>`);
+  const r=analyse(text);
+  if(r.kind==="urgent"){ bot(esc(CHAT[lang].urgent)+(SELFHARM.some(k=>text.toLowerCase().includes(k))?`<div class="helpline">${esc(t("helpline"))}</div>`:""),"urgent"); }
+  else if(r.kind==="cond"){ condReply(r.id,r.also); if(r.herbs.length) herbReply(r.herbs.filter(h=>!(condById[r.id].herbs||[]).includes(h))); }
+  else if(r.kind==="herb") herbReply(r.herbs);
+  else bot(esc(CHAT[lang].noMatch+" "+CHAT[lang].clarify)+chips(["stress","sleep","acidity","joint"]));
+  renderChat();
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-cond],[data-herb],[data-yoga],[data-book],[data-post],[data-edit],[data-del],[data-close],[data-chat],[data-c],[data-h],[data-y],[data-l]");
+  if(!el) { if(e.target.id==="ov") close(); return; }
+  const d=el.dataset;
+  if(d.close!==undefined) return close();
+  if(d.l){ lang=d.l; store.set("ayuryog_lang",lang); chatLog=[]; renderAll(); return; }
+  if(d.c){ cat=d.c; renderCats(); renderConds(); return; }
+  if(d.h){ herbCat=d.h; renderHerbs(); return; }
+  if(d.y){ yogaCat=d.y; renderYoga(); return; }
+  if(d.chat){ userSays(cn(condById[d.chat]).name); return; }
+  if(d.cond) return openCond(d.cond);
+  if(d.herb) return openHerb(d.herb);
+  if(d.yoga) return openYoga(d.yoga);
+  if(d.book) return openBook(d.book);
+  if(d.post){ const p=posts.find(x=>x.id===d.post); if(p) open(`<span class="tag">${esc(p.category)}</span><h2>${esc(p.title)}</h2><p class="sub">${esc(p.excerpt)}</p><div class="blk"><p style="white-space:pre-wrap">${esc(p.body)}</p></div>`); return; }
+  if(d.edit){ postForm(posts.find(x=>x.id===d.edit)); return; }
+  if(d.del){ if(pendingDel===d.del){ posts=posts.filter(x=>x.id!==d.del); pendingDel=null; savePosts(); } else { pendingDel=d.del; setTimeout(()=>{if(pendingDel===d.del){pendingDel=null;renderPosts();}},4000); } renderPosts(); return; }
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ close(); $("#chat").classList.remove("show"); } });
+$("#q").addEventListener("input",renderConds);
+$("#hq").addEventListener("input",renderHerbs);
+$("#addPost").addEventListener("click",()=>postForm());
+$("#resetPosts").addEventListener("click",()=>{ posts=POSTS.map((p,i)=>Object.assign({id:"s"+i},p)); savePosts(); renderPosts(); });
+$("#fab").addEventListener("click",()=>{ $("#chat").classList.add("show"); renderChat(); setTimeout(()=>$("#cin").focus(),50); });
+$("#cclose").addEventListener("click",()=>$("#chat").classList.remove("show"));
+$("#cform").addEventListener("submit",e=>{ e.preventDefault(); const v=$("#cin").value.trim(); if(!v) return; $("#cin").value=""; userSays(v); });
+
+function renderAll(){ applyStatic(); renderCats(); renderConds(); renderLib(); renderHerbs(); renderYoga(); renderTher(); renderPosts(); if($("#chat").classList.contains("show")) renderChat(); }
+posts=loadPosts();
+renderAll();
+window.__ayur={analyse};
+})();
+
+</script>
+</body>
+</html>
